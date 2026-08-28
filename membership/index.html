@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membership — TriageAI</title>
+  <meta name="description" content="Subscribe to TriageAI and get access to our AI-powered triage platform, TriageNative mobile app, and clinical analytics dashboard." />
+  <link rel="canonical" href="https://triageai.cc/membership/" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: { 50:'#eff6ff',600:'#2563eb',700:'#1d4ed8',900:'#1e3a8a' } }, fontFamily: { sans: ['Inter','system-ui','sans-serif'] } } }
+    }
+  </script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <style>html{scroll-behavior:smooth}.gradient-hero{background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#0ea5e9 100%)}.plan-card{transition:transform .2s,box-shadow .2s}.plan-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(37,99,235,.15)}</style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+<header class="fixed top-0 inset-x-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-2 font-bold text-xl text-brand-600"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#2563eb"/><path d="M16 7v18M7 16h18" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>TriageAI</a>
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="/" class="text-gray-600 hover:text-brand-600 font-medium">Home</a>
+      <a href="/features/" class="text-gray-600 hover:text-brand-600 font-medium">Features</a>
+      <a href="/about/" class="text-gray-600 hover:text-brand-600 font-medium">About</a>
+      <a href="/pricing/" class="text-gray-600 hover:text-brand-600 font-medium">Pricing</a>
+      <a href="/membership/" class="text-brand-600 font-semibold">Membership</a>
+      <a href="/download/" class="text-gray-600 hover:text-brand-600 font-medium">Download</a>
+      <a href="/contact/" class="text-gray-600 hover:text-brand-600 font-medium">Contact</a>
+    </nav>
+    <a href="/contact/" class="hidden md:block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-2 rounded-lg">Request Demo</a>
+  </div></div>
+</header>
+<main class="pt-16">
+  <section class="gradient-hero text-white py-20 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">Choose Your Membership</h1>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto">All plans include HIPAA BAA, SOC 2 compliance, and TriageNative Android app access.</p>
+    </div>
+  </section>
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-center gap-4 mb-14">
+        <span id="label-monthly" class="font-semibold text-gray-900">Monthly</span>
+        <button id="billing-toggle" role="switch" aria-checked="false" onclick="toggleBilling()" class="relative inline-flex h-7 w-14 items-center rounded-full bg-gray-300 transition-colors focus:outline-none">
+          <span id="toggle-knob" class="inline-block h-5 w-5 rounded-full bg-white shadow transition-transform translate-x-1"></span>
+        </button>
+        <span id="label-annual" class="font-semibold text-gray-400">Annual <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full">Save 20%</span></span>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="plan-card bg-white rounded-3xl border border-gray-200 overflow-hidden flex flex-col">
+          <div class="p-8 flex-1">
+            <p class="text-brand-600 font-semibold text-sm mb-2">STARTER</p>
+            <div class="mb-6"><span class="text-4xl font-extrabold" id="price-starter">$1,490</span><span class="text-gray-500 text-sm ml-1">/month</span><p class="text-gray-500 text-xs mt-1" id="billed-starter">Billed monthly</p></div>
+            <ul class="space-y-3 mb-8 text-sm text-gray-700">
+              <li>✓ Up to 5 clinical users</li><li>✓ 2,000 triage sessions/month</li><li>✓ Core AI triage engine</li><li>✓ TriageNative Android app</li><li>✓ HIPAA BAA included</li>
+            </ul>
+          </div>
+          <div class="px-8 pb-8"><button onclick="openCheckout('starter')" class="w-full border-2 border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white font-bold py-3 rounded-xl transition-colors">Get Started</button></div>
+        </div>
+        <div class="plan-card bg-brand-600 rounded-3xl overflow-hidden flex flex-col relative shadow-2xl">
+          <div class="absolute top-0 inset-x-0 flex justify-center pt-4"><span class="bg-white text-brand-600 text-xs font-bold px-4 py-1 rounded-full">MOST POPULAR</span></div>
+          <div class="p-8 pt-12 flex-1">
+            <p class="text-blue-200 font-semibold text-sm mb-2">PROFESSIONAL</p>
+            <div class="mb-6"><span class="text-4xl font-extrabold text-white" id="price-pro">$3,990</span><span class="text-blue-200 text-sm ml-1">/month</span><p class="text-blue-200 text-xs mt-1" id="billed-pro">Billed monthly</p></div>
+            <ul class="space-y-3 mb-8 text-sm text-white">
+              <li>✓ Up to 30 clinical users</li><li>✓ Unlimited triage sessions</li><li>✓ Full EHR integration (HL7 FHIR R4)</li><li>✓ Analytics dashboard</li><li>✓ TriageNative app (all users)</li><li>✓ Priority support (4h SLA)</li>
+            </ul>
+          </div>
+          <div class="px-8 pb-8"><button onclick="openCheckout('pro')" class="w-full bg-white text-brand-700 hover:bg-blue-50 font-bold py-3 rounded-xl transition-colors">Get Started</button></div>
+        </div>
+        <div class="plan-card bg-white rounded-3xl border border-gray-200 overflow-hidden flex flex-col">
+          <div class="p-8 flex-1">
+            <p class="text-gray-500 font-semibold text-sm mb-2">ENTERPRISE</p>
+            <div class="mb-6"><span class="text-4xl font-extrabold">Custom</span><p class="text-gray-500 text-xs mt-1">Volume pricing available</p></div>
+            <ul class="space-y-3 mb-8 text-sm text-gray-700">
+              <li>✓ Unlimited users and facilities</li><li>✓ Custom AI model fine-tuning</li><li>✓ Private cloud / on-premise</li><li>✓ 99.99% uptime SLA</li><li>✓ 24/7 dedicated support</li>
+            </ul>
+          </div>
+          <div class="px-8 pb-8"><a href="/contact/" class="block w-full text-center border-2 border-gray-300 text-gray-700 hover:border-brand-600 hover:text-brand-600 font-bold py-3 rounded-xl transition-colors">Contact Sales</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="bg-gray-900 text-gray-300 py-12 text-center">
+  <a href="/" class="text-white font-bold text-xl">TriageAI</a>
+  <div class="flex justify-center gap-6 mt-4 text-sm">
+    <a href="/features/" class="hover:text-white">Features</a><a href="/pricing/" class="hover:text-white">Pricing</a><a href="/membership/" class="hover:text-white">Membership</a><a href="/download/" class="hover:text-white">Download</a><a href="/contact/" class="hover:text-white">Contact</a><a href="/privacy/" class="hover:text-white">Privacy</a><a href="/terms/" class="hover:text-white">Terms</a>
+  </div>
+  <p class="text-gray-500 text-sm mt-6">&copy; 2026 TriageAI, Inc.</p>
+</footer>
+<script>
+  let isAnnual=false;
+  const prices={starter:{monthly:'$1,490',annual:'$1,192'},pro:{monthly:'$3,990',annual:'$3,192'}};
+  function toggleBilling(){isAnnual=!isAnnual;document.getElementById('billing-toggle').setAttribute('aria-checked',isAnnual);document.getElementById('toggle-knob').className='inline-block h-5 w-5 rounded-full bg-white shadow transition-transform '+(isAnnual?'translate-x-8':'translate-x-1');document.getElementById('label-monthly').className='font-semibold '+(isAnnual?'text-gray-400':'text-gray-900');document.getElementById('label-annual').className='font-semibold '+(isAnnual?'text-gray-900':'text-gray-400');const p=isAnnual?'annual':'monthly';document.getElementById('price-starter').textContent=prices.starter[p];document.getElementById('price-pro').textContent=prices.pro[p];document.getElementById('billed-starter').textContent=isAnnual?'Billed annually':'Billed monthly';document.getElementById('billed-pro').textContent=isAnnual?'Billed annually':'Billed monthly';}
+  const PADDLE_VENDOR_ID='YOUR_PADDLE_VENDOR_ID';
+  const PADDLE_PRICE_IDS={starter:{monthly:'YOUR_STARTER_MONTHLY_PRICE_ID',annual:'YOUR_STARTER_ANNUAL_PRICE_ID'},pro:{monthly:'YOUR_PRO_MONTHLY_PRICE_ID',annual:'YOUR_PRO_ANNUAL_PRICE_ID'}};
+  if(PADDLE_VENDOR_ID!=='YOUR_PADDLE_VENDOR_ID'){Paddle.Initialize({token:PADDLE_VENDOR_ID});}
+  function openCheckout(plan){if(PADDLE_VENDOR_ID==='YOUR_PADDLE_VENDOR_ID'){alert('Membership checkout coming soon! Email hello@triageai.cc to get started.');return;}const p=isAnnual?'annual':'monthly';Paddle.Checkout.open({items:[{priceId:PADDLE_PRICE_IDS[plan][p],quantity:1}]});}
+</script>
+</body>
+</html>

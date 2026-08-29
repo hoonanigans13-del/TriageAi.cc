@@ -1,232 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TriageAI - AI-Powered Patient Triage Platform</title>
-  <meta name="description" content="TriageAI helps hospitals and clinics triage patients faster with AI-powered clinical decision support. HIPAA compliant, EHR integrated, SOC 2 certified." />
-  <link rel="canonical" href="https://triageai.cc/" />
-  <meta name="theme-color" content="#2563eb" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { brand: { 50:'#eff6ff',100:'#dbeafe',600:'#2563eb',700:'#1d4ed8',900:'#1e3a8a' } },
-          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
-        }
-      }
-    }
-  </script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
-  <style>html{scroll-behavior:smooth}.gradient-hero{background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#0ea5e9 100%)}</style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>TriageAI - AI-Powered Patient Triage Platform</title>
+<meta name="description" content="TriageAI reduces ED wait times by 47% with HIPAA-compliant AI triage. Trusted by 500+ facilities and 2.4M+ patients."/>
+<link rel="canonical" href="https://triageai.cc/"/>
+<meta name="theme-color" content="#2563eb"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"/>
+<style>
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+.gradient-hero{background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#0ea5e9 100%)}
+</style>
 </head>
-<body class="font-sans text-gray-900 bg-white">
+<body class="text-gray-900 bg-white">
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
 <header class="fixed top-0 inset-x-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <a href="/" class="flex items-center gap-2 font-bold text-xl text-brand-600">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl text-blue-600">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#2563eb"/><path d="M16 7v18M7 16h18" stroke="white" stroke-width="3" stroke-linecap="round"/><circle cx="16" cy="16" r="4" fill="white" fill-opacity="0.3"/></svg>
         TriageAI
       </a>
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="/" class="text-brand-600 font-semibold">Home</a>
-        <a href="/features/" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Features</a>
-        <a href="/about/" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">About</a>
-        <a href="/pricing/" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Pricing</a>
-        <a href="/membership/" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Membership</a>
-        <a href="/download/" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Download</a>
-        <a href="/contact/" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Contact</a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="/" class="text-blue-600 font-semibold">Home</a>
+        <a href="/features/" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Features</a>
+        <a href="/about/" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">About</a>
+        <a href="/pricing/" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Pricing</a>
+        <a href="/membership/" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Membership</a>
+        <a href="/download/" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Download</a>
+        <a href="/contact/" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Contact</a>
       </nav>
       <div class="hidden md:flex items-center gap-3">
-        <a href="/membership/" class="text-brand-600 font-semibold hover:text-brand-700">Sign In</a>
-        <a href="/contact/" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Request Demo</a>
+        <a href="/contact/" class="text-blue-600 font-semibold hover:text-blue-700">Sign In</a>
+        <a href="/contact/" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Request Demo</a>
       </div>
       <button id="mobile-toggle" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Toggle menu">
-        <svg id="icon-open" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg id="icon-close" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hidden"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-4 flex flex-col gap-4">
-    <a href="/" class="text-brand-600 font-semibold">Home</a>
-    <a href="/features/" class="text-gray-600 font-medium">Features</a>
-    <a href="/about/" class="text-gray-600 font-medium">About</a>
-    <a href="/pricing/" class="text-gray-600 font-medium">Pricing</a>
-    <a href="/membership/" class="text-gray-600 font-medium">Membership</a>
-    <a href="/download/" class="text-gray-600 font-medium">Download</a>
-    <a href="/contact/" class="text-gray-600 font-medium">Contact</a>
-    <a href="/contact/" class="bg-brand-600 text-white font-semibold px-4 py-2 rounded-lg text-center">Request Demo</a>
+    <a href="/" class="text-blue-600 font-semibold">Home</a>
+    <a href="/features/" class="text-gray-600">Features</a>
+    <a href="/about/" class="text-gray-600">About</a>
+    <a href="/pricing/" class="text-gray-600">Pricing</a>
+    <a href="/membership/" class="text-gray-600">Membership</a>
+    <a href="/download/" class="text-gray-600">Download</a>
+    <a href="/contact/" class="text-gray-600">Contact</a>
+    <a href="/contact/" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg text-center">Request Demo</a>
   </div>
 </header>
-<main class="pt-16">
-  <section class="gradient-hero text-white py-24 lg:py-32 text-center">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<main id="main" class="pt-16">
+  <section class="gradient-hero text-white py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="flex flex-wrap justify-center gap-2 mb-8">
         <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30">HIPAA Compliant</span>
         <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30">SOC 2 Type II</span>
         <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30">HL7 FHIR R4</span>
         <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30">AES-256 Encrypted</span>
       </div>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">AI Triage That Saves Lives and Reduces Wait Times</h1>
-      <p class="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto mb-10">TriageAI delivers hospital-grade, HIPAA-compliant artificial intelligence that helps clinicians assess patient acuity in real time - reducing ED wait times by up to 47% and improving outcomes for every patient.</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">AI Triage That Saves Lives<br class="hidden sm:block"/> and Reduces Wait Times</h1>
+      <p class="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto mb-10">TriageAI delivers hospital-grade, HIPAA-compliant artificial intelligence that helps clinicians assess patient acuity in real time, reducing ED wait times by up to 47% and improving outcomes for every patient.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contact/" class="bg-white text-brand-700 hover:bg-blue-50 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg">Request a Demo</a>
-        <a href="/features/" class="border-2 border-white/60 hover:border-whit
-  <section class="py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Everything Your ED Needs</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Purpose-built for emergency medicine, designed with clinicians, deployed by leading health systems.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">AI Acuity Scoring</h3>
-          <p class="text-gray-600">ESI-aligned machine learning models score patient acuity in under 90 seconds, surfacing critical cases before they deteriorate.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Real-Time EHR Integration</h3>
-          <p class="text-gray-600">HL7 FHIR R4 connectors push triage data directly into Epic, Cerner, and Allscripts with zero duplicate charting.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">HIPAA &amp; SOC 2 Compliant</h3>
-          <p class="text-gray-600">End-to-end AES-256 encryption, role-based access, full audit logging, and annual third-party penetration testing.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile Triage App</h3>
-          <p class="text-gray-600">Android app gives nurses bedside AI decision support, push alerts for deteriorating patients, and offline-capable triage forms.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Charge Nurse Dashboard</h3>
-          <p class="text-gray-600">Live capacity view, real-time acuity heatmaps, and predictive bed management to prevent boarding before it starts.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Trusted by Leading Health Systems</h2>
-        <p class="text-lg text-gray-600">From community hospitals to Level I trauma centers, TriageAI powers better outcomes.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="flex items-center gap-1 mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="text-gray-700 mb-6 italic">"TriageAI cut our door-to-provider time from 38 minutes to under 12. Our nursing staff calls it a game-changer."</p>
-          <p class="font-bold text-gray-900">Dr. Maria Sandoval</p>
-          <p class="text-gray-500 text-sm">Chief of Emergency Medicine, Mountain View Regional</p>
-        </div>
-        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="flex items-center gap-1 mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="text-gray-700 mb-6 italic">"The FHIR integration with Epic was live in 3 days. We reduced LWBS by 31% since deployment. ROI in under 6 months."</p>
-          <p class="font-bold text-gray-900">James Okafor, RN, MSN</p>
-          <p class="text-gray-500 text-sm">Director of Nursing Operations, St. Catherine's Health</p>
-        </div>
-        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-          <div class="flex items-center gap-1 mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="text-gray-700 mb-6 italic">"We deployed TriageNative to 120 nursing staff in a single weekend. The offline mode alone saves us during network outages."</p>
-          <p class="font-bold text-gray-900">Priya Nair, MBA</p>
-          <p class="text-gray-500 text-sm">VP of Clinical Informatics, Pacific Northwest Health Network</p>
-        </div>
-      </div>
-  </main>
-  <footer class="bg-gray-900 text-gray-300 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-        <div class="md:col-span-1">
-          <a href="/" class="flex items-center gap-2 mb-4">
-            <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-            </div>
-            <span class="font-bold text-white text-xl">TriageAI</span>
-          </a>
-          <p class="text-gray-400 text-sm mb-4">AI-powered emergency department triage. Saving lives through faster, smarter decisions.</p>
-          <div class="flex gap-2 flex-wrap">
-            <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">HIPAA</span>
-            <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">SOC 2</span>
-            <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">AES-256</span>
-          </div>
-        </div>
-        <div>
-          <h4 class="font-bold text-white mb-4">Product</h4>
-          <ul class="space-y-3 text-sm">
-            <li><a href="/features/" class="hover:text-white transition-colors">Features</a></li>
-            <li><a href="/pricing/" class="hover:text-white transition-colors">Pricing</a></li>
-            <li><a href="/membership/" class="hover:text-white transition-colors">Membership</a></li>
-            <li><a href="/download/" class="hover:text-white transition-colors">Download App</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-white mb-4">Company</h4>
-          <ul class="space-y-3 text-sm">
-            <li><a href="/about/" class="hover:text-white transition-colors">About</a></li>
-            <li><a href="/contact/" class="hover:text-white transition-colors">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-white mb-4">Legal</h4>
-          <ul class="space-y-3 text-sm">
-            <li><a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy</a></li>
-            <li><a href="/terms/" class="hover:text-white transition-colors">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm text-gray-500">&copy; 2026 TriageAI. All rights reserved.</p>
-        <p class="text-sm text-gray-500">Built for emergency medicine. Trusted by clinicians.</p>
-      </div>
-    </div>
-  </footer>
-  <script>
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    if (btn && menu) {
-      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-    }
-  </script>
-</body>
-    </html>
-    </div>
-  </section>
-  <section class="py-20 bg-blue-600">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to Transform Your Emergency Department?</h2>
-      <p class="text-xl text-blue-100 mb-10">Join 500+ facilities already using TriageAI to save lives and reduce wait times.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/membership/" class="bg-white text-blue-600 font-bold px-8 py-4 rounded-xl text-lg hover:bg-blue-50 transition-colors">View Membership Plans</a>
-        <a href="/contact/" class="border-2 border-white text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-blue-700 transition-colors">Contact Sales</a>
-      </div>
-    </div>
-  </section>>
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Outcomes Analytics</h3>
-          <p class="text-gray-600">Track LWBS rates, door-to-provider time, and sepsis alerts with exportable reports for CMS and Joint Commission requirements.</p>
-        </div>
-      </div>
-      <div class="text-center mt-12">
-        <a href="/features/" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors">See All Features</a>
-      </div>
-    </div>
-        </section>e text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors">Explore Features</a>
+        <a href="/contact/" class="bg-white text-blue-700 hover:bg-blue-50 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg">Request a Demo</a>
+        <a href="/features/" class="border-2 border-white/60 hover:border-white text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors">Explore Features</a>
       </div>
     </div>
   </section>
-  <section class="bg-brand-600 text-white py-10">
+  <section class="bg-blue-600 text-white py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
         <div><p class="text-4xl font-extrabold">47%</p><p class="text-blue-200 mt-1 text-sm">Avg. Wait Time Reduction</p></div>
@@ -236,3 +79,130 @@
       </div>
     </div>
   </section>
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Everything Your ED Needs</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Purpose-built for emergency medicine, designed with clinicians, deployed by leading health systems.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">AI Acuity Scoring</h3>
+          <p class="text-gray-600">ESI-aligned machine learning models score patient acuity in under 90 seconds, surfacing critical cases before they deteriorate.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Real-Time EHR Integration</h3>
+                    >p class="text-gray-600">HL7 FHIR R4 connectors push triage data directly into Epic, Cerner, and Allscripts with zero duplicate charting.>/p>
+                  >/div>
+                  >div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    >h3 class="text-xl font-bold text-gray-900 mb-3">HIPAA and SOC 2 Compliant>/h3>
+                    >p class="text-gray-600">End-to-end AES-256 encryption, role-based access, full audit logging, and annual third-party penetration testing.>/p>
+                  >/div>
+                  >div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    >h3 class="text-xl font-bold text-gray-900 mb-3">Mobile Triage App>/h3>
+                    >p class="text-gray-600">Android app gives nurses bedside AI decision support, push alerts for deteriorating patients, and offline-capable triage forms.>/p>
+                  >/div>
+                  >div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    >h3 class="text-xl font-bold text-gray-900 mb-3">Charge Nurse Dashboard>/h3>
+                    >p class="text-gray-600">Live capacity view, real-time acuity heatmaps, and predictive bed management to prevent boarding before it starts.>/p>
+                  >/div>
+                  >div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    >h3 class="text-xl font-bold text-gray-900 mb-3">Outcomes Analytics>/h3>
+                    >p class="text-gray-600">Track LWBS rates, door-to-provider time, and sepsis alerts with exportable reports for CMS and Joint Commission.>/p>
+                  >/div>
+                >/div>
+                >div class="text-center mt-12">
+                  >a href="/features/" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors">See All Features>/a>
+                >/div>
+              >/div>
+            >/section>
+            >section class="py-20 bg-white">
+              >div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                >div class="text-center mb-14">
+                  >h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Trusted by Leading Health Systems>/h2>
+                  >p class="text-lg text-gray-600">From community hospitals to Level I trauma centers, TriageAI powers better outcomes.>/p>
+                >/div>
+                >div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  >div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    >p class="text-gray-700 mb-6 italic">"TriageAI cut our door-to-provider time from 38 minutes to under 12. Our nursing staff calls it a game-changer.">/p>
+                    >p class="font-bold text-gray-900">Dr. Maria Sandoval>/p>
+                    >p class="text-gray-500 text-sm">Chief of Emergency Medicine, Mountain View Regional>/p>
+                  >/div>
+                  >div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    >p class="text-gray-700 mb-6 italic">"The FHIR integration with Epic was live in 3 days. We reduced LWBS by 31% since deployment. ROI in under 6 months.">/p>
+                    >p class="font-bold text-gray-900">James Okafor, RN, MSN>/p>
+                    >p class="text-gray-500 text-sm">Director of Nursing Operations, St. Catherine's Health>/p>
+                  >/div>
+                  >div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    >p class="text-gray-700 mb-6 italic">"We deployed TriageNative to 120 nursing staff in a single weekend. The offline mode alone saves us during network outages.">/p>
+                    >p class="font-bold text-gray-900">Priya Nair, MBA>/p>
+                    >p class="text-gray-500 text-sm">VP of Clinical Informatics, Pacific Northwest Health Network>/p>
+                  >/div>
+                >/div>
+              >/div>
+            >/section>
+            >section class="py-20 bg-blue-600">
+              >div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                >h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to Transform Your Emergency Department?>/h2>
+                >p class="text-xl text-blue-100 mb-10">Join 500+ facilities already using TriageAI to save lives and reduce wait times.>/p>
+                >div class="flex flex-col sm:flex-row gap-4 justify-center">
+                  >a href="/membership/" class="bg-white text-blue-600 font-bold px-8 py-4 rounded-xl text-lg hover:bg-blue-50 transition-colors">View Membership Plans>/a>
+                  >a href="/contact/" class="border-2 border-white text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-blue-700 transition-colors">Contact Sales>/a>
+                >/div>
+              >/div>
+            >/section>
+          >/main>
+          >footer class="bg-gray-900 text-gray-300 py-16">
+            >div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              >div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                >div>
+                  >a href="/" class="flex items-center gap-2 mb-4">
+                    >div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                      >svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">>path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>>/svg>
+                    >/div>
+                    >span class="font-bold text-white text-xl">TriageAI>/span>
+                  >/a>
+                  >p class="text-gray-400 text-sm mb-4">AI-powered emergency department triage. Saving lives through faster, smarter decisions.>/p>
+                  >div class="flex gap-2">
+                    >span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">HIPAA>/span>
+                    >span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">SOC 2>/span>
+                    >span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">AES-256>/span>
+                  >/div>
+                >/div>
+                >div>
+                  >h4 class="font-bold text-white mb-4">Product>/h4>
+                  >ul class="space-y-3 text-sm">
+                    >li>>a href="/features/" class="hover:text-white transition-colors">Features>/a>>/li>
+                    >li>>a href="/pricing/" class="hover:text-white transition-colors">Pricing>/a>>/li>
+                    >li>>a href="/membership/" class="hover:text-white transition-colors">Membership>/a>>/li>
+                    >li>>a href="/download/" class="hover:text-white transition-colors">Download App>/a>>/li>
+                  >/ul>
+                >/div>
+                >div>
+                  >h4 class="font-bold text-white mb-4">Company>/h4>
+                  >ul class="space-y-3 text-sm">
+                    >li>>a href="/about/" class="hover:text-white transition-colors">About>/a>>/li>
+                    >li>>a href="/contact/" class="hover:text-white transition-colors">Contact>/a>>/li>
+                  >/ul>
+                >/div>
+                >div>
+                  >h4 class="font-bold text-white mb-4">Legal>/h4>
+                  >ul class="space-y-3 text-sm">
+                    >li>>a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy>/a>>/li>
+                    >li>>a href="/terms/" class="hover:text-white transition-colors">Terms of Service>/a>>/li>
+                  >/ul>
+                >/div>
+              >/div>
+              >div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                >p class="text-sm text-gray-500">&copy; 2026 TriageAI. All rights reserved.>/p>
+                >p class="text-sm text-gray-500">Built for emergency medicine. Trusted by clinicians.>/p>
+              >/div>
+            >/div>
+          >/footer>
+          >script>
+            const btn = document.getElementById('mobile-toggle');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) { btn.addEventListener('click', () => menu.classList.toggle('hidden')); }
+          >/script>
+          >/body>
+          >/html>

@@ -95,10 +95,10 @@
   let isAnnual=false;
   const prices={starter:{monthly:'$1,490',annual:'$1,192'},pro:{monthly:'$3,990',annual:'$3,192'}};
   function toggleBilling(){isAnnual=!isAnnual;document.getElementById('billing-toggle').setAttribute('aria-checked',isAnnual);document.getElementById('toggle-knob').className='inline-block h-5 w-5 rounded-full bg-white shadow transition-transform '+(isAnnual?'translate-x-8':'translate-x-1');document.getElementById('label-monthly').className='font-semibold '+(isAnnual?'text-gray-400':'text-gray-900');document.getElementById('label-annual').className='font-semibold '+(isAnnual?'text-gray-900':'text-gray-400');const p=isAnnual?'annual':'monthly';document.getElementById('price-starter').textContent=prices.starter[p];document.getElementById('price-pro').textContent=prices.pro[p];document.getElementById('billed-starter').textContent=isAnnual?'Billed annually':'Billed monthly';document.getElementById('billed-pro').textContent=isAnnual?'Billed annually':'Billed monthly';}
-  const PADDLE_VENDOR_ID='YOUR_PADDLE_VENDOR_ID';
-  const PADDLE_PRICE_IDS={starter:{monthly:'YOUR_STARTER_MONTHLY_PRICE_ID',annual:'YOUR_STARTER_ANNUAL_PRICE_ID'},pro:{monthly:'YOUR_PRO_MONTHLY_PRICE_ID',annual:'YOUR_PRO_ANNUAL_PRICE_ID'}};
-  if(PADDLE_VENDOR_ID!=='YOUR_PADDLE_VENDOR_ID'){Paddle.Initialize({token:PADDLE_VENDOR_ID});}
-  function openCheckout(plan){if(PADDLE_VENDOR_ID==='YOUR_PADDLE_VENDOR_ID'){alert('Membership checkout coming soon! Email hello@triageai.cc to get started.');return;}const p=isAnnual?'annual':'monthly';Paddle.Checkout.open({items:[{priceId:PADDLE_PRICE_IDS[plan][p],quantity:1}]});}
+  const PADDLE_VENDOR_ID='live_9f9a22f3f14846f2594a3c91721';
+  const PADDLE_PRICE_IDS={starter:{monthly:'pri_01m177rhbs4bd8s9xr9gfsnwhv',annual:'pri_01m177srhnrqgwdt77r33r4b6c'},pro:{monthly:'pri_01m177wn4z12tzn094s2ctsfb7',annual:'pri_01m177xe8ra778e6mmprppt9ze'}};
+  if(PADDLE_VENDOR_ID!=='live_9f9a22f3f14846f2594a3c91721'){Paddle.Initialize({token:PADDLE_VENDOR_ID});}
+  function openCheckout(plan){if(PADDLE_VENDOR_ID==='live_9f9a22f3f14846f2594a3c91721'){alert('Membership checkout coming soon! Email hello@triageai.cc to get started.');return;}const p=isAnnual?'annual':'monthly';Paddle.Checkout.open({items:[{priceId:PADDLE_PRICE_IDS[plan][p],quantity:1}]});}
 </script>
 </body>
 </html>

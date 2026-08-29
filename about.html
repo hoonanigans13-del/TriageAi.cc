@@ -1,164 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Triage</title>
-  <meta name="description" content="Learn about Triage's mission to build zero-knowledge, user-owned agent systems that put privacy and autonomy first.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triage AI — About</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0F1113;
+            color: #FFFFFF;
+        }
+        nav {
+            background-color: #0A3D3F;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+        }
+        nav a {
+            color: #14C3C9;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #14C3C9;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+            color: #D9D9D9;
+        }
+        .section {
+            background-color: #2F2F2F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ======== Navbar ======== -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="navbar__brand">Triage</a>
-      <ul class="navbar__links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="terms.html">Terms</a></li>
-      </ul>
-      <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
+<nav>
+    <div style="color:white; font-weight:bold;">Triage AI</div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="support.html">Support</a>
     </div>
-  </nav>
+</nav>
 
-  <!-- ======== About Hero ======== -->
-  <section class="about-hero">
-    <div class="container">
-      <h1>About <span style="color:#14C3C9;">Triage</span></h1>
-      <p>We're building the future of autonomous intelligence — where users own their agents, their data, and their decisions.</p>
+<div class="container">
+    <h1>About Triage AI</h1>
+    <p>
+        Triage AI is built to streamline decision-making, automate workflows, and provide 
+        intelligent support for real-world tasks. Designed for speed, reliability, and clarity, 
+        Triage AI helps users cut through noise and get straight to actionable results.
+    </p>
+
+    <div class="section">
+        <h2>Our Mission</h2>
+        <p>
+            To deliver fast, accurate, and intuitive AI-driven triage systems that empower users 
+            to solve problems efficiently — without complexity or confusion.
+        </p>
     </div>
-  </section>
 
-  <!-- ======== Mission ======== -->
-  <section class="section">
-    <div class="container">
-      <div class="grid grid--2" style="align-items:center;">
-        <div>
-          <h2>Our Mission</h2>
-          <p>Triage exists to dismantle the assumption that powerful AI requires surrendering your privacy. We architect zero-knowledge agent systems that execute complex workflows — research, orchestration, deployment — without ever seeing, storing, or monetizing your data.</p>
-          <p>Founded in Pueblo, Colorado, Triage AI LLC is a lean, founder-led company laser-focused on giving individuals, enterprises, and governments AI tools they can actually trust.</p>
-        </div>
-        <div class="card" style="text-align:center;">
-          <div style="font-size:3rem;margin-bottom:1rem;">🎯</div>
-          <h3>Zero-Knowledge by Default</h3>
-          <p style="margin-bottom:0;">Every architectural decision starts with one question: <em>"Does the user retain full control?"</em> If the answer is no, we redesign it.</p>
-        </div>
-      </div>
+    <div class="section">
+        <h2>Why Triage AI?</h2>
+        <p>
+            • Lightweight and fast  
+            • Clean, modern interface  
+            • Real-time intelligent processing  
+            • Built for both beginners and power users  
+        </p>
     </div>
-  </section>
+</div>
 
-  <!-- ======== Values ======== -->
-  <section class="section section--alt">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom:2.5rem;">What We Stand For</h2>
-      <div class="grid grid--3 values-grid">
-
-        <div class="card">
-          <div class="card__icon">🔐</div>
-          <h3>Privacy First</h3>
-          <p>Not as a feature — as a foundation. Your data never touches our servers in a readable form. Period.</p>
-        </div>
-
-        <div class="card">
-          <div class="card__icon">⚖️</div>
-          <h3>Radical Transparency</h3>
-          <p>No hidden fees. No dark patterns. No surprise charges. You see exactly what you're getting, always.</p>
-        </div>
-
-        <div class="card">
-          <div class="card__icon">🧠</div>
-          <h3>User Empowerment</h3>
-          <p>Our agents work for you — not the other way around. Full permission control, explicit workflows, and total auditability.</p>
-        </div>
-
-        <div class="card">
-          <div class="card__icon">🏗️</div>
-          <h3>Modular Architecture</h3>
-          <p>Skill packs, dual-root workspaces, and environment-aware agents that adapt to your infrastructure.</p>
-        </div>
-
-        <div class="card">
-          <div class="card__icon">🤝</div>
-          <h3>Fair Practices</h3>
-          <p>We believe technology companies should respect their users. Consumer advocacy is built into our DNA.</p>
-        </div>
-
-        <div class="card">
-          <div class="card__icon">🚀</div>
-          <h3>Relentless Iteration</h3>
-          <p>We ship, we test, we improve. No simulated edits — real execution, real results, real progress.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ======== Approach ======== -->
-  <section class="section">
-    <div class="container text-center">
-      <h2>Our Approach</h2>
-      <p style="max-width:680px;margin:0 auto 2rem;">Triage combines autonomous agent orchestration with a permission-based architecture. Every agent action is explicitly authorized, every skill pack is modular and auditable, and every deployment — local, cloud, or on-premise — maintains the same zero-knowledge guarantees.</p>
-      <div class="grid grid--3" style="margin-top:2rem;">
-        <div class="card text-center">
-          <h3 style="color:#14C3C9;font-size:2.5rem;margin-bottom:.5rem;">01</h3>
-          <h3>Design</h3>
-          <p>Architecture centered on user ownership and explicit consent at every layer.</p>
-        </div>
-        <div class="card text-center">
-          <h3 style="color:#14C3C9;font-size:2.5rem;margin-bottom:.5rem;">02</h3>
-          <h3>Build</h3>
-          <p>Modular skill packs and agent workflows tested with real execution — not simulations.</p>
-        </div>
-        <div class="card text-center">
-          <h3 style="color:#14C3C9;font-size:2.5rem;margin-bottom:.5rem;">03</h3>
-          <h3>Deploy</h3>
-          <p>Ship to any environment with full transparency, compliance, and zero data leakage.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======== Footer ======== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__brand">
-          <h3>Triage</h3>
-          <p>Autonomous, user-owned intelligence — built in Pueblo, CO.</p>
-        </div>
-        <div class="footer__nav">
-          <h4>Pages</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer__nav">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        &copy; 2026 Triage AI LLC. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('navToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
-  </script>
 </body>
 </html>

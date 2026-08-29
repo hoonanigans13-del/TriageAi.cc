@@ -1,145 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Triage</title>
-  <meta name="description" content="Get in touch with the Triage team. We'd love to hear from you.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triage AI — Contact</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0F1113;
+            color: #FFFFFF;
+        }
+        nav {
+            background-color: #0A3D3F;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+        }
+        nav a {
+            color: #14C3C9;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #14C3C9;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+            color: #D9D9D9;
+        }
+        .section {
+            background-color: #2F2F2F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: none;
+            background-color: #1C1E20;
+            color: #FFFFFF;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background-color: #14C3C9;
+            color: #0F1113;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0FB2B7;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ======== Navbar ======== -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="navbar__brand">Triage</a>
-      <ul class="navbar__links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="terms.html">Terms</a></li>
-      </ul>
-      <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
+<nav>
+    <div style="color:white; font-weight:bold;">Triage AI</div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="support.html">Support</a>
     </div>
-  </nav>
+</nav>
 
-  <!-- ======== Contact Hero ======== -->
-  <section class="about-hero">
-    <div class="container">
-      <h1>Get in <span style="color:#14C3C9;">Touch</span></h1>
-      <p>Have a question, a proposal, or just want to say hello? We'd love to hear from you.</p>
+<div class="container">
+    <h1>Contact Us</h1>
+    <p>
+        Have questions, feedback, or need support? Reach out using the form below.  
+        Triage AI responds quickly — we keep things simple and direct.
+    </p>
+
+    <div class="section">
+        <h2>Send a Message</h2>
+
+        <form>
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com">
+
+            <label>Message</label>
+            <textarea rows="5" placeholder="How can we help?"></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
     </div>
-  </section>
 
-  <!-- ======== Contact Content ======== -->
-  <section class="section">
-    <div class="container">
-      <div class="grid grid--2">
-
-        <!-- Contact Form -->
-        <div>
-          <h2>Send Us a Message</h2>
-          <p>Fill out the form below and we'll get back to you as soon as possible.</p>
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="margin-top:1.5rem;">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select id="subject" name="subject">
-                <option value="general">General Inquiry</option>
-                <option value="enterprise">Enterprise / Government</option>
-                <option value="partnership">Partnership</option>
-                <option value="support">Technical Support</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary" style="width:100%;">Send Message</button>
-          </form>
-        </div>
-
-        <!-- Contact Info -->
-        <div>
-          <h2>Other Ways to Reach Us</h2>
-          <p>Prefer a more direct approach? Here's how you can connect with us.</p>
-
-          <div class="card" style="margin-top:1.5rem;">
-            <div class="card__icon">📧</div>
-            <h3>Email</h3>
-            <p style="margin-bottom:0;"><a href="mailto:contact@triageai.cc">contact@triageai.cc</a></p>
-          </div>
-
-          <div class="card" style="margin-top:1.25rem;">
-            <div class="card__icon">📍</div>
-            <h3>Location</h3>
-            <p style="margin-bottom:0;">Pueblo, Colorado, USA</p>
-          </div>
-
-          <div class="card" style="margin-top:1.25rem;">
-            <div class="card__icon">⏰</div>
-            <h3>Response Time</h3>
-            <p style="margin-bottom:0;">We typically respond within 24–48 hours during business days.</p>
-          </div>
-
-          <div class="card" style="margin-top:1.25rem;">
-            <div class="card__icon">🔒</div>
-            <h3>Privacy Note</h3>
-            <p style="margin-bottom:0;">Your information is never shared with third parties. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
-          </div>
-        </div>
-
-      </div>
+    <div class="section">
+        <h2>Direct Contact</h2>
+        <p>Email: support@triageai.app</p>
+        <p>Response Time: Usually within 24 hours</p>
     </div>
-  </section>
+</div>
 
-  <!-- ======== Footer ======== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__brand">
-          <h3>Triage</h3>
-          <p>Autonomous, user-owned intelligence — built in Pueblo, CO.</p>
-        </div>
-        <div class="footer__nav">
-          <h4>Pages</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer__nav">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        &copy; 2026 Triage AI LLC. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('navToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
-  </script>
 </body>
 </html>

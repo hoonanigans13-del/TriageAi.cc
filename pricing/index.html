@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing | TriageAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']}}}}</script>
+</head>
+<body class="bg-slate-950 text-white font-sans">
+<nav class="fixed top-0 inset-x-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
+<div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+<a href="/" class="flex items-center gap-2"><div class="w-8 h-8 bg-blue-600 rounded-lg grid place-items-center font-bold text-sm">T</div><span class="font-bold text-lg">TriageAI</span></a>
+<div class="hidden md:flex gap-8 text-sm text-slate-300">
+<a href="/features/" class="hover:text-white">Features</a>
+<a href="/pricing/" class="text-white font-semibold">Pricing</a>
+<a href="/about.html" class="hover:text-white">About</a>
+<a href="/contact.html" class="hover:text-white">Contact</a>
+</div>
+<a href="/membership/" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold">Get Started</a>
+</div>
+</nav>
+<section class="pt-32 pb-12 px-4 text-center">
+<span class="inline-block bg-blue-600/20 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Transparent Pricing</span>
+<h1 class="text-5xl md:text-6xl font-extrabold mb-6">Simple, Predictable <span class="text-blue-400">Pricing</span></h1>
+<p class="text-xl text-slate-400 max-w-2xl mx-auto mb-8">No per-seat surprises. No hidden implementation fees. Pick the plan that fits your facility volume.</p>
+<div class="inline-flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-xl p-1">
+<button id="bM" onclick="setT('m')" class="px-4 py-2 rounded-lg text-sm font-semibold bg-blue-600 text-white">Monthly</button>
+<button id="bA" onclick="setT('a')" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-400 hover:text-white">Annual <span class="text-green-400 text-xs">Save 20%</span></button>
+</div>
+</section>
+<section class="py-8 px-4">
+<div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+<div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+<h3 class="text-lg font-bold mb-1">Starter</h3>
+<p class="text-slate-400 text-sm mb-5">Community hospitals and urgent care</p>
+<div class="mb-5"><span class="text-4xl font-extrabold" id="sP">$1,490</span><span class="text-slate-400 text-sm">/month</span><p id="sN" class="text-slate-500 text-xs mt-1 hidden">Billed annually, save $3,576/yr</p></div>
+<a href="/membership/" class="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl mb-7">Start Free Trial</a>
+<ul class="space-y-2.5 text-sm text-slate-300">
+<li><span class="text-green-400">&#10003;</span> Up to 25,000 encounters/month</li>
+<li><span class="text-green-400">&#10003;</span> AI acuity scoring and ESI mapping</li>
+<li><span class="text-green-400">&#10003;</span> 1 EHR integration</li>
+<li><span class="text-green-400">&#10003;</span> TriageNative Android app (5 users)</li>
+<li><span class="text-green-400">&#10003;</span> Standard dashboard and monthly reports</li>
+<li><span class="text-green-400">&#10003;</span> Email support (24hr response)</li>
+<li><span class="text-green-400">&#10003;</span> HIPAA BAA included</li>
+</ul>
+</div>
+<div class="bg-gradient-to-b from-blue-900/60 to-slate-900 border-2 border-blue-500 rounded-2xl p-8 relative">
+<span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">Most Popular</span>
+<h3 class="text-lg font-bold mb-1">Professional</h3>
+<p class="text-slate-400 text-sm mb-5">Regional medical centers and health systems</p>
+<div class="mb-5"><span class="text-4xl font-extrabold" id="pP">$3,990</span><span class="text-slate-400 text-sm">/month</span><p id="pN" class="text-slate-500 text-xs mt-1 hidden">Billed annually, save $9,576/yr</p></div>
+<a href="/membership/" class="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl mb-7">Start Free Trial</a>
+<ul class="space-y-2.5 text-sm text-slate-300">
+<li><span class="text-green-400">&#10003;</span> Up to 100,000 encounters/month</li>
+<li><span class="text-green-400">&#10003;</span> Advanced AI with sepsis and stroke flags</li>
+<li><span class="text-green-400">&#10003;</span> Unlimited EHR integrations</li>
+<li><span class="text-green-400">&#10003;</span> TriageNative Android app (unlimited users)</li>
+<li><span class="text-green-400">&#10003;</span> Live command dashboard and predictive alerts</li>
+<li><span class="text-green-400">&#10003;</span> Clinical analytics and CMS measure tracking</li>
+<li><span class="text-green-400">&#10003;</span> Priority phone support (4hr SLA)</li>
+<li><span class="text-green-400">&#10003;</span> Dedicated customer success manager</li>
+<li><span class="text-green-400">&#10003;</span> HIPAA BAA and SOC 2 report on request</li>
+</ul>
+</div>
+<div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+<h3 class="text-lg font-bold mb-1">Enterprise</h3>
+<p class="text-slate-400 text-sm mb-5">Health systems, networks and multi-site</p>
+<div class="mb-5"><span class="text-4xl font-extrabold">Custom</span><p class="text-slate-400 text-sm mt-1">Tailored to your volume</p></div>
+<a href="/contact.html" class="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl mb-7">Talk to Sales</a>
+<ul class="space-y-2.5 text-sm text-slate-300">
+<li><span class="text-green-400">&#10003;</span> Unlimited patient encounters</li>
+<li><span class="text-green-400">&#10003;</span> Custom AI model fine-tuning</li>
+<li><span class="text-green-400">&#10003;</span> On-premise or private cloud deployment</li>
+<li><span class="text-green-400">&#10003;</span> White-label mobile app option</li>
+<li><span class="text-green-400">&#10003;</span> Network-wide analytics and benchmarking</li>
+<li><span class="text-green-400">&#10003;</span> 24/7 dedicated support with 1hr SLA</li>
+<li><span class="text-green-400">&#10003;</span> Custom SLA, BAA and DPA agreements</li>
+<li><span class="text-green-400">&#10003;</span> Quarterly executive business reviews</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="py-16 px-4">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-3xl font-extrabold text-center mb-10">Frequently Asked Questions</h2>
+<div class="space-y-3">
+<details class="bg-slate-900 border border-slate-800 rounded-xl p-6"><summary class="font-semibold cursor-pointer list-none">Is there a free trial?</summary><p class="text-slate-400 mt-3 text-sm leading-relaxed">Yes. All plans include a 14-day free trial with full feature access, no credit card required.</p></details>
+<details class="bg-slate-900 border border-slate-800 rounded-xl p-6"><summary class="font-semibold cursor-pointer list-none">How long does implementation take?</summary><p class="text-slate-400 mt-3 text-sm leading-relaxed">Most Starter and Professional customers are live within 3 business days. Enterprise typically takes 2-4 weeks including staff training.</p></details>
+<details class="bg-slate-900 border border-slate-800 rounded-xl p-6"><summary class="font-semibold cursor-pointer list-none">What EHRs do you support?</summary><p class="text-slate-400 mt-3 text-sm leading-relaxed">Certified integrations with Epic, Oracle Cerner, Meditech Expanse, and CPSI TruBridge via HL7 FHIR R4. Custom connectors available on Professional and Enterprise.</p></details>
+<details class="bg-slate-900 border border-slate-800 rounded-xl p-6"><summary class="font-semibold cursor-pointer list-none">Is TriageAI HIPAA compliant?</summary><p class="text-slate-400 mt-3 text-sm leading-relaxed">Yes. Fully HIPAA compliant and SOC 2 Type II certified. A BAA is included with every plan.</p></details>
+</div>
+</div>
+</section>
+<section class="py-16 px-4"><div class="max-w-3xl mx-auto text-center bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-12"><h2 class="text-3xl font-extrabold mb-4">Start saving lives faster today</h2><p class="text-blue-100 mb-8">14-day free trial. No credit card. Live in 3 days.</p><div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="/membership/" class="bg-white text-blue-700 font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition">Start Free Trial</a><a href="/contact.html" class="border border-white/40 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition">Talk to Sales</a></div></div></section>
+<footer class="border-t border-slate-800 py-10 px-4"><div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4"><div class="flex items-center gap-2"><div class="w-7 h-7 bg-blue-600 rounded-lg grid place-items-center font-bold text-xs">T</div><span class="font-bold">TriageAI</span><span class="text-slate-500 text-sm ml-2">2026</span></div><div class="flex gap-6 text-sm text-slate-400"><a href="/privacy.html" class="hover:text-white">Privacy</a><a href="/terms.html" class="hover:text-white">Terms</a><a href="/contact.html" class="hover:text-white">Contact</a></div></div></footer>
+<script>
+function setT(m){var a=m==='a';
+document.getElementById('bM').className='px-4 py-2 rounded-lg text-sm font-semibold '+(a?'text-slate-400 hover:text-white':'bg-blue-600 text-white');
+document.getElementById('bA').className='px-4 py-2 rounded-lg text-sm font-semibold '+(a?'bg-blue-600 text-white':'text-slate-400 hover:text-white');
+document.getElementById('sP').textContent=a?'$1,192':'$1,490';
+document.getElementById('pP').textContent=a?'$3,192':'$3,990';
+document.getElementById('sN').classList.toggle('hidden',!a);
+document.getElementById('pN').classList.toggle('hidden',!a);}
+</script>
+</body>
+</html>

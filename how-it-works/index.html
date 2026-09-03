@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How It Works — Triage AI</title>
+<meta name="description" content="How the Civic Intelligence Ledger logs, labels, and surfaces government data use.">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+<header class="site-header">
+  <div class="hdr">
+    <a href="/" class="logo">Triage<span>AI</span></a>
+    <nav class="nav">
+      <a href="/how-it-works/" class="active">How It Works</a>
+      <a href="/about/">About</a>
+      <a href="/security/">Security</a>
+      <a href="mailto:contact@triageai.cc" class="btn-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="wrap">
+    <p class="eyebrow">The Process</p>
+    <h1 class="h1">How the Ledger Works</h1>
+    <p class="lead">From the moment a government system touches a data record to the moment that record is retired, Triage AI maintains a continuous, tamper-evident log of every interaction.</p>
+    <div class="step-list">
+      <div class="step"><div class="step-n">01</div><div><span class="step-tag">Ingestion</span><h3>Data events are captured at the source</h3><p>Integration points at agency data systems emit structured events whenever a record is accessed, modified, shared, or flagged. These events are signed at origin and forwarded to the Triage AI ingestion layer in real time.</p><p>No raw personal data enters the ledger — only metadata about the interaction: who, what system, what action, what time, under what authority.</p></div></div>
+      <div class="step"><div class="step-n">02</div><div><span class="step-tag">Classification</span><h3>AI labels every event by intent and authority</h3><p>Each ingested event passes through a classification pipeline that assigns intent labels (enforcement, administrative, research, undisclosed), maps the acting authority, and cross-references against declared use policies.</p><p>Events that don't match any declared policy are automatically flagged for human review and added to the anomaly queue.</p></div></div>
+      <div class="step"><div class="step-n">03</div><div><span class="step-tag">Ledger Entry</span><h3>Events are written to the immutable chain</h3><p>Classified events are committed to an append-only cryptographic ledger. Each entry includes the event payload, classification result, confidence score, and a hash of the previous entry — making silent modification mathematically detectable.</p></div></div>
+      <div class="step"><div class="step-n">04</div><div><span class="step-tag">Scoring</span><h3>Agencies receive live compliance scores</h3><p>Triage AI aggregates ledger entries by agency and computes running compliance scores based on three factors: disclosure obligation fulfillment, retention policy adherence, and consent record completeness. Scores update in near real-time as new events are logged.</p></div></div>
+      <div class="step"><div class="step-n">05</div><div><span class="step-tag">Oversight Access</span><h3>Authorized parties can query the ledger directly</h3><p>Registered oversight bodies, credentialed journalists, and legal representatives with standing can issue structured queries against the ledger. Results are returned as auditable exports that include the underlying event chain, not just summaries.</p></div></div>
+      <div class="step"><div class="step-n">06</div><div><span class="step-tag">Public Surface</span><h3>Sanitized summaries are published openly</h3><p>Aggregated, non-sensitive summaries of ledger activity are published to a public-facing dashboard. Any citizen can see how many events were logged by agency, what percentage were flagged, and how compliance scores are trending — without exposing sensitive operational details.</p></div></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="ftr">
+    <div class="ftr-top">
+      <div><div class="ftr-brand">Triage<span>AI</span></div><div class="ftr-sub">CIVIC INTELLIGENCE LEDGER</div></div>
+      <div class="ftr-links"><a href="/">Home</a><a href="/about/">About</a><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="mailto:contact@triageai.cc">Contact</a></div>
+    </div>
+    <div class="ftr-bot"><span class="ftr-copy">© 2026 Triage AI. All rights reserved.</span><span class="ftr-status"><span class="dot"></span>Ledger operational</span></div>
+  </div>
+</footer>
+</body>
+</html>

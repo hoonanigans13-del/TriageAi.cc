@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Security — Triage AI</title>
+<meta name="description" content="How Triage AI secures the Civic Intelligence Ledger.">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+<header class="site-header">
+  <div class="hdr">
+    <a href="/" class="logo">Triage<span>AI</span></a>
+    <nav class="nav">
+      <a href="/how-it-works/">How It Works</a>
+      <a href="/about/">About</a>
+      <a href="/security/" class="active">Security</a>
+      <a href="mailto:contact@triageai.cc" class="btn-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="wrap">
+    <p class="eyebrow">Security</p>
+    <h1 class="h1">How we protect the ledger</h1>
+    <p class="lead">The integrity of the Civic Intelligence Ledger depends entirely on the security of the infrastructure that runs it. Here is how we approach that responsibility.</p>
+    <div class="card-grid" style="margin-bottom:48px">
+      <div class="card"><div class="card-ico">🔐</div><h3>Cryptographic Chaining</h3><p>Every ledger entry is hashed and linked to the previous entry. Modification of any record breaks the chain and is immediately detectable.</p></div>
+      <div class="card"><div class="card-ico">🔒</div><h3>Encryption at Rest &amp; in Transit</h3><p>All ledger data is encrypted at rest using AES-256. All data in transit is protected by TLS 1.3. No exceptions.</p></div>
+      <div class="card"><div class="card-ico">🛡️</div><h3>Access Control</h3><p>Access to ledger infrastructure is role-based, logged, and requires multi-factor authentication. No single party can access the full ledger unilaterally.</p></div>
+      <div class="card"><div class="card-ico">🔍</div><h3>Continuous Monitoring</h3><p>Infrastructure is monitored 24/7 for anomalous access patterns, integrity failures, and unauthorized changes.</p></div>
+    </div>
+    <hr class="divider" style="margin-bottom:48px">
+    <p class="eyebrow">Responsible Disclosure</p>
+    <h2 class="h2">Found a vulnerability?</h2>
+    <p class="lead">We take security reports seriously. If you discover a vulnerability in triageai.cc or the Civic Intelligence Ledger platform, please report it privately before public disclosure.</p>
+    <div class="cmethod"><h4>📬 Security Reports</h4><p>Email: <a href="mailto:security@triageai.cc" style="color:var(--teal)">security@triageai.cc</a> — PGP key available on request.</p></div>
+    <div class="cmethod"><h4>⏱ Response Time</h4><p>We aim to acknowledge security reports within 48 hours and provide a resolution timeline within 7 days.</p></div>
+    <div class="cmethod"><h4>🤝 Safe Harbor</h4><p>We will not pursue legal action against researchers who report vulnerabilities in good faith, follow responsible disclosure practices, and do not access or modify user data.</p></div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="ftr">
+    <div class="ftr-top">
+      <div><div class="ftr-brand">Triage<span>AI</span></div><div class="ftr-sub">CIVIC INTELLIGENCE LEDGER</div></div>
+      <div class="ftr-links"><a href="/">Home</a><a href="/how-it-works/">How It Works</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+    </div>
+    <div class="ftr-bot"><span class="ftr-copy">© 2026 Triage AI. All rights reserved.</span><span class="ftr-status"><span class="dot"></span>Ledger operational</span></div>
+  </div>
+</footer>
+</body>
+</html>

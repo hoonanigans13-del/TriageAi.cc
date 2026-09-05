@@ -1,0 +1,25 @@
+name: Fix Paddle price IDs
+on:
+  workflow_dispatch:
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace placeholder price IDs
+        run: |
+          sed -i 's/pri_PRO_MONTHLY/pri_01m1r640zg5bwq5qv4hn72f8ap/g' pricing/index.html
+          sed -i 's/pri_PRO_ANNUAL/pri_01m1r65eqcvet2f5etc31vpcwf/g' pricing/index.html
+          sed -i 's/pri_FAMILY_MONTHLY/pri_01m1r6836wwnjet109eatw52w1/g' pricing/index.html
+          sed -i 's/pri_FAMILY_ANNUAL/pri_01m1r6a9s0sxxr8qvse8sm3shz/g' pricing/index.html
+          sed -i 's/pri_TEAM_MONTHLY/pri_01m1r6cqphmxafkehfew7w8pab/g' pricing/index.html
+          sed -i 's/pri_TEAM_ANNUAL/pri_01m1r6dx2d0w7cmxe6zq0j9m9w/g' pricing/index.html
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pricing/index.html
+          git diff --cached --quiet || git commit -m "fix: swap placeholder Paddle price IDs with live IDs"
+          git push

@@ -1,53 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Security — Triage AI</title>
-<meta name="description" content="How Triage AI secures the Civic Intelligence Ledger.">
-<link rel="stylesheet" href="/styles.css">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Security — Triage AI Zero-Knowledge Design</title>
+  <meta name="description" content="Triage's full security model: AES-256 on-device vault, zero network calls, local-only AI processing, and responsible disclosure.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    .sec-hero{padding:7rem 0 4rem}
+    .sec-hero .lead{max-width:580px}
+    .model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .model-card{padding:1.75rem;border:1px solid rgba(255,255,255,.07);border-radius:10px;background:rgba(255,255,255,.02)}
+    .model-card.highlight{border-color:rgba(22,215,197,.3);background:rgba(22,215,197,.03)}
+    .model-ico{font-size:1.5rem;margin-bottom:1rem}
+    .model-card h3{font-size:.95rem;font-weight:700;margin-bottom:.5rem}
+    .model-card p{font-size:.86rem;color:rgba(255,255,255,.52);line-height:1.6}
+    .spec-band{padding:4rem 0;background:rgba(22,215,197,.03);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+    .spec-table{width:100%;border-collapse:collapse;margin-top:2rem;font-size:.86rem}
+    .spec-table th{text-align:left;padding:.75rem 1rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#16D7C5;font-family:monospace;border-bottom:1px solid rgba(255,255,255,.08)}
+    .spec-table td{padding:.85rem 1rem;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.7)}
+    .spec-table td:last-child{font-family:monospace;font-size:.82rem;color:#16D7C5}
+    .disc-sect{padding:4rem 0}
+    .disc-box{border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:2rem;background:rgba(255,255,255,.02);max-width:640px}
+    .disc-box h3{font-size:1rem;font-weight:700;margin-bottom:.75rem}
+    .disc-box p{font-size:.86rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:.75rem}
+    .disc-box a{color:#16D7C5;text-decoration:none}
+    .disc-box a:hover{text-decoration:underline}
+    .acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="hdr">
-    <a href="/" class="logo">Triage<span>AI</span></a>
-    <nav class="nav">
-      <a href="/how-it-works/">How It Works</a>
-      <a href="/about/">About</a>
-      <a href="/security/" class="active">Security</a>
-      <a href="mailto:contact@triageai.cc" class="btn-nav">Contact</a>
-    </nav>
-  </div>
-</header>
-<main id="main">
-  <section class="wrap">
-    <p class="eyebrow">Security</p>
-    <h1 class="h1">How we protect the ledger</h1>
-    <p class="lead">The integrity of the Civic Intelligence Ledger depends entirely on the security of the infrastructure that runs it. Here is how we approach that responsibility.</p>
-    <div class="card-grid" style="margin-bottom:48px">
-      <div class="card"><div class="card-ico">🔐</div><h3>Cryptographic Chaining</h3><p>Every ledger entry is hashed and linked to the previous entry. Modification of any record breaks the chain and is immediately detectable.</p></div>
-      <div class="card"><div class="card-ico">🔒</div><h3>Encryption at Rest &amp; in Transit</h3><p>All ledger data is encrypted at rest using AES-256. All data in transit is protected by TLS 1.3. No exceptions.</p></div>
-      <div class="card"><div class="card-ico">🛡️</div><h3>Access Control</h3><p>Access to ledger infrastructure is role-based, logged, and requires multi-factor authentication. No single party can access the full ledger unilaterally.</p></div>
-      <div class="card"><div class="card-ico">🔍</div><h3>Continuous Monitoring</h3><p>Infrastructure is monitored 24/7 for anomalous access patterns, integrity failures, and unauthorized changes.</p></div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="hdr wrap">
+      <a href="/" class="logo">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" fill="#16D7C5" opacity=".12" stroke="#16D7C5" stroke-width="1.5"/>
+          <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#16D7C5" opacity=".25"/>
+          <circle cx="14" cy="14" r="2.5" fill="#16D7C5"/>
+        </svg>
+        Triage
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/about/">About</a>
+        <a href="/security/" aria-current="page">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="mailto:triageaiinbox@gmail.com" class="btn-nav">Contact</a>
+      </nav>
     </div>
-    <hr class="divider" style="margin-bottom:48px">
-    <p class="eyebrow">Responsible Disclosure</p>
-    <h2 class="h2">Found a vulnerability?</h2>
-    <p class="lead">We take security reports seriously. If you discover a vulnerability in triageai.cc or the Civic Intelligence Ledger platform, please report it privately before public disclosure.</p>
-    <div class="cmethod"><h4>📬 Security Reports</h4><p>Email: <a href="mailto:security@triageai.cc" style="color:var(--teal)">security@triageai.cc</a> — PGP key available on request.</p></div>
-    <div class="cmethod"><h4>⏱ Response Time</h4><p>We aim to acknowledge security reports within 48 hours and provide a resolution timeline within 7 days.</p></div>
-    <div class="cmethod"><h4>🤝 Safe Harbor</h4><p>We will not pursue legal action against researchers who report vulnerabilities in good faith, follow responsible disclosure practices, and do not access or modify user data.</p></div>
-  </section>
-</main>
-<footer class="site-footer">
-  <div class="ftr">
-    <div class="ftr-top">
-      <div><div class="ftr-brand">Triage<span>AI</span></div><div class="ftr-sub">CIVIC INTELLIGENCE LEDGER</div></div>
-      <div class="ftr-links"><a href="/">Home</a><a href="/how-it-works/">How It Works</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+  </header>
+  <main id="main">
+    <section class="sec-hero">
+      <div class="wrap">
+        <p class="eyebrow">Security model</p>
+        <h1 class="h1">No cloud. <em style="font-style:normal;color:#16D7C5">No exceptions.</em></h1>
+        <p class="lead">Triage is built around a single constraint: your data never leaves your device. Everything — storage, inference, decision history — runs locally in an encrypted vault only you control.</p>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="wrap" style="padding:4rem 0">
+      <p class="eyebrow">Core security properties</p>
+      <h2 class="h2">How we protect your data.</h2>
+      <div class="model-grid">
+        <div class="model-card highlight">
+          <div class="model-ico">🔒</div>
+          <h3>AES-256 on-device vault</h3>
+          <p>Every email, task, preference, and decision Triage touches is encrypted with AES-256-GCM. The key is derived from your device's secure enclave — only you can decrypt it.</p>
+        </div>
+        <div class="model-card">
+          <div class="model-ico">📵</div>
+          <h3>Zero network calls</h3>
+          <p>Triage does not phone home. After the initial OAuth handshake with your email provider, all processing is local. We receive no telemetry, crash reports, or usage data.</p>
+        </div>
+        <div class="model-card">
+          <div class="model-ico">🧠</div>
+          <h3>On-device inference</h3>
+          <p>The AI model that powers Triage runs entirely on your device. No request is sent to an AI API. No prompt data leaves your vault under any circumstances.</p>
+        </div>
+        <div class="model-card">
+          <div class="model-ico">📋</div>
+          <h3>Local audit log</h3>
+          <p>Every action taken in autonomous mode is written to a tamper-evident local audit log. You can inspect, export, or delete it at any time from the settings panel.</p>
+        </div>
+        <div class="model-card">
+          <div class="model-ico">🪪</div>
+          <h3>Offline license</h3>
+          <p>Your Pro or Family license is a cryptographically signed file stored on your device. There is no activation server to be unavailable or to record your usage.</p>
+        </div>
+        <div class="model-card">
+          <div class="model-ico">🚫</div>
+          <h3>No account, no breach surface</h3>
+          <p>We hold no user accounts, no email addresses, no payment tokens. There is no Triage user database to breach or subpoena. We structurally cannot see you.</p>
+        </div>
+      </div>
+    </section>
+    <section class="spec-band">
+      <div class="wrap">
+        <p class="eyebrow">Technical specifications</p>
+        <h2 class="h2">Security at a glance.</h2>
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Details</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Vault encryption</td><td>AES-256-GCM, key in device secure enclave</td><td>Enforced</td></tr>
+            <tr><td>Data-at-rest</td><td>All vault content encrypted, never plaintext on disk</td><td>Enforced</td></tr>
+            <tr><td>Network calls (processing)</td><td>Zero — all inference is on-device</td><td>Blocked</td></tr>
+            <tr><td>OAuth scope</td><td>Minimal read/send scopes only; tokens stored encrypted</td><td>Enforced</td></tr>
+            <tr><td>Telemetry</td><td>None — no analytics SDK, no crash reporter</td><td>Disabled</td></tr>
+            <tr><td>AI inference location</td><td>On-device model only</td><td>Local</td></tr>
+            <tr><td>License verification</td><td>Local signature check, no activation server</td><td>Offline</td></tr>
+            <tr><td>Audit log</td><td>Local tamper-evident log, user-exportable</td><td>Always on</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="disc-sect">
+      <div class="wrap">
+        <p class="eyebrow">Responsible disclosure</p>
+        <h2 class="h2" style="margin-bottom:1.5rem">Found a vulnerability?</h2>
+        <div class="disc-box">
+          <h3>Reporting security issues</h3>
+          <p>If you discover a security vulnerability in Triage, please disclose it responsibly. Do not open a public GitHub issue for security findings.</p>
+          <p>Email us at <a href="mailto:triageaiinbox@gmail.com">triageaiinbox@gmail.com</a> with a description of the issue, reproduction steps, and any relevant technical details. We will respond within 72 hours and work with you to patch and credit the finding.</p>
+          <p>We do not currently operate a bug bounty program, but we take every report seriously and publicly credit researchers who help us improve Triage's security.</p>
+        </div>
+        <div class="acts">
+          <a href="/download/" class="btn btn-p">Download Triage</a>
+          <a href="/how-it-works/" class="btn btn-g">How it works</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="ftr wrap">
+      <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
+      <nav aria-label="Footer">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/security/">Security</a>
+      </nav>
     </div>
-    <div class="ftr-bot"><span class="ftr-copy">© 2026 Triage AI. All rights reserved.</span><span class="ftr-status"><span class="dot"></span>Ledger operational</span></div>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>

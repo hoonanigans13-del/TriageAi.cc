@@ -1,48 +1,154 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>How It Works — Triage AI</title>
-<meta name="description" content="How the Civic Intelligence Ledger logs, labels, and surfaces government data use.">
-<link rel="stylesheet" href="/styles.css">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>How Triage Works — Zero-Knowledge AI Assistant</title>
+  <meta name="description" content="Learn how Triage builds trust, protects your data, and earns autonomous mode — entirely on your device, with zero cloud processing.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    .hiw-hero{padding:7rem 0 4rem}
+    .step-list{display:flex;flex-direction:column;gap:3rem;margin-top:3rem;max-width:700px}
+    .step{display:grid;grid-template-columns:3rem 1fr;gap:1.5rem;align-items:start}
+    .step-num{width:3rem;height:3rem;border-radius:50%;background:rgba(22,215,197,.1);border:1px solid rgba(22,215,197,.3);display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:.9rem;font-weight:700;color:#16D7C5;flex-shrink:0}
+    .step h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+    .step p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.7}
+    .trust-band{padding:5rem 0;text-align:center;background:rgba(22,215,197,.03);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+    .meter-wrap{max-width:480px;margin:2.5rem auto 0}
+    .meter-bar-bg{height:10px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-top:.75rem}
+    .meter-bar-fg{height:100%;width:97%;background:linear-gradient(90deg,#16D7C5,#0fa896);border-radius:999px}
+    .meter-labels{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.35);font-family:monospace;margin-top:.4rem}
+    .faq-list{max-width:680px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:1.5rem}
+    .faq-item{}
+    .faq-item h4{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+    .faq-item p{font-size:.86rem;color:rgba(255,255,255,.52);line-height:1.7}
+    .acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="hdr">
-    <a href="/" class="logo">Triage<span>AI</span></a>
-    <nav class="nav">
-      <a href="/how-it-works/" class="active">How It Works</a>
-      <a href="/about/">About</a>
-      <a href="/security/">Security</a>
-      <a href="mailto:contact@triageai.cc" class="btn-nav">Contact</a>
-    </nav>
-  </div>
-</header>
-<main id="main">
-  <section class="wrap">
-    <p class="eyebrow">The Process</p>
-    <h1 class="h1">How the Ledger Works</h1>
-    <p class="lead">From the moment a government system touches a data record to the moment that record is retired, Triage AI maintains a continuous, tamper-evident log of every interaction.</p>
-    <div class="step-list">
-      <div class="step"><div class="step-n">01</div><div><span class="step-tag">Ingestion</span><h3>Data events are captured at the source</h3><p>Integration points at agency data systems emit structured events whenever a record is accessed, modified, shared, or flagged. These events are signed at origin and forwarded to the Triage AI ingestion layer in real time.</p><p>No raw personal data enters the ledger — only metadata about the interaction: who, what system, what action, what time, under what authority.</p></div></div>
-      <div class="step"><div class="step-n">02</div><div><span class="step-tag">Classification</span><h3>AI labels every event by intent and authority</h3><p>Each ingested event passes through a classification pipeline that assigns intent labels (enforcement, administrative, research, undisclosed), maps the acting authority, and cross-references against declared use policies.</p><p>Events that don't match any declared policy are automatically flagged for human review and added to the anomaly queue.</p></div></div>
-      <div class="step"><div class="step-n">03</div><div><span class="step-tag">Ledger Entry</span><h3>Events are written to the immutable chain</h3><p>Classified events are committed to an append-only cryptographic ledger. Each entry includes the event payload, classification result, confidence score, and a hash of the previous entry — making silent modification mathematically detectable.</p></div></div>
-      <div class="step"><div class="step-n">04</div><div><span class="step-tag">Scoring</span><h3>Agencies receive live compliance scores</h3><p>Triage AI aggregates ledger entries by agency and computes running compliance scores based on three factors: disclosure obligation fulfillment, retention policy adherence, and consent record completeness. Scores update in near real-time as new events are logged.</p></div></div>
-      <div class="step"><div class="step-n">05</div><div><span class="step-tag">Oversight Access</span><h3>Authorized parties can query the ledger directly</h3><p>Registered oversight bodies, credentialed journalists, and legal representatives with standing can issue structured queries against the ledger. Results are returned as auditable exports that include the underlying event chain, not just summaries.</p></div></div>
-      <div class="step"><div class="step-n">06</div><div><span class="step-tag">Public Surface</span><h3>Sanitized summaries are published openly</h3><p>Aggregated, non-sensitive summaries of ledger activity are published to a public-facing dashboard. Any citizen can see how many events were logged by agency, what percentage were flagged, and how compliance scores are trending — without exposing sensitive operational details.</p></div></div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="hdr wrap">
+      <a href="/" class="logo">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" fill="#16D7C5" opacity=".12" stroke="#16D7C5" stroke-width="1.5"/>
+          <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#16D7C5" opacity=".25"/>
+          <circle cx="14" cy="14" r="2.5" fill="#16D7C5"/>
+        </svg>
+        Triage
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/how-it-works/" aria-current="page">How it works</a>
+        <a href="/about/">About</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="mailto:triageaiinbox@gmail.com" class="btn-nav">Contact</a>
+      </nav>
     </div>
-  </section>
-</main>
-<footer class="site-footer">
-  <div class="ftr">
-    <div class="ftr-top">
-      <div><div class="ftr-brand">Triage<span>AI</span></div><div class="ftr-sub">CIVIC INTELLIGENCE LEDGER</div></div>
-      <div class="ftr-links"><a href="/">Home</a><a href="/about/">About</a><a href="/security/">Security</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="mailto:contact@triageai.cc">Contact</a></div>
+  </header>
+  <main id="main">
+    <section class="hiw-hero">
+      <div class="wrap">
+        <p class="eyebrow">How Triage works</p>
+        <h1 class="h1">Intelligence that <em style="font-style:normal;color:#16D7C5">earns its autonomy.</em></h1>
+        <p class="lead" style="max-width:580px">Triage doesn't ask for permission up front. It starts in suggestion-only mode, learns your priorities, and builds a trust score based on how well its suggestions match your decisions. Once it hits 97 % — you unlock autonomous mode.</p>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="wrap" style="padding:4rem 0">
+      <p class="eyebrow">Step by step</p>
+      <h2 class="h2">From install to autonomous.</h2>
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h3>Install &amp; set up your vault</h3>
+            <p>Triage creates an AES-256 encrypted vault on your device during first launch. No account, no cloud setup — just a local key only you hold. Your data never leaves this vault.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h3>Connect your inbox</h3>
+            <p>Link your email account via a local OAuth flow. Triage reads and processes messages entirely on-device. No email content is ever sent to a server — not even ours.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h3>Triage suggests — you decide</h3>
+            <p>In the beginning, Triage surfaces prioritized suggestions: reply to this, archive that, flag this as urgent. You act on them (or don't), and Triage records your decisions locally to refine its model.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <h3>Trust score climbs</h3>
+            <p>Every accepted suggestion increases your trust score. Every override teaches Triage something new. The score is computed locally — no telemetry, no profile building on any server.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div>
+            <h3>Autonomous mode unlocks at 97 %</h3>
+            <p>At 97 % trust, Triage starts acting on your behalf: scheduling, archiving, drafting replies. Every action is logged in a local audit trail you can inspect, replay, or revoke at any time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="trust-band">
+      <div class="wrap">
+        <p class="eyebrow">Trust meter</p>
+        <h2 class="h2">97 % — the threshold for autonomy.</h2>
+        <p class="lead" style="max-width:520px;margin:0 auto">Triage computes its trust score locally from your decision history. It never shares that score with us or anyone else.</p>
+        <div class="meter-wrap">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem">
+            <span style="font-size:.8rem;color:rgba(255,255,255,.4);font-family:monospace">trust.score</span>
+            <span style="font-size:.9rem;font-weight:700;color:#16D7C5;font-family:monospace">97 %</span>
+          </div>
+          <div class="meter-bar-bg"><div class="meter-bar-fg"></div></div>
+          <div class="meter-labels"><span>0 %</span><span>Autonomous unlocked →</span><span>100 %</span></div>
+        </div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="wrap" style="padding:4rem 0">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="h2">Common questions.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h4>Does Triage ever send my emails to a server?</h4>
+          <p>Never. All email processing happens on-device inside your encrypted vault. The only network call Triage makes is the initial OAuth handshake with your email provider — and that goes directly to your provider, not to us.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What happens if I uninstall Triage?</h4>
+          <p>Your vault is deleted along with the app. There is nothing stored server-side to retrieve or delete — because nothing was ever sent there.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I reset my trust score?</h4>
+          <p>Yes. You can reset the trust score from settings at any time, which returns Triage to suggestion-only mode. Your vault data is preserved.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What does autonomous mode actually do?</h4>
+          <p>It allows Triage to take pre-approved actions — archiving low-priority mail, sending pre-approved reply templates, scheduling events — without waiting for your tap. Every action is logged locally.</p>
+        </div>
+      </div>
+      <div class="acts">
+        <a href="/download/" class="btn btn-p">Download Triage</a>
+        <a href="/security/" class="btn btn-g">Read the security model</a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="ftr wrap">
+      <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
+      <nav aria-label="Footer">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/security/">Security</a>
+      </nav>
     </div>
-    <div class="ftr-bot"><span class="ftr-copy">© 2026 Triage AI. All rights reserved.</span><span class="ftr-status"><span class="dot"></span>Ledger operational</span></div>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>

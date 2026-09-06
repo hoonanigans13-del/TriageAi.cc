@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Download Triage — Android &amp; Windows</title>
+  <meta name="description" content="Download Triage for Android or Windows. Zero-knowledge AI assistant. AES-256 encrypted. Your data never leaves your device.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    .dl-hero{padding:7rem 0 5rem;text-align:center}
+    .hero-icon{margin-bottom:2rem}
+    .hero-icon img{width:128px;height:128px;border-radius:28px;box-shadow:0 0 60px rgba(22,215,197,.25),0 20px 60px rgba(0,0,0,.5)}
+    .dl-hero .eyebrow{margin-bottom:1rem}
+    .dl-hero .lead{max-width:540px;margin:0 auto 2.5rem}
+    .platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+    .platform-card{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:2rem;background:rgba(255,255,255,.02);text-align:left;display:flex;flex-direction:column}
+    .platform-card.active{border-color:rgba(22,215,197,.4);background:rgba(22,215,197,.04)}
+    .platform-icon{font-size:2rem;margin-bottom:1.25rem}
+    .platform-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+    .platform-card .sub{font-size:.78rem;font-family:monospace;color:#16D7C5;margin-bottom:.75rem}
+    .platform-card p{font-size:.86rem;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:1.25rem;flex:1}
+    .badge{display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.3em .75em;border-radius:999px;font-weight:600;margin-bottom:1.25rem}
+    .badge-soon{background:rgba(255,255,255,.07);color:rgba(255,255,255,.4)}
+    .badge-avail{background:rgba(22,215,197,.15);color:#16D7C5}
+    .acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:auto}
+    .hash-line{font-size:.68rem;font-family:monospace;color:rgba(255,255,255,.25);margin-top:.75rem;word-break:break-all;line-height:1.5}
+    .hash-line span{color:rgba(255,255,255,.35)}
+    .install-band{padding:5rem 0;border-top:1px solid rgba(255,255,255,.07)}
+    .install-steps{display:flex;flex-direction:column;gap:1.5rem;max-width:640px;margin-top:2.5rem}
+    .i-step{display:grid;grid-template-columns:2.25rem 1fr;gap:1.25rem;align-items:start}
+    .i-num{width:2.25rem;height:2.25rem;border-radius:50%;background:rgba(22,215,197,.1);border:1px solid rgba(22,215,197,.3);display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:.8rem;font-weight:700;color:#16D7C5;flex-shrink:0}
+    .i-step h4{font-size:.9rem;font-weight:700;margin-bottom:.25rem}
+    .i-step p{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.6}
+    .req-band{padding:4rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.07)}
+    .req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:2.5rem;text-align:left}
+    .req-item{padding:1.25rem;border:1px solid rgba(255,255,255,.07);border-radius:10px;background:rgba(255,255,255,.02)}
+    .req-item .lbl{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#16D7C5;font-family:monospace;margin-bottom:.4rem}
+    .req-item p{font-size:.84rem;color:rgba(255,255,255,.55)}
+    .req-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap;justify-content:center}
+    .req-tab{padding:.5em 1.25em;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.45)}
+    .req-tab.active{background:rgba(22,215,197,.12);border-color:rgba(22,215,197,.35);color:#16D7C5}
+    .req-panel{display:none}.req-panel.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;text-align:left}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="hdr wrap">
+      <a href="/" class="logo">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" fill="#16D7C5" opacity=".12" stroke="#16D7C5" stroke-width="1.5"/>
+          <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#16D7C5" opacity=".25"/>
+          <circle cx="14" cy="14" r="2.5" fill="#16D7C5"/>
+        </svg>
+        Triage
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/about/">About</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="mailto:triageaiinbox@gmail.com" class="btn-nav">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="dl-hero">
+      <div class="wrap">
+        <div class="hero-icon">
+          <img src="/favicon.svg" alt="Triage app icon" width="128" height="128">
+        </div>
+        <p class="eyebrow">Download Triage</p>
+        <h1 class="h1">Your AI. <em style="font-style:normal;color:#16D7C5">Your device.</em></h1>
+        <p class="lead">Available now for Android and Windows. AES-256 encrypted vault, on-device AI, zero data sent off your device — ever.</p>
+        <div class="acts" style="justify-content:center">
+          <a href="https://github.com/hoonanigans13-del/TriageNative/releases/download/v1.0.0/TriageAI-v1.0.0.apk" class="btn btn-p">&#x1F916; Download for Android</a>
+          <a href="https://github.com/hoonanigans13-del/TriageNative/releases/download/v1.0.0/Triage_0.1.6_x64-setup.exe" class="btn btn-g">&#x1FA9F; Download for Windows</a>
+        </div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="wrap" style="padding:4rem 0">
+      <p class="eyebrow">Platform downloads</p>
+      <h2 class="h2">Pick your platform.</h2>
+      <div class="platform-grid">
+        <div class="platform-card active">
+          <div class="platform-icon">&#x1F916;</div>
+          <h3>Android</h3>
+          <div class="sub">v1.0.0 &mdash; 12.4 MB</div>
+          <p>Signed release APK. On-device vault, email triage, and autonomous mode &mdash; all local, all AES-256 encrypted. Requires Android 8.0 or higher.</p>
+          <span class="badge badge-avail">Available now</span>
+          <div class="acts">
+            <a href="https://github.com/hoonanigans13-del/TriageNative/releases/download/v1.0.0/TriageAI-v1.0.0.apk" class="btn btn-p">Download APK</a>
+          </div>
+          <div class="hash-line"><span>SHA-256</span><br>02e5616b977ebc7b2ea3c03347bbe1431719b4c8be43878b663b8268bccaaafc</div>
+        </div>
+        <div class="platform-card active">
+          <div class="platform-icon">&#x1FA9F;</div>
+          <h3>Windows</h3>
+          <div class="sub">v0.1.6 &mdash; 1.2 MB</div>
+          <p>Native x64 installer. Full desktop integration with local vault, tray agent, and keyboard-first workflows. Requires Windows 10 or higher.</p>
+          <span class="badge badge-avail">Available now</span>
+          <div class="acts">
+            <a href="https://github.com/hoonanigans13-del/TriageNative/releases/download/v1.0.0/Triage_0.1.6_x64-setup.exe" class="btn btn-p">Download Installer</a>
+          </div>
+          <div class="hash-line"><span>SHA-256</span><br>622774a36ce5f33836ca470430c1b1a551d0c6042a4b11c662df6143b87b24b4</div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">&#x1F34E;</div>
+          <h3>iOS</h3>
+          <div class="sub">In development</div>
+          <p>Bringing zero-knowledge AI to iPhone with the same on-device privacy guarantees as Android.</p>
+          <span class="badge badge-soon">Coming soon</span>
+        </div>
+      </div>
+    </section>
+    <section class="install-band">
+      <div class="wrap">
+        <p class="eyebrow">Android install guide</p>
+        <h2 class="h2">Installing the APK.</h2>
+        <p style="color:rgba(255,255,255,.5);font-size:.88rem;max-width:580px;margin-top:.5rem">Because this is a direct APK (not from the Play Store), you need to allow installs from unknown sources once. Here's how:</p>
+        <div class="install-steps">
+          <div class="i-step">
+            <div class="i-num">01</div>
+            <div>
+              <h4>Download the APK</h4>
+              <p>Tap "Download APK" above. Your browser will save <code>TriageAI-v1.0.0.apk</code> to your Downloads folder.</p>
+            </div>
+          </div>
+          <div class="i-step">
+            <div class="i-num">02</div>
+            <div>
+              <h4>Allow installs from this source</h4>
+              <p>When prompted, tap <strong>Settings</strong> and enable "Install unknown apps" for your browser or file manager. This is a one-time step.</p>
+            </div>
+          </div>
+          <div class="i-step">
+            <div class="i-num">03</div>
+            <div>
+              <h4>Open the APK file</h4>
+              <p>Open your Downloads folder, tap <code>TriageAI-v1.0.0.apk</code>, and tap <strong>Install</strong>.</p>
+            </div>
+          </div>
+          <div class="i-step">
+            <div class="i-num">04</div>
+            <div>
+              <h4>Launch Triage</h4>
+              <p>Open Triage from your app drawer. Your encrypted vault is created on first launch &mdash; no account, no sign-up.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="req-band">
+      <div class="wrap">
+        <p class="eyebrow">System requirements</p>
+        <h2 class="h2">What you need to run Triage.</h2>
+        <div class="req-tabs" role="tablist">
+          <button class="req-tab active" role="tab" aria-selected="true" onclick="switchTab('android',this)">Android</button>
+          <button class="req-tab" role="tab" aria-selected="false" onclick="switchTab('windows',this)">Windows</button>
+        </div>
+        <div id="req-android" class="req-panel active">
+          <div class="req-item"><div class="lbl">Android version</div><p>Android 8.0 (Oreo) or later</p></div>
+          <div class="req-item"><div class="lbl">Storage</div><p>~120 MB free space</p></div>
+          <div class="req-item"><div class="lbl">RAM</div><p>3 GB or more recommended</p></div>
+          <div class="req-item"><div class="lbl">Internet</div><p>Required for email sync; not for AI processing</p></div>
+          <div class="req-item"><div class="lbl">Account</div><p>None &mdash; ever</p></div>
+          <div class="req-item"><div class="lbl">Data sent off-device</div><p>Zero</p></div>
+        </div>
+        <div id="req-windows" class="req-panel">
+          <div class="req-item"><div class="lbl">Windows version</div><p>Windows 10 x64 or later</p></div>
+          <div class="req-item"><div class="lbl">Storage</div><p>~50 MB free space</p></div>
+          <div class="req-item"><div class="lbl">RAM</div><p>4 GB or more recommended</p></div>
+          <div class="req-item"><div class="lbl">Internet</div><p>Required for email sync; not for AI processing</p></div>
+          <div class="req-item"><div class="lbl">Account</div><p>None &mdash; ever</p></div>
+          <div class="req-item"><div class="lbl">Data sent off-device</div><p>Zero</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="ftr wrap">
+      <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
+      <nav aria-label="Footer">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/security/">Security</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    function switchTab(id, btn) {
+      document.querySelectorAll('.req-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.req-tab').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      document.getElementById('req-' + id).classList.add('active');
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+    }
+  </script>
+</body>
+</html>

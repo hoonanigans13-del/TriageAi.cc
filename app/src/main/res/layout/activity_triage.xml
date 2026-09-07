@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Header / Branding -->
+    <TextView
+        android:id="@+id/apprenticeStatusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEURAL APPRENTICE"
+        android:textColor="@color/accent_turquoise"
+        android:textSize="12sp"
+        android:letterSpacing="0.1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/precisionThreshold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="97% Precision Threshold - Observation Mode"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/buildIdentity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/build_sha1"
+        android:textColor="#4F5B69"
+        android:textSize="10sp"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Assistance Area -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High-Context Assistance"
+        android:textColor="@color/text_main"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_text_background"
+        android:hint="Paste email or message here..."
+        android:textColor="@color/text_main"
+        android:textColorHint="#4F5B69"
+        android:gravity="top"
+        android:padding="16dp"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btnSummarize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="SUMMARIZE EMAIL"
+        android:backgroundTint="@color/accent_turquoise"
+        android:textColor="@color/background_dark"
+        android:textStyle="bold"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/btnSubscribe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/action_subscribe"
+        android:backgroundTint="#2A2D31"
+        android:textColor="@color/accent_turquoise"
+        android:textStyle="normal"
+        android:padding="12dp" />
+
+    <!-- AI Output -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/card_background"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/aiOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Neural Apprentice is ready to assist."
+            android:textColor="@color/text_secondary"
+            android:lineSpacingExtra="4sp" />
+    </ScrollView>
+
+</LinearLayout>

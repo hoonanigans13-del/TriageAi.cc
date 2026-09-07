@@ -1,0 +1,5 @@
+- [x] Add `subscribe` string to `strings.xml`
+- [x] Add `btnSubscribe` to `activity_triage.xml`
+- [x] Add click listener in `TriageActivity.kt`
+- [/] Build and verify the application
+- [ ] Assemble the APK

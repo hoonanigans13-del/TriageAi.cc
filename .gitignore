@@ -1,0 +1,17 @@
+# Keystore / Secrets
+keystore.properties
+*.jks
+*.keystore
+
+# Android / Gradle
+/build
+.gradle
+local.properties
+capture/
+memory_recordings/
+*.apk
+*.aab
+
+# OS files
+.DS_Store
+Thumbs.db

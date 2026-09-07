@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TriageAI" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/accent_turquoise</item>
+        <item name="colorOnPrimary">@color/background_dark</item>
+        <item name="colorPrimaryContainer">@color/primary_teal</item>
+        <item name="colorOnPrimaryContainer">@color/text_main</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/primary_teal</item>
+        <item name="colorOnSecondary">@color/text_main</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/background_dark</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+
+        <item name="android:textColorPrimary">@color/text_main</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+</resources>

@@ -1,0 +1,8 @@
+{
+  "name": "triage-ai-cc",
+  "version": "1.0.0",
+  "description": "Triage AI Static Site & Fulfillment Backend",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

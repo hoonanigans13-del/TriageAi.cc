@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Triage AI Static Site & Fulfillment Backend",
   "dependencies": {
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "@paddle/paddle-node-sdk": "^1.5.4"
   }
 }

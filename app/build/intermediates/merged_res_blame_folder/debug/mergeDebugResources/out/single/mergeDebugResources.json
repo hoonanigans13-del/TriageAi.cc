@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "com.triage.ai.app-debug-33:/drawable_edit_text_background.xml.flat",
+        "source": "com.triage.ai.app-main-35:/drawable/edit_text_background.xml"
+    },
+    {
+        "merged": "com.triage.ai.app-debug-33:/drawable_card_background.xml.flat",
+        "source": "com.triage.ai.app-main-35:/drawable/card_background.xml"
+    },
+    {
+        "merged": "com.triage.ai.app-debug-33:/layout_activity_triage.xml.flat",
+        "source": "com.triage.ai.app-main-35:/layout/activity_triage.xml"
+    },
+    {
+        "merged": "com.triage.ai.app-debug-33:/layout_activity_main.xml.flat",
+        "source": "com.triage.ai.app-main-35:/layout/activity_main.xml"
+    }
+]

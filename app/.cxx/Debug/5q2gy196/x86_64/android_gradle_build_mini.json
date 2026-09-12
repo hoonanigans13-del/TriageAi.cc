@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "C:\\Users\\twizt\\StudioProjects\\TriageAi.cc\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\twizt\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\twizt\\StudioProjects\\TriageAi.cc\\app\\.cxx\\Debug\\5q2gy196\\x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\twizt\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\twizt\\StudioProjects\\TriageAi.cc\\app\\.cxx\\Debug\\5q2gy196\\x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "triage_llama::@6890427a1f51a3e7e1df": {
+      "artifactName": "triage_llama",
+      "abi": "x86_64",
+      "output": "C:\\Users\\twizt\\StudioProjects\\TriageAi.cc\\app\\build\\intermediates\\cxx\\Debug\\5q2gy196\\obj\\x86_64\\libtriage_llama.so",
+      "runtimeFiles": []
+    }
+  }
+}

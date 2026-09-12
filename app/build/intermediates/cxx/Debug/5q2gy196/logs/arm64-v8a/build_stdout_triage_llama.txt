@@ -1,0 +1,149 @@
+ninja: Entering directory `C:\Users\twizt\StudioProjects\TriageAi.cc\app\.cxx\Debug\5q2gy196\arm64-v8a'
+[1/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/arm/cpu-feats.cpp.o
+[2/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/powerpc/cpu-feats.cpp.o
+[3/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/riscv/cpu-feats.cpp.o
+[4/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/s390/cpu-feats.cpp.o
+[5/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/x86/cpu-feats.cpp.o
+[6/41] Building C object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/powerpc/quants.c.o
+[7/41] Building C object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/loongarch/quants.c.o
+[8/41] Building C object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/riscv/quants.c.o
+[9/41] Building C object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/wasm/quants.c.o
+[10/41] Building C object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/s390/quants.c.o
+[11/41] Building C object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/x86/quants.c.o
+[12/41] Building C object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/arm/quants.c.o
+[13/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-hparams.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-hparams.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-hparams.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-hparams.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-hparams.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-hparams.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-hparams.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-hparams.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[14/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/riscv/repack.cpp.o
+[15/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/x86/repack.cpp.o
+[16/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/arch/arm/repack.cpp.o
+[17/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-chat.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-chat.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-chat.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-chat.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-chat.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-chat.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-chat.cpp:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[18/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-cparams.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-cparams.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-cparams.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-cparams.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-cparams.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-cparams.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-cparams.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-cparams.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[19/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-adapter.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-adapter.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-adapter.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-adapter.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-adapter.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-adapter.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-adapter.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-adapter.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[20/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-impl.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-impl.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-impl.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-impl.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-impl.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-impl.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-impl.cpp:4:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[21/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-grammar.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-grammar.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-grammar.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-grammar.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-grammar.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-grammar.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-grammar.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-grammar.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[22/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-memory-hybrid.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-memory-hybrid.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-memory-hybrid.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-memory-hybrid.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-memory-hybrid.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory-hybrid.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory-hybrid.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory-hybrid.h:3:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-batch.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[23/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-memory.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-memory.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-memory.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-memory.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-memory.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[24/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-batch.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-batch.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-batch.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-batch.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-batch.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-batch.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-batch.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-batch.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[25/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-graph.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-graph.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-graph.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-graph.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-graph.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-graph.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-graph.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-graph.h:4:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-batch.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[26/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-kv-cache-dsa.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-kv-cache-dsa.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-kv-cache-dsa.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-kv-cache-dsa.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-kv-cache-dsa.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-kv-cache-dsa.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-kv-cache-dsa.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-kv-cache-dsa.h:3:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-kv-cache.h:3:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-batch.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[27/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-kv-cache-dsv4.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-kv-cache-dsv4.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-kv-cache-dsv4.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-kv-cache-dsv4.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-kv-cache-dsv4.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-kv-cache-dsv4.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-kv-cache-dsv4.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-kv-cache-dsv4.h:3:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-kv-cache.h:3:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-batch.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[28/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-memory-recurrent.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-memory-recurrent.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-memory-recurrent.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-memory-recurrent.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-memory-recurrent.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory-recurrent.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory-recurrent.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-memory-recurrent.h:3:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-batch.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[29/41] Building CXX object CMakeFiles/triage_llama.dir/llama/llama-context.cpp.o
+FAILED: CMakeFiles/triage_llama.dir/llama/llama-context.cpp.o 
+C:\Users\twizt\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android26 --sysroot=C:/Users/twizt/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DGGML_COMMIT=\"unknown\" -DGGML_USE_KQUANT -DGGML_VERSION=\"1\" -Dtriage_llama_EXPORTS -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama -IC:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/ggml-cpu -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O3 -fno-limit-debug-info  -fPIC -std=c++17 -MD -MT CMakeFiles/triage_llama.dir/llama/llama-context.cpp.o -MF CMakeFiles\triage_llama.dir\llama\llama-context.cpp.o.d -o CMakeFiles/triage_llama.dir/llama/llama-context.cpp.o -c C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-context.cpp
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-context.cpp:1:
+In file included from C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama-context.h:3:
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/src/main/cpp/llama/llama.h:16:21: error: use of undeclared identifier 'llama_token'
+   16 | typedef std::vector<llama_token> llama_tokens;
+      |                     ^
+1 error generated.
+[30/41] Building CXX object CMakeFiles/triage_llama.dir/llama/ggml-cpu/llamafile/sgemm.cpp.o
+ninja: build stopped: subcommand failed.

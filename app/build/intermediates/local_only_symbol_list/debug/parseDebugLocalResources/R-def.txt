@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+color accent_turquoise
+color background_dark
+color black
+color card_background
+color divider_grey
+color primary_teal
+color text_main
+color text_secondary
+color white
+drawable card_background
+drawable edit_text_background
+id aiOutput
+id apprenticeStatusLabel
+id btnSubscribe
+id btnSummarize
+id buildIdentity
+id buttonGenerate
+id emailInput
+id inputPrompt
+id outputText
+id precisionThreshold
+layout activity_main
+layout activity_triage
+string action_subscribe
+string app_name
+string build_sha1
+string build_sha256
+style Theme.TriageAI

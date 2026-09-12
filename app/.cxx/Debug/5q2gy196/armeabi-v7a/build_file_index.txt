@@ -1,0 +1,1 @@
+C:\Users\twizt\StudioProjects\TriageAi.cc\app\src\main\cpp\CMakeLists.txt

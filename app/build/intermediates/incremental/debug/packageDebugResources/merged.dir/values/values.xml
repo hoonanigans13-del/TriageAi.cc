@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_turquoise">#14C3C9</color>
+    <color name="background_dark">#0F1113</color>
+    <color name="black">#FF000000</color>
+    <color name="card_background">#1A1C1E</color>
+    <color name="divider_grey">#2F2F2F</color>
+    <color name="primary_teal">#0A3D3F</color>
+    <color name="text_main">#FFFFFF</color>
+    <color name="text_secondary">#C8D6E5</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="action_subscribe">SUBSCRIBE TO TRIAGE AI</string>
+    <string name="app_name">Triage AI</string>
+    <string name="build_sha1">0D:86:C4:ED:3B:A5:83:1C:AB:D9:84:A7:F8:45:5E:38</string>
+    <string name="build_sha256">04:C2:ED:7D:CB:78:13:EE:1E:F8:7F:70:84:83:1E:28:36:E7:CF:3A:D1:29:51:71:FE:02:D3:7C:A3:28:59:14</string>
+    <style name="Theme.TriageAI" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/accent_turquoise</item>
+        <item name="colorOnPrimary">@color/background_dark</item>
+        <item name="colorPrimaryContainer">@color/primary_teal</item>
+        <item name="colorOnPrimaryContainer">@color/text_main</item>
+
+        
+        <item name="colorSecondary">@color/primary_teal</item>
+        <item name="colorOnSecondary">@color/text_main</item>
+
+        
+        <item name="android:statusBarColor">@color/background_dark</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+
+        <item name="android:textColorPrimary">@color/text_main</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+</resources>

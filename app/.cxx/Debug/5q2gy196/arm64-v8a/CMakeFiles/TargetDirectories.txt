@@ -1,0 +1,3 @@
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/.cxx/Debug/5q2gy196/arm64-v8a/CMakeFiles/triage_llama.dir
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/.cxx/Debug/5q2gy196/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/twizt/StudioProjects/TriageAi.cc/app/.cxx/Debug/5q2gy196/arm64-v8a/CMakeFiles/rebuild_cache.dir

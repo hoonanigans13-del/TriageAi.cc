@@ -3,113 +3,231 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>About Triage AI — Zero-Knowledge AI, Built in Pueblo, CO</title>
-  <meta name="description" content="Triage AI LLC is building user-owned AI systems — autonomous intelligence that works for you, with your data never leaving your hands.">
+  <title>About Triage AI — Zero-Knowledge On-Device AI</title>
+  <meta name="description" content="Triage AI LLC is an independent software company based in Pueblo, CO. We build user-owned, zero-knowledge AI systems where your data never leaves your device.">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
-    .about-hero{padding:7rem 0 4rem}
-    .about-hero .lead{max-width:580px}
-    .val-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2.5rem}
-    .val{padding:1.75rem;border:1px solid rgba(255,255,255,.07);border-radius:10px;background:rgba(255,255,255,.02)}
-    .val-ico{font-size:1.5rem;margin-bottom:1rem}
-    .val h3{font-size:.95rem;font-weight:700;margin-bottom:.5rem}
-    .val p{font-size:.86rem;color:rgba(255,255,255,.52);line-height:1.6}
-    .mission-band{padding:5rem 0;text-align:center;background:rgba(22,215,197,.03);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
-    .mission-band blockquote{font-size:1.35rem;font-weight:300;line-height:1.6;max-width:640px;margin:1.5rem auto 0;color:rgba(255,255,255,.8);font-style:italic}
-    .mission-band blockquote em{font-style:normal;color:#16D7C5}
-    .contact-sect{padding:4rem 0;text-align:center}
-    .contact-sect .lead{max-width:520px;margin:0 auto 2rem}
-    .acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;justify-content:center}
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(15, 17, 24, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #16D7C5;
+      --text: #f0ede6;
+      --muted: #838a9c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    canvas#circuit-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    header.nav-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.85rem 2rem;
+    }
+    .nav-wrap { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .brand-pill { border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 999px; padding: 0.4rem 1.4rem; font-weight: 900; letter-spacing: 0.18em; font-size: 1rem; color: #fff; text-decoration: none; background: rgba(255, 255, 255, 0.03); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .btn-trial { background: var(--accent); color: #04080e; font-weight: 700; font-size: 0.88rem; border: none; border-radius: 999px; padding: 0.55rem 1.35rem; text-decoration: none; }
+
+    main.page-main { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+    .kicker { font-family: monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+    .lead { font-size: 1.1rem; color: var(--muted); max-width: 620px; margin-bottom: 3rem; }
+
+    .val-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .val-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
+    .val-card .icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .val-card h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+    .val-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    .mission-box { background: rgba(22, 215, 197, 0.05); border: 1px solid rgba(22, 215, 197, 0.25); border-radius: 16px; padding: 2.5rem; margin-top: 3.5rem; text-align: center; }
+    .mission-box blockquote { font-size: 1.25rem; font-style: italic; color: #fff; max-width: 680px; margin: 1rem auto; line-height: 1.6; }
+
+    footer { border-top: 1px solid var(--card-border); padding: 2.5rem 1.5rem; text-align: center; font-size: 0.82rem; color: var(--muted); position: relative; z-index: 2; }
+    footer nav { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.75rem; }
+    footer nav a { color: var(--accent); text-decoration: none; }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="hdr wrap">
-      <a href="/" class="logo">
-        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" fill="#16D7C5" opacity=".12" stroke="#16D7C5" stroke-width="1.5"/>
-          <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#16D7C5" opacity=".25"/>
-          <circle cx="14" cy="14" r="2.5" fill="#16D7C5"/>
-        </svg>
-        Triage
-      </a>
-      <nav class="nav" aria-label="Primary">
+
+  <canvas id="circuit-bg"></canvas>
+
+  <header class="nav-header">
+    <div class="nav-wrap">
+      <a href="/" class="brand-pill">TRIAGE</a>
+      <nav class="nav-links">
+        <a href="/#editions">Editions</a>
         <a href="/how-it-works/">How it works</a>
-        <a href="/about/" aria-current="page">About</a>
+        <a href="/about/" class="active">About</a>
         <a href="/security/">Security</a>
         <a href="/pricing/">Pricing</a>
-        <a href="mailto:triageaiinbox@gmail.com" class="btn-nav">Contact</a>
+        <a href="/download/">Download</a>
       </nav>
+      <a href="/download/" class="btn-trial">Start Free Trial</a>
     </div>
   </header>
-  <main id="main">
-    <section class="about-hero">
-      <div class="wrap">
-        <p class="eyebrow">About Triage AI</p>
-        <h1 class="h1">AI that works <em style="font-style:normal;color:#16D7C5">for you.</em></h1>
-        <p class="lead">Triage AI LLC is an independent software company based in Pueblo, CO. We build zero-knowledge, user-owned AI systems — autonomous intelligence that works for the person running it, not the company that made it.</p>
+
+  <main class="page-main">
+    <span class="kicker">ABOUT TRIAGE AI</span>
+    <h1 class="h1">AI that works <span style="color: var(--accent);">for you.</span></h1>
+    <p class="lead">Triage AI LLC is an independent software company based in Pueblo, CO. We build zero-knowledge, user-owned AI systems — autonomous intelligence that works for the person running it, not the company that made it.</p>
+
+    <div class="val-grid">
+      <div class="val-card">
+        <div class="icon">🔒</div>
+        <h3>Your Data is Yours</h3>
+        <p>We design every feature with one constraint: your data never leaves your device. No analytics. No training data harvesting. No exceptions.</p>
       </div>
-    </section>
-    <hr class="divider">
-    <section class="wrap" style="padding:4rem 0">
-      <p class="eyebrow">What we believe</p>
-      <h2 class="h2">Our principles.</h2>
-      <div class="val-grid">
-        <div class="val">
-          <div class="val-ico">🔒</div>
-          <h3>Your data is yours</h3>
-          <p>We design every feature with one constraint: your data never leaves your device. No analytics. No training data harvesting. No exceptions.</p>
-        </div>
-        <div class="val">
-          <div class="val-ico">⚙️</div>
-          <h3>Autonomy is earned</h3>
-          <p>Triage doesn't demand trust — it earns it through a verifiable, local trust score built from your own decisions. You control when and how much autonomy it has.</p>
-        </div>
-        <div class="val">
-          <div class="val-ico">🪟</div>
-          <h3>Transparent by design</h3>
-          <p>Every action Triage takes in autonomous mode is logged in a local audit trail you can inspect at any time. No black boxes. No hidden behavior.</p>
-        </div>
-        <div class="val">
-          <div class="val-ico">🚫</div>
-          <h3>No account required</h3>
-          <p>Your license is a signed file on your device. There is no Triage account to create, breach, or subpoena. We genuinely can't see you.</p>
-        </div>
+      <div class="val-card">
+        <div class="icon">⚙️</div>
+        <h3>Autonomy is Earned</h3>
+        <p>Triage doesn't demand trust — it earns it through a verifiable, local trust score built from your own decisions. You control when and how much autonomy it has.</p>
       </div>
-    </section>
-    <section class="mission-band">
-      <div class="wrap">
-        <p class="eyebrow">Our mission</p>
-        <h2 class="h2">Why we built Triage.</h2>
-        <blockquote>
-          "AI should work <em>for</em> the person using it — not collect data about them, not require an account, not report home. Triage is our answer to every AI product that treats users as the product."
-        </blockquote>
-        <p style="margin-top:1.5rem;font-size:.84rem;color:rgba(255,255,255,.3)">Triage AI LLC &mdash; Pueblo, CO</p>
+      <div class="val-card">
+        <div class="icon">🪟</div>
+        <h3>Transparent by Design</h3>
+        <p>Every action Triage takes in autonomous mode is logged in a local audit trail you can inspect at any time. No black boxes. No hidden behavior.</p>
       </div>
-    </section>
-    <section class="contact-sect">
-      <div class="wrap">
-        <p class="eyebrow">Get in touch</p>
-        <h2 class="h2">We'd love to hear from you.</h2>
-        <p class="lead">Questions, early access requests, press inquiries, or just want to say hi — reach out directly.</p>
-        <div class="acts">
-          <a href="mailto:triageaiinbox@gmail.com" class="btn btn-p">Email us</a>
-          <a href="/download/" class="btn btn-g">Download Triage</a>
-        </div>
+      <div class="val-card">
+        <div class="icon">🚫</div>
+        <h3>No Account Required</h3>
+        <p>Your license is a signed file on your device. There is no Triage account to create, breach, or subpoena. We genuinely can't see you.</p>
       </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div class="ftr wrap">
-      <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
-      <nav aria-label="Footer">
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="/security/">Security</a>
-      </nav>
     </div>
+
+    <div class="mission-box">
+      <span class="kicker">OUR MISSION</span>
+      <blockquote>
+        "AI should work for the person using it — not collect data about them, not require an account, not report home. Triage is our answer to every AI product that treats users as the product."
+      </blockquote>
+      <p style="font-size: 0.82rem; color: var(--muted); margin-top: 1rem; font-family: monospace;">Triage AI LLC &bull; Pueblo, CO</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
+    <nav>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
   </footer>
+
+  <script>
+  (function(){
+    const canvas = document.getElementById('circuit-bg');
+    const ctx = canvas.getContext('2d');
+    let W, H, nodes = [], segs = [], particles = [];
+
+    function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+
+    function init(){
+      resize(); nodes = []; segs = []; particles = [];
+      const gx = 65, gy = 65;
+      const cols = Math.ceil(W / gx) + 1;
+      const rows = Math.ceil(H / gy) + 1;
+
+      for(let r = 0; r < rows; r++){
+        for(let c = 0; c < cols; c++){
+          if(Math.random() < 0.42){
+            nodes.push({ x: c * gx + (Math.random() - 0.5) * 16, y: r * gy + (Math.random() - 0.5) * 16 });
+          }
+        }
+      }
+
+      for(let i = 0; i < nodes.length; i++){
+        for(let j = i + 1; j < nodes.length; j++){
+          const dx = nodes[j].x - nodes[i].x;
+          const dy = nodes[j].y - nodes[i].y;
+          const dist = Math.hypot(dx, dy);
+          if(dist < 130 && Math.random() < 0.35){
+            segs.push({ a: nodes[i], b: nodes[j], mx: nodes[j].x, my: nodes[i].y });
+          }
+        }
+      }
+
+      const particleCount = Math.min(segs.length, 75);
+      for(let k = 0; k < particleCount; k++){
+        const s = segs[Math.floor(Math.random() * segs.length)];
+        particles.push({ seg: s, t: Math.random(), speed: (0.001 + Math.random() * 0.0018) * (Math.random() < 0.5 ? 1 : -1) });
+      }
+    }
+
+    function ptOnSeg(s, t){
+      const l1 = Math.hypot(s.mx - s.a.x, s.my - s.a.y);
+      const l2 = Math.hypot(s.b.x - s.mx, s.b.y - s.my);
+      const tot = l1 + l2 || 1;
+      const d = t * tot;
+      if(d <= l1){ const u = l1 ? d / l1 : 0; return { x: s.a.x + (s.mx - s.a.x) * u, y: s.a.y + (s.my - s.a.y) * u }; }
+      const u = l2 ? (d - l1) / l2 : 0;
+      return { x: s.mx + (s.b.x - s.mx) * u, y: s.my + (s.b.y - s.my) * u };
+    }
+
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineWidth = 1;
+
+      segs.forEach(s => {
+        ctx.strokeStyle = 'rgba(22, 215, 197, 0.08)';
+        ctx.beginPath();
+        ctx.moveTo(s.a.x, s.a.y);
+        ctx.lineTo(s.mx, s.my);
+        ctx.lineTo(s.b.x, s.b.y);
+        ctx.stroke();
+      });
+
+      nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(22, 215, 197, 0.25)';
+        ctx.fill();
+      });
+
+      particles.forEach(p => {
+        p.t += p.speed;
+        if(p.t > 1) p.t = 0;
+        if(p.t < 0) p.t = 1;
+        const pt = ptOnSeg(p.seg, p.t);
+        const g = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, 8);
+        g.addColorStop(0, 'rgba(22, 215, 197, 0.95)');
+        g.addColorStop(0.4, 'rgba(22, 215, 197, 0.35)');
+        g.addColorStop(1, 'rgba(22, 215, 197, 0)');
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 8, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    draw();
+  })();
+  </script>
 </body>
 </html>

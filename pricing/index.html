@@ -4,330 +4,432 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Triage — Pricing</title>
-  <meta name="description" content="Triage pricing — 7-day free trial. Pro, Family, Business, and Enterprise plans. No subscriptions stored online. License verified on-device."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0b10'/><text x='16' y='24' font-family='Arial Black' font-size='22' font-weight='900' text-anchor='middle' fill='%2316D7C5'>T</text></svg>">
+  <meta name="description" content="Triage pricing — 7-day free trial. Pro, Family, Business, and Enterprise plans. Zero knowledge, on-device AI."/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #0a0b10;
-      --bg-card: #0f1118;
-      --bg-card2: #13151f;
+      --bg: #07090e;
+      --card-bg: rgba(13, 17, 25, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
       --accent: #16D7C5;
-      --accent-dim: rgba(22,215,197,0.12);
-      --text: #e8e4dc;
-      --muted: #8a8a9a;
-      --border: rgba(255,255,255,0.07);
+      --accent-glow: rgba(22, 215, 197, 0.25);
+      --text: #f0ede6;
+      --muted: #838a9c;
     }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{
-      background:var(--bg);
-      color:var(--text);
-      font-family:'Inter',sans-serif;
-      line-height:1.6;
-      overflow-x:hidden;
-      background-image:radial-gradient(rgba(22,215,197,0.08) 1px,transparent 1px);
-      background-size:28px 28px;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    canvas#circuit-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+    /* FLOWING CIRCUITRY BACKGROUND */
+    canvas#circuit-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-    /* NAV */
-    nav{position:sticky;top:0;z-index:100;background:rgba(10,11,16,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
-    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
-    .nav-logo{font-size:1.3rem;font-weight:900;letter-spacing:.14em;background:linear-gradient(180deg,#fff 0%,#e0e0e0 20%,#a8a8a8 45%,#d0d0d0 65%,#888 85%,#e0e0e0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
-    .nav-back{color:var(--accent);font-size:.85rem;font-family:'IBM Plex Mono',monospace;text-decoration:none;opacity:.8;}
-    .nav-back:hover{opacity:1;}
+    /* TOP NAVIGATION BAR */
+    header.nav-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.85rem 2rem;
+    }
+    .nav-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-pill {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 0.4rem 1.4rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      font-size: 1rem;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn-trial {
+      background: var(--accent);
+      color: #04080e;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: none;
+      border-radius: 999px;
+      padding: 0.55rem 1.35rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .btn-trial:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+    .btn-expand {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      cursor: pointer;
+    }
 
-    /* PAGE WRAPPER */
-    .page{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:4rem 2rem 6rem;}
+    /* MAIN CONTENT AREA */
+    main.page-main {
+      position: relative;
+      z-index: 2;
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
 
-    /* SECTION LABEL */
-    .section-label{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;}
+    /* 4-COLUMN PRICING GRID */
+    .pricing-grid-4col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+    @media (max-width: 1100px) {
+      .pricing-grid-4col { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .pricing-grid-4col { grid-template-columns: 1fr; }
+    }
 
-    /* HERO */
-    .page-hero{text-align:center;margin-bottom:4rem;}
-    .page-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.01em;line-height:1.15;margin-bottom:1rem;}
-    .page-hero h1 span{background:linear-gradient(135deg,var(--accent),#5bc8f5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .page-hero p{color:var(--muted);max-width:560px;margin:0 auto 2rem;}
-    .trial-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-dim);border:1px solid rgba(22,215,197,.25);border-radius:999px;padding:.4rem 1.1rem;font-size:.82rem;font-family:'IBM Plex Mono',monospace;color:var(--accent);}
-    .trial-badge::before{content:'◎';font-size:.7rem;}
+    .p-column {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .p-column:hover {
+      border-color: rgba(22, 215, 197, 0.3);
+      transform: translateY(-2px);
+    }
+    .p-column.featured {
+      border-color: var(--accent);
+      box-shadow: inset 0 0 30px rgba(22, 215, 197, 0.05);
+    }
 
-    /* OFFLINE SECTION */
-    .offline-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:3.5rem;}
-    .offline-card .oc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
-    @media(max-width:640px){.offline-card .oc-grid{grid-template-columns:1fr;}}
-    .offline-card h2{font-size:1.35rem;font-weight:800;margin-bottom:.4rem;}
-    .offline-card .sub{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;}
-    .edition-badge{display:inline-block;background:rgba(22,215,197,.1);border:1px solid rgba(22,215,197,.3);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;border-radius:6px;padding:.3rem .8rem;margin-bottom:1rem;}
-    .edition-note{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.5;}
-    .btn-import{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-dim);border:1px solid rgba(22,215,197,.3);color:var(--accent);border-radius:8px;padding:.65rem 1.4rem;font-size:.85rem;font-family:'IBM Plex Mono',monospace;cursor:pointer;transition:.2s;}
-    .btn-import:hover{background:rgba(22,215,197,.2);border-color:var(--accent);}
-    .key-detail{display:flex;align-items:flex-start;gap:.75rem;padding:1rem;background:rgba(22,215,197,.04);border:1px solid var(--border);border-radius:10px;}
-    .key-detail .kd-icon{font-size:1.3rem;flex-shrink:0;}
-    .key-detail h4{font-size:.88rem;font-weight:700;margin-bottom:.2rem;}
-    .key-detail p{font-size:.78rem;color:var(--muted);line-height:1.5;}
+    .col-header {
+      margin-bottom: 1.5rem;
+    }
+    .col-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #04080e;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+    .price-number {
+      font-size: 2.75rem;
+      font-weight: 900;
+      line-height: 1;
+      color: #fff;
+    }
+    .price-unit {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .seats-lbl {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
 
-    /* TAB BAR */
-    .tab-bar{display:flex;gap:.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:.35rem;margin-bottom:2.5rem;width:fit-content;}
-    .tab-btn{padding:.5rem 1.4rem;border-radius:8px;border:none;background:transparent;color:var(--muted);font-size:.88rem;font-weight:600;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif;}
-    .tab-btn.active{background:var(--accent);color:#000;}
-    .tab-btn:hover:not(.active){color:var(--text);}
-    .tab-content{display:none;}
-    .tab-content.active{display:block;}
+    /* FEATURES LIST */
+    .features-list {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .features-list li {
+      font-size: 0.88rem;
+      color: rgba(240, 237, 230, 0.85);
+      line-height: 1.4;
+    }
 
-    /* PRICING CARDS */
-    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-bottom:2rem;}
-    .plan-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;display:flex;flex-direction:column;position:relative;transition:.2s;}
-    .plan-card:hover{border-color:rgba(22,215,197,.25);transform:translateY(-2px);}
-    .plan-card.featured{border-color:rgba(22,215,197,.4);background:linear-gradient(135deg,rgba(22,215,197,.06),transparent);}
-    .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;font-size:.7rem;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:.25rem .85rem;white-space:nowrap;}
-    .plan-name{font-size:.7rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;}
-    .plan-price{font-size:2.4rem;font-weight:900;line-height:1;margin-bottom:.2rem;}
-    .plan-price sup{font-size:1rem;vertical-align:super;}
-    .plan-price span.period{font-size:.9rem;font-weight:400;color:var(--muted);}
-    .plan-seats{font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;font-family:'IBM Plex Mono',monospace;}
-    .plan-desc{font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.5;}
-    .plan-features{list-style:none;margin-bottom:1.75rem;flex:1;}
-    .plan-features li{font-size:.84rem;padding:.3rem 0;color:var(--muted);display:flex;align-items:center;gap:.6rem;}
-    .plan-features li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;}
-    .btn-plan{width:100%;padding:.75rem;border-radius:10px;border:none;font-size:.9rem;font-weight:700;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif;}
-    .btn-plan-outline{background:transparent;border:1px solid rgba(22,215,197,.35);color:var(--accent);}
-    .btn-plan-outline:hover{background:var(--accent-dim);}
-    .btn-plan-fill{background:var(--accent);color:#000;}
-    .btn-plan-fill:hover{filter:brightness(1.1);}
-    .trial-note{text-align:center;font-size:.78rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:.75rem;}
+    /* BOTTOM CTA BUTTONS */
+    .col-footer {
+      margin-top: auto;
+    }
+    .btn-col-cta {
+      width: 100%;
+      background: var(--accent);
+      color: #04080e;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+    .btn-col-cta:hover {
+      filter: brightness(1.12);
+      box-shadow: 0 0 25px rgba(22, 215, 197, 0.4);
+    }
+    .btn-col-cta.outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      box-shadow: none;
+    }
+    .btn-col-cta.outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
-    /* ENTERPRISE CARD */
-    .enterprise-card{background:var(--bg-card);border:1px solid rgba(22,215,197,.25);border-radius:16px;padding:2rem;margin-top:1.5rem;}
-    .ent-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
-    .ent-header h3{font-size:1.3rem;font-weight:900;}
-    .ent-header .ent-tag{background:var(--accent-dim);border:1px solid rgba(22,215,197,.3);color:var(--accent);font-size:.7rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;border-radius:6px;padding:.3rem .75rem;}
-    .ent-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem;}
-    .seat-table{width:100%;border-collapse:collapse;font-size:.84rem;margin-bottom:.75rem;}
-    .seat-table th{color:var(--muted);font-weight:600;text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.08em;}
-    .seat-table td{padding:.65rem .75rem;}
-    .seat-table tr:nth-child(even) td{background:rgba(22,215,197,.03);}
-    .seat-table tr.flagship td{background:rgba(22,215,197,.07);font-weight:700;color:var(--text);}
-    .flagship-badge{display:inline-flex;align-items:center;background:var(--accent);color:#000;font-size:.65rem;font-weight:800;border-radius:999px;padding:.15rem .55rem;margin-left:.5rem;vertical-align:middle;}
-    .ent-note{font-size:.75rem;color:var(--muted);margin-top:.5rem;font-family:'IBM Plex Mono',monospace;}
-    .btn-contact{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid rgba(22,215,197,.4);color:var(--accent);border-radius:10px;padding:.75rem 1.75rem;font-size:.9rem;font-weight:700;cursor:pointer;transition:.2s;margin-top:1.5rem;font-family:'Inter',sans-serif;}
-    .btn-contact:hover{background:var(--accent-dim);}
-
-    /* PROMO TAB */
-    .promo-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2.5rem;max-width:580px;margin:0 auto;}
-    .promo-card .promo-icon{font-size:2.5rem;text-align:center;margin-bottom:1rem;}
-    .promo-card h2{font-size:1.5rem;font-weight:900;text-align:center;margin-bottom:.4rem;}
-    .promo-card .promo-sub{color:var(--muted);font-size:.9rem;text-align:center;margin-bottom:.5rem;}
-    .promo-card .promo-desc{color:var(--muted);font-size:.85rem;text-align:center;margin-bottom:2rem;line-height:1.6;}
-    .promo-input-wrap{display:flex;gap:.75rem;margin-bottom:1rem;}
-    .promo-input{flex:1;background:var(--bg-card2);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:.75rem 1rem;font-size:.9rem;font-family:'IBM Plex Mono',monospace;transition:.2s;outline:none;}
-    .promo-input:focus{border-color:var(--accent);}
-    .promo-input::placeholder{color:var(--muted);}
-    .btn-redeem{background:var(--accent);color:#000;border:none;border-radius:10px;padding:.75rem 1.5rem;font-size:.9rem;font-weight:800;cursor:pointer;white-space:nowrap;transition:.2s;font-family:'Inter',sans-serif;}
-    .btn-redeem:hover{filter:brightness(1.1);}
-    .promo-msg{text-align:center;font-size:.85rem;min-height:1.5rem;padding:.5rem;border-radius:8px;display:none;}
-    .promo-msg.success{display:block;background:rgba(22,215,197,.1);border:1px solid rgba(22,215,197,.3);color:var(--accent);}
-    .promo-msg.error{display:block;background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.25);color:#ff7070;}
-    .promo-perks{margin-top:1.75rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
-    .perk-item{background:var(--accent-dim);border:1px solid rgba(22,215,197,.15);border-radius:10px;padding:.85rem;font-size:.8rem;}
-    .perk-item strong{display:block;color:var(--accent);margin-bottom:.2rem;font-size:.82rem;}
-    .perk-item span{color:var(--muted);}
-    .promo-fine{text-align:center;font-size:.75rem;color:var(--muted);margin-top:1.25rem;font-family:'IBM Plex Mono',monospace;}
-
-    /* FINE PRINT */
-    .fine-print{text-align:center;font-size:.78rem;color:var(--muted);margin-top:2.5rem;line-height:1.8;}
-    .fine-print a{color:var(--accent);text-decoration:none;}
+    /* SEAT TABLE IN ENTERPRISE COLUMN */
+    .seat-table-card {
+      background: rgba(4, 8, 14, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.75rem;
+      margin: 1rem 0 1.25rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+    }
+    .st-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      color: var(--muted);
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .st-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0.4rem 0;
+      color: rgba(240, 237, 230, 0.8);
+      align-items: center;
+    }
+    .st-row.highlight {
+      background: rgba(22, 215, 197, 0.1);
+      border-radius: 6px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .best-badge {
+      background: var(--accent);
+      color: #04080e;
+      font-size: 0.55rem;
+      font-weight: 900;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      margin-top: 0.15rem;
+      display: inline-block;
+    }
+    .ent-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
+
 <canvas id="circuit-bg"></canvas>
 
-<nav>
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">TRIAGE</a>
-    <a href="/" class="nav-back">← Back to Home</a>
+<header class="nav-header">
+  <div class="nav-wrap">
+    <a href="/" class="brand-pill">TRIAGE</a>
+    <nav class="nav-links">
+      <a href="/#features">Features</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/" class="active">Pricing</a>
+      <a href="/#download">Download</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="/pricing/" class="btn-trial">Start Free Trial</a>
+      <button class="btn-expand" aria-label="Menu">⤢</button>
+    </div>
   </div>
-</nav>
+</header>
 
-<div class="page">
+<main class="page-main">
+  <div class="pricing-grid-4col">
 
-  <!-- HERO -->
-  <div class="page-hero">
-    <div class="section-label">06 &nbsp;OFFLINE EDITION & PRICING</div>
-    <h1>Entitlements without <span>surveillance.</span></h1>
-    <p>Pick the plan that fits you. License verification happens entirely on-device using an embedded Ed25519 public key — no device fingerprinting, no telemetry, no cloud check-in.</p>
-    <div class="trial-badge">7-Day Free Trial on Every Plan &nbsp;·&nbsp; No Credit Card Required</div>
-  </div>
-
-  <!-- OFFLINE LICENSE CARD -->
-  <div class="offline-card">
-    <div class="oc-grid">
-      <div>
-        <div class="section-label">Current Device</div>
-        <h2>Offline License</h2>
-        <p class="sub">Already have a signed license file from a previous install or team admin?</p>
-        <div class="edition-badge">CURRENT DEVICE EDITION — FREE TRIAL</div>
-        <p class="edition-note">Your 7-day trial runs fully offline. License is a cryptographically signed <code style="font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:.78rem;">.triage-license</code> file verified locally with an Ed25519 public key embedded in the app binary. No server ping required.</p>
-        <button class="btn-import" onclick="document.getElementById('licenseFile').click()">
-          📄 Import Signed .triage-license
-        </button>
-        <input type="file" id="licenseFile" accept=".triage-license" style="display:none;" onchange="handleLicense(this)"/>
+    <!-- COL 1: INDIVIDUAL / PRO ($12 / month) -->
+    <article class="p-column">
+      <div class="col-header">
+        <div class="price-number">$12 <span class="price-unit">/ month</span></div>
+        <div class="seats-lbl">For individuals</div>
       </div>
-      <div class="key-detail">
-        <div class="kd-icon">🔑</div>
-        <div>
-          <h4>Ed25519 Verification</h4>
-          <p>License files are signed with the Triage private key and verified against the embedded public key in your app build. No network call is ever made during verification.</p>
-          <br/>
-          <h4 style="margin-top:.75rem;">No Telemetry</h4>
-          <p>Zero device fingerprinting. Zero usage analytics. Zero phone-home. Your usage data never leaves your device.</p>
-          <br/>
-          <h4 style="margin-top:.75rem;">Portable</h4>
-          <p>Your signed license file works across reinstalls and platforms — keep it in your password manager alongside your passphrase.</p>
+      <ul class="features-list">
+        <li>All AI features</li>
+        <li>Inbox triage</li>
+        <li>Autonomous mode</li>
+        <li>TOTP 2FA</li>
+        <li>Windows · Android · Linux · iOS</li>
+      </ul>
+      <div class="col-footer">
+        <button class="btn-col-cta" onclick="buy('pri_01m1r640zg5bwq5qv4hn72f8ap')">Start Free Trial</button>
+      </div>
+    </article>
+
+    <!-- COL 2: FAMILY ($29 / month) -->
+    <article class="p-column featured">
+      <div class="col-header">
+        <span class="col-badge">FAMILY · Most Popular</span>
+        <div class="price-number">$29 <span class="price-unit">/ month</span></div>
+        <div class="seats-lbl">4 seats</div>
+      </div>
+      <ul class="features-list">
+        <li>Everything in Pro</li>
+        <li>4 user seats</li>
+        <li>Shared billing</li>
+      </ul>
+      <div class="col-footer">
+        <button class="btn-col-cta" onclick="buy('pri_01m1r6836wwnjet109eatw52w1')">Start Free Trial</button>
+      </div>
+    </article>
+
+    <!-- COL 3: BUSINESS ($45 / month) -->
+    <article class="p-column">
+      <div class="col-header">
+        <div class="price-number">$45 <span class="price-unit">/ month</span></div>
+        <div class="seats-lbl">5 seats</div>
+      </div>
+      <ul class="features-list">
+        <li>Everything in Family</li>
+        <li>5 user seats</li>
+        <li>Team management</li>
+        <li>Priority support</li>
+      </ul>
+      <div class="col-footer">
+        <button class="btn-col-cta" onclick="buy('pri_01m1r6cqphmxafkehfew7w8pab')">Start Free Trial</button>
+      </div>
+    </article>
+
+    <!-- COL 4: ENTERPRISE ($54,000 / year) -->
+    <article class="p-column">
+      <div class="col-header">
+        <div class="price-number">$54,000 <span class="price-unit">/ year</span></div>
+        <div class="seats-lbl">100 seats</div>
+      </div>
+
+      <div class="seat-table-card">
+        <div class="st-header">
+          <span>SEATS</span>
+          <span>ANNUAL PRICE</span>
+          <span>PER SEAT</span>
+        </div>
+        <div class="st-row">
+          <span>10 seats</span>
+          <span>$5,400 / yr</span>
+          <span>$540/seat</span>
+        </div>
+        <div class="st-row">
+          <span>20 seats</span>
+          <span>$10,800 / yr</span>
+          <span>$540/seat</span>
+        </div>
+        <div class="st-row">
+          <span>30 seats</span>
+          <span>$16,200 / yr</span>
+          <span>$540/seat</span>
+        </div>
+        <div class="st-row">
+          <span>40 seats</span>
+          <span>$21,600 / yr</span>
+          <span>$540/seat</span>
+        </div>
+        <div class="st-row">
+          <span>50 seats</span>
+          <span>$27,000 / yr</span>
+          <span>$540/seat</span>
+        </div>
+        <div class="st-row highlight">
+          <div>
+            <span>100 seats</span><br/>
+            <span class="best-badge">BEST VALUE</span>
+          </div>
+          <span>$54,000 / yr</span>
+          <span>$540/seat</span>
         </div>
       </div>
-    </div>
+
+      <p class="ent-note">All tiers billed annually. Volume above 100 seats? Contact us for a custom quote.</p>
+
+      <ul class="features-list">
+        <li>Everything in Business</li>
+        <li>Up to 100 seats</li>
+        <li>Custom deployment</li>
+        <li>Dedicated support</li>
+      </ul>
+
+      <div class="col-footer">
+        <button class="btn-col-cta outline" onclick="window.location.href='mailto:sales@triageai.cc'">Contact Us</button>
+        <p style="text-align:center;font-size:0.72rem;color:var(--muted);margin-top:0.5rem;font-family:'IBM Plex Mono',monospace;">
+          Billed annually · $540 per seat
+        </p>
+      </div>
+    </article>
+
   </div>
-
-  <!-- TAB BAR -->
-  <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('plans',this)">📋 &nbsp;Plans</button>
-    <button class="tab-btn" onclick="switchTab('promo',this)">🎟 &nbsp;Promo Code</button>
-  </div>
-
-  <!-- PLANS TAB -->
-  <div id="tab-plans" class="tab-content active">
-
-    <div class="pricing-grid">
-
-      <!-- PRO -->
-      <div class="plan-card">
-        <div class="plan-name">Pro</div>
-        <div class="plan-price"><sup>$</sup>12<span class="period"> / mo</span></div>
-        <div class="plan-seats">1 User Seat</div>
-        <div class="plan-desc">Full local AI inbox triage for a single user. All core features unlocked.</div>
-        <ul class="plan-features">
-          <li>Unlimited Local Triage</li>
-          <li>Autonomous Mode (97%+ accuracy)</li>
-          <li>Standard + Secure modes</li>
-          <li>TOTP 2FA vault access</li>
-          <li>Signed License File</li>
-          <li>Windows · Android · Linux · iOS</li>
-        </ul>
-        <button class="btn-plan btn-plan-outline" onclick="buy('pri_01m1r640zg5bwq5qv4hn72f8ap')">Start 7-Day Trial</button>
-        <div class="trial-note">7 days free · then $12/mo</div>
-      </div>
-
-      <!-- FAMILY -->
-      <div class="plan-card featured">
-        <div class="plan-badge">MOST POPULAR</div>
-        <div class="plan-name">Family</div>
-        <div class="plan-price"><sup>$</sup>29<span class="period"> / mo</span></div>
-        <div class="plan-seats">4 User Seats</div>
-        <div class="plan-desc">Shared billing for up to 4 family members, each with their own vault and inbox rules.</div>
-        <ul class="plan-features">
-          <li>Everything in Pro</li>
-          <li>4 Independent User Vaults</li>
-          <li>Shared Family Inbox Rules</li>
-          <li>Cross-device License Keys</li>
-          <li>Family Audit Log</li>
-          <li>Windows · Android · Linux · iOS</li>
-        </ul>
-        <button class="btn-plan btn-plan-fill" onclick="buy('pri_01m1r6836wwnjet109eatw52w1')">Start 7-Day Trial</button>
-        <div class="trial-note">7 days free · then $29/mo</div>
-      </div>
-
-      <!-- BUSINESS -->
-      <div class="plan-card">
-        <div class="plan-name">Business</div>
-        <div class="plan-price"><sup>$</sup>45<span class="period"> / mo</span></div>
-        <div class="plan-seats">5 User Seats</div>
-        <div class="plan-desc">For small teams needing shared inbox rules, team bylaws, and audit log exports.</div>
-        <ul class="plan-features">
-          <li>Everything in Family</li>
-          <li>5 Team Seats</li>
-          <li>Priority IMAP Sync</li>
-          <li>Team Bylaws & Shared Rules</li>
-          <li>Local Audit Log Exports</li>
-          <li>Windows · Android · Linux · iOS</li>
-        </ul>
-        <button class="btn-plan btn-plan-outline" onclick="buy('pri_01m1r6cqphmxafkehfew7w8pab')">Start 7-Day Trial</button>
-        <div class="trial-note">7 days free · then $45/mo</div>
-      </div>
-
-    </div>
-
-    <!-- ENTERPRISE -->
-    <div class="enterprise-card">
-      <div class="ent-header">
-        <div>
-          <div class="section-label">Enterprise</div>
-          <h3>Scale across your organization</h3>
-        </div>
-        <div class="ent-tag">$540 / SEAT / YEAR</div>
-      </div>
-      <p class="ent-sub">Billed annually. All tiers include everything in Business plus custom deployment, dedicated enterprise license key, and dedicated support.</p>
-      <table class="seat-table">
-        <thead>
-          <tr>
-            <th>Seats</th>
-            <th>Annual Price</th>
-            <th>Per Seat / Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>10 seats</td><td>$5,400 / yr</td><td>$540</td></tr>
-          <tr><td>20 seats</td><td>$10,800 / yr</td><td>$540</td></tr>
-          <tr><td>30 seats</td><td>$16,200 / yr</td><td>$540</td></tr>
-          <tr><td>40 seats</td><td>$21,600 / yr</td><td>$540</td></tr>
-          <tr><td>50 seats</td><td>$27,000 / yr</td><td>$540</td></tr>
-          <tr class="flagship">
-            <td>100 seats <span class="flagship-badge">BEST VALUE</span></td>
-            <td>$54,000 / yr</td>
-            <td>$540</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="ent-note">All tiers billed annually. Need more than 100 seats? Contact us for a custom quote.</p>
-      <button class="btn-contact" onclick="window.location.href='mailto:sales@triageai.cc'">Contact Us for Enterprise →</button>
-    </div>
-
-    <div class="fine-print">
-      All plans start with a <strong style="color:var(--text);">7-day free trial</strong>. Cancel anytime.<br/>
-      Licenses are signed files stored on your device — no subscription account required.<br/>
-      <a href="/">← Back to Triage Home</a>
-    </div>
-
-  </div><!-- /tab-plans -->
-
-  <!-- PROMO TAB -->
-  <div id="tab-promo" class="tab-content">
-    <div class="promo-card">
-      <div class="promo-icon">🎟️</div>
-      <h2>Early Access & VIP</h2>
-      <p class="promo-sub">Redeem Early Access &amp; VIP Access</p>
-      <p class="promo-desc">Have a promo code from the founder? Enter it below to unlock instant free access to Pro Features &amp; Autonomous Mode — no credit card, no trial countdown.</p>
-
-      <div class="promo-input-wrap">
-        <input class="promo-input" id="promoInput" type="text" placeholder="Enter promo code (e.g. TRIAGEFREE)" autocomplete="off" spellcheck="false"/>
-        <button class="btn-redeem" onclick="redeemPromo()">Redeem</button>
-      </div>
-      <div class="promo-msg" id="promoMsg"></div>
-
-      <div class="promo-perks">
-        <div class="perk-item"><strong>✦ Pro Features</strong><span>Full AI triage & autonomous mode unlocked</span></div>
-        <div class="perk-item"><strong>🔐 Secure Mode</strong><span>IMAP auth + TOTP vault access</span></div>
-        <div class="perk-item"><strong>📋 Audit Log</strong><span>Full local audit trail included</span></div>
-        <div class="perk-item"><strong>♾ No Expiry</strong><span>VIP codes don't expire during early access</span></div>
-      </div>
-
-      <p class="promo-fine">Promo codes are issued directly by the Triage founder.<br/>Each code is single-use and tied to your device license.</p>
-    </div>
-  </div><!-- /tab-promo -->
-
-</div><!-- /page -->
+</main>
 
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
@@ -356,83 +458,110 @@
     }
   }
 
-/* ── Circuit board background ── */
+/* ── ANIMATED FLOWING CIRCUITRY BACKGROUND ── */
 (function(){
-  const canvas=document.getElementById('circuit-bg');
-  const ctx=canvas.getContext('2d');
-  let W,H,nodes,segs,particles;
-  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  const canvas = document.getElementById('circuit-bg');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [], segs = [], particles = [];
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
   function init(){
-    resize();nodes=[];segs=[];particles=[];
-    const gx=72,gy=72,cols=Math.ceil(W/gx)+1,rows=Math.ceil(H/gy)+1;
-    for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)
-      if(Math.random()<0.38)nodes.push({x:c*gx+(Math.random()-.5)*16,y:r*gy+(Math.random()-.5)*16});
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
-      const dx=nodes[j].x-nodes[i].x,dy=nodes[j].y-nodes[i].y,d=Math.hypot(dx,dy);
-      if(d<130&&Math.random()<0.35)segs.push({a:nodes[i],b:nodes[j],mx:nodes[j].x,my:nodes[i].y});
+    resize();
+    nodes = []; segs = []; particles = [];
+    const gx = 65, gy = 65;
+    const cols = Math.ceil(W / gx) + 1;
+    const rows = Math.ceil(H / gy) + 1;
+
+    for(let r = 0; r < rows; r++){
+      for(let c = 0; c < cols; c++){
+        if(Math.random() < 0.42){
+          nodes.push({ x: c * gx + (Math.random() - 0.5) * 18, y: r * gy + (Math.random() - 0.5) * 18 });
+        }
+      }
     }
-    const count=Math.min(segs.length,55);
-    for(let k=0;k<count;k++){const s=segs[Math.floor(Math.random()*segs.length)];particles.push({seg:s,t:Math.random(),speed:(0.0008+Math.random()*0.0012)*(Math.random()<.5?1:-1)});}
+
+    for(let i = 0; i < nodes.length; i++){
+      for(let j = i + 1; j < nodes.length; j++){
+        const dx = nodes[j].x - nodes[i].x;
+        const dy = nodes[j].y - nodes[i].y;
+        const dist = Math.hypot(dx, dy);
+        if(dist < 140 && Math.random() < 0.38){
+          segs.push({ a: nodes[i], b: nodes[j], mx: nodes[j].x, my: nodes[i].y });
+        }
+      }
+    }
+
+    const particleCount = Math.min(segs.length, 75);
+    for(let k = 0; k < particleCount; k++){
+      const s = segs[Math.floor(Math.random() * segs.length)];
+      particles.push({
+        seg: s,
+        t: Math.random(),
+        speed: (0.001 + Math.random() * 0.0018) * (Math.random() < 0.5 ? 1 : -1)
+      });
+    }
   }
-  function ptOnSeg(s,t){
-    const l1=Math.hypot(s.mx-s.a.x,s.my-s.a.y),l2=Math.hypot(s.b.x-s.mx,s.b.y-s.my),tot=l1+l2||1,d=t*tot;
-    if(d<=l1){const u=l1?d/l1:0;return{x:s.a.x+(s.mx-s.a.x)*u,y:s.a.y+(s.my-s.a.y)*u};}
-    const u=l2?(d-l1)/l2:0;return{x:s.mx+(s.b.x-s.mx)*u,y:s.my+(s.b.y-s.my)*u};
+
+  function ptOnSeg(s, t){
+    const l1 = Math.hypot(s.mx - s.a.x, s.my - s.a.y);
+    const l2 = Math.hypot(s.b.x - s.mx, s.b.y - s.my);
+    const tot = l1 + l2 || 1;
+    const d = t * tot;
+    if(d <= l1){
+      const u = l1 ? d / l1 : 0;
+      return { x: s.a.x + (s.mx - s.a.x) * u, y: s.a.y + (s.my - s.a.y) * u };
+    }
+    const u = l2 ? (d - l1) / l2 : 0;
+    return { x: s.mx + (s.b.x - s.mx) * u, y: s.my + (s.b.y - s.my) * u };
   }
+
   function draw(){
-    ctx.clearRect(0,0,W,H);
-    ctx.lineWidth=1;
-    segs.forEach(s=>{ctx.strokeStyle='rgba(22,215,197,0.07)';ctx.beginPath();ctx.moveTo(s.a.x,s.a.y);ctx.lineTo(s.mx,s.my);ctx.lineTo(s.b.x,s.b.y);ctx.stroke();});
-    nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,1.5,0,Math.PI*2);ctx.fillStyle='rgba(22,215,197,0.18)';ctx.fill();});
-    particles.forEach(p=>{
-      p.t+=p.speed;if(p.t>1)p.t=0;if(p.t<0)p.t=1;
-      const pt=ptOnSeg(p.seg,p.t);
-      const g=ctx.createRadialGradient(pt.x,pt.y,0,pt.x,pt.y,7);
-      g.addColorStop(0,'rgba(22,215,197,0.85)');g.addColorStop(0.4,'rgba(22,215,197,0.25)');g.addColorStop(1,'rgba(22,215,197,0)');
-      ctx.beginPath();ctx.arc(pt.x,pt.y,7,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineWidth = 1;
+
+    segs.forEach(s => {
+      ctx.strokeStyle = 'rgba(22, 215, 197, 0.08)';
+      ctx.beginPath();
+      ctx.moveTo(s.a.x, s.a.y);
+      ctx.lineTo(s.mx, s.my);
+      ctx.lineTo(s.b.x, s.b.y);
+      ctx.stroke();
     });
+
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(22, 215, 197, 0.25)';
+      ctx.fill();
+    });
+
+    particles.forEach(p => {
+      p.t += p.speed;
+      if(p.t > 1) p.t = 0;
+      if(p.t < 0) p.t = 1;
+      const pt = ptOnSeg(p.seg, p.t);
+      const g = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, 8);
+      g.addColorStop(0, 'rgba(22, 215, 197, 0.95)');
+      g.addColorStop(0.4, 'rgba(22, 215, 197, 0.35)');
+      g.addColorStop(1, 'rgba(22, 215, 197, 0)');
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, 8, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+    });
+
     requestAnimationFrame(draw);
   }
-  window.addEventListener('resize',init);init();draw();
+
+  window.addEventListener('resize', init);
+  init();
+  draw();
 })();
-
-/* ── Tab switching ── */
-function switchTab(id,btn){
-  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  btn.classList.add('active');
-}
-
-/* ── License import (stub) ── */
-function handleLicense(input){
-  const file=input.files[0];
-  if(!file){return;}
-  alert('License file "'+file.name+'" received. Verification handled by the Triage desktop app. Please open Triage and import via Settings → License.');
-}
-
-/* ── Promo code redemption ── */
-const VALID_CODES={
-  'TRIAGEFREE':'Pro Features + Autonomous Mode — Early Access unlocked!',
-  'TRIAGEFOUNDER':'VIP Founder Access — Full Pro unlocked!',
-  'TRIAGETEST':'Test code accepted — trial extended!',
-};
-function redeemPromo(){
-  const input=document.getElementById('promoInput');
-  const msg=document.getElementById('promoMsg');
-  const code=input.value.trim().toUpperCase();
-  msg.className='promo-msg';
-  if(!code){msg.textContent='Please enter a promo code.';msg.className='promo-msg error';return;}
-  if(VALID_CODES[code]){
-    msg.textContent='✓ Code accepted — '+VALID_CODES[code];
-    msg.className='promo-msg success';
-    input.value='';
-  } else {
-    msg.textContent='✗ Invalid or already used promo code. Contact the founder for a valid code.';
-    msg.className='promo-msg error';
-  }
-}
-document.getElementById('promoInput').addEventListener('keydown',function(e){if(e.key==='Enter')redeemPromo();});
 </script>
+
 </body>
 </html>

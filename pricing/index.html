@@ -216,7 +216,7 @@
           <li>Signed License File</li>
           <li>Windows · Android · Linux · iOS</li>
         </ul>
-        <button class="btn-plan btn-plan-outline">Start 7-Day Trial</button>
+        <button class="btn-plan btn-plan-outline" onclick="buy('pri_01m1r640zg5bwq5qv4hn72f8ap')">Start 7-Day Trial</button>
         <div class="trial-note">7 days free · then $12/mo</div>
       </div>
 
@@ -235,7 +235,7 @@
           <li>Family Audit Log</li>
           <li>Windows · Android · Linux · iOS</li>
         </ul>
-        <button class="btn-plan btn-plan-fill">Start 7-Day Trial</button>
+        <button class="btn-plan btn-plan-fill" onclick="buy('pri_01m1r6836wwnjet109eatw52w1')">Start 7-Day Trial</button>
         <div class="trial-note">7 days free · then $29/mo</div>
       </div>
 
@@ -253,7 +253,7 @@
           <li>Local Audit Log Exports</li>
           <li>Windows · Android · Linux · iOS</li>
         </ul>
-        <button class="btn-plan btn-plan-outline">Start 7-Day Trial</button>
+        <button class="btn-plan btn-plan-outline" onclick="buy('pri_01m1r6cqphmxafkehfew7w8pab')">Start 7-Day Trial</button>
         <div class="trial-note">7 days free · then $45/mo</div>
       </div>
 
@@ -291,7 +291,7 @@
         </tbody>
       </table>
       <p class="ent-note">All tiers billed annually. Need more than 100 seats? Contact us for a custom quote.</p>
-      <button class="btn-contact">Contact Us for Enterprise →</button>
+      <button class="btn-contact" onclick="window.location.href='mailto:sales@triageai.cc'">Contact Us for Enterprise →</button>
     </div>
 
     <div class="fine-print">
@@ -329,7 +329,33 @@
 
 </div><!-- /page -->
 
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
+  if (window.Paddle) {
+    Paddle.Initialize({
+      token: 'live_9f9a22f3f14846f2594a3c91721',
+      eventCallback: function(event) {
+        if (event.name === 'checkout.completed') {
+          console.log('Checkout completed:', event.data);
+        }
+      }
+    });
+  }
+  function buy(priceId) {
+    if (window.Paddle && Paddle.Checkout) {
+      Paddle.Checkout.open({
+        items: [{ priceId: priceId, quantity: 1 }],
+        settings: {
+          variant: 'one-page',
+          displayMode: 'overlay',
+          theme: 'dark'
+        }
+      });
+    } else {
+      alert('Paddle Checkout is initializing. Please try again in a moment.');
+    }
+  }
+
 /* ── Circuit board background ── */
 (function(){
   const canvas=document.getElementById('circuit-bg');

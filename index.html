@@ -4,683 +4,351 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark" />
-    <meta name="description" content="Triage — Your AI. Your Rules. A zero-knowledge AI assistant for Windows, Android, Linux, and iOS. Two modes: Standard for everyday users and Secure for private autonomy." />
-    <title>Triage — Your AI. Your Rules. A zero-knowledge AI assistant for Windows, Android, Linux, and iOS.</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0b10'/><text x='16' y='24' font-family='Arial' font-size='20' font-weight='bold' text-anchor='middle' fill='%2316D7C5'>T</text></svg>" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              bg: '#0a0b10',
-              'bg-card': '#0f1118',
-              accent: '#16D7C5',
-              'accent-dark': '#0fb3a4',
-              'text-primary': '#e8e4dc',
-              'text-muted': '#8a8a9a',
-              'border-subtle': 'rgba(255,255,255,0.07)',
-            },
-            fontFamily: {
-              sans: ['Inter', 'system-ui', 'sans-serif'],
-              mono: ['IBM Plex Mono', 'monospace'],
-            },
-          },
-        },
-      };
-    </script>
+    <meta name="description" content="Triage — Your AI. Your Rules. Zero-knowledge on-device AI assistant for Windows, Android, Linux, and iOS. Two editions: Everyday Assistant & Sovereign Secure Edition." />
+    <title>Triage — Your AI. Your Rules. Zero-Knowledge On-Device AI</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0b10'/><text x='16' y='24' font-family='Arial Black' font-size='20' font-weight='900' text-anchor='middle' fill='%2316D7C5'>T</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #0a0b10;
-        --bg-card: #0f1118;
+        --bg: #07090e;
+        --card-bg: rgba(15, 17, 24, 0.85);
+        --card-border: rgba(255,255,255,0.08);
         --accent: #16D7C5;
-        --accent-dark: #0fb3a4;
-        --text-primary: #e8e4dc;
-        --text-muted: #8a8a9a;
-        --border-subtle: rgba(255,255,255,0.07);
+        --accent-glow: rgba(22,215,197,0.25);
+        --text: #f0ede6;
+        --muted: #838a9c;
       }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
-
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 80px;
-      }
-
+      html { scroll-behavior: smooth; }
       body {
-        background-color: var(--bg);
-        color: var(--text-primary);
+        background: var(--bg);
+        color: var(--text);
         font-family: 'Inter', system-ui, sans-serif;
         line-height: 1.6;
         overflow-x: hidden;
-        background-image: radial-gradient(rgba(22,215,197,0.12) 1px, transparent 1px);
-        background-size: 28px 28px;
       }
 
-      /* Flowing circuitry background */
-      .circuitry-bg {
+      /* ANIMATED FLOWING CIRCUITRY BACKGROUND */
+      canvas#circuit-bg {
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-          linear-gradient(90deg, transparent 0%, rgba(22, 215, 197, 0.03) 50%, transparent 100%),
-          linear-gradient(180deg, transparent 0%, rgba(22, 215, 197, 0.02) 50%, transparent 100%);
-        background-size: 400px 400px;
-        animation: flowCircuitry 20s linear infinite;
+        width: 100vw;
+        height: 100vh;
         pointer-events: none;
-        z-index: 0;
+        zIndex: 1;
       }
 
-      @keyframes flowCircuitry {
-        0% { background-position: 0% 0%, 0% 0%; }
-        100% { background-position: 400px 400px, 0% 400px; }
-      }
-
-      /* SVG circuitry pattern */
-      .circuitry-svg {
-        position: fixed;
+      /* NAV */
+      header.nav-header {
+        position: sticky;
         top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.05;
-        pointer-events: none;
-        z-index: 0;
+        z-index: 100;
+        background: rgba(7, 9, 14, 0.85);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--card-border);
+        padding: 0.85rem 2rem;
       }
-
-      .hero-glow {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -55%);
-        width: 900px;
-        height: 700px;
-        background: radial-gradient(ellipse at center, rgba(22,215,197,0.06) 0%, transparent 70%);
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .gradient-text {
-        background: linear-gradient(135deg, #16D7C5 0%, #0fb3a4 50%, #16D7C5 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .glass-header {
-        background: rgba(10, 11, 16, 0.6);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border-subtle);
-        transition: background 0.3s ease;
-        position: relative;
-        z-index: 50;
-      }
-
-      .glass-header.scrolled {
-        background: rgba(10, 11, 16, 0.92);
-      }
-
-      .section-divider {
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
-      }
-
-      .feature-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border-subtle);
-        border-radius: 12px;
-        padding: 2rem;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .feature-card::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: var(--accent);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        border-radius: 0 3px 3px 0;
-      }
-
-      .feature-card:hover::before { opacity: 1; }
-      .feature-card:hover {
-        border-color: rgba(22,215,197,0.15);
-        transform: translateY(-2px);
-      }
-
-      .pricing-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border-subtle);
-        border-radius: 16px;
-        padding: 2rem;
-        transition: all 0.35s ease;
+      .nav-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
       }
-
-      .pricing-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      .brand-pill {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 999px;
+        padding: 0.4rem 1.4rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        font-size: 1rem;
+        color: #fff;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.03);
       }
-
-      .pricing-card.popular {
-        border-color: var(--accent);
-        box-shadow: 0 0 40px rgba(22,215,197,0.08);
-      }
-
-      .pricing-card.popular:hover {
-        box-shadow: 0 0 60px rgba(22,215,197,0.12), 0 20px 60px rgba(0,0,0,0.4);
-      }
-
-      .btn-primary {
+      .nav-links { display: flex; gap: 2rem; align-items: center; }
+      .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+      .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+      .btn-trial {
         background: var(--accent);
-        color: #0a0b10;
-        font-weight: 600;
-        padding: 0.75rem 1.75rem;
-        border-radius: 8px;
+        color: #04080e;
+        font-weight: 700;
+        font-size: 0.88rem;
         border: none;
+        border-radius: 999px;
+        padding: 0.55rem 1.35rem;
         cursor: pointer;
-        transition: all 0.2s ease;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.95rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
         text-decoration: none;
       }
 
-      .btn-primary:hover {
-        filter: brightness(1.15);
-        transform: translateY(-1px);
-      }
-
-      .btn-ghost {
-        background: transparent;
-        color: var(--text-primary);
-        font-weight: 500;
-        padding: 0.75rem 1.75rem;
-        border-radius: 8px;
-        border: 1px solid rgba(255,255,255,0.15);
-        cursor: pointer;
-        transition: all 0.2s ease;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.95rem;
+      /* HERO SECTION WITH PULSING CIRCLE */
+      main.page-main { position: relative; z-index: 2; }
+      .hero-wrap { text-align: center; padding: 5rem 1.5rem 4rem; max-width: 900px; margin: 0 auto; }
+      .logo-pulse-container {
+        position: relative;
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
+        justify-content: center;
+        width: 280px;
+        height: 280px;
+        margin: 0 auto 2rem;
       }
-
-      .btn-ghost:hover {
-        border-color: rgba(255,255,255,0.3);
-        background: rgba(255,255,255,0.04);
-      }
-
-      .btn-outline-teal {
-        background: transparent;
-        color: var(--accent);
-        font-weight: 600;
-        padding: 0.75rem 1.75rem;
-        border-radius: 8px;
-        border: 2px solid var(--accent);
-        cursor: pointer;
-        transition: all 0.2s ease;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.95rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-      }
-
-      .btn-outline-teal:hover {
-        background: rgba(22,215,197,0.1);
-        transform: translateY(-1px);
-      }
-
-      /* Large pulsing circle */
       .pulse-ring {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        border: 3px solid rgba(22,215,197,0.4);
-        animation: pulseRingLarge 4s ease-in-out infinite;
+        border: 2px solid rgba(22, 215, 197, 0.4);
+        box-shadow: 0 0 30px rgba(22, 215, 197, 0.2);
+        animation: pulseRing 3.5s infinite ease-in-out;
       }
-
-      .pulse-ring-2 {
-        animation-delay: 2s;
+      .pulse-ring-outer {
+        width: 260px;
+        height: 260px;
+        animation-delay: 1.75s;
       }
-
-      @keyframes pulseRingLarge {
-        0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-        50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.2; }
-        100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+      @keyframes pulseRing {
+        0% { transform: scale(0.9); opacity: 0.8; }
+        50% { transform: scale(1.15); opacity: 0.3; }
+        100% { transform: scale(0.9); opacity: 0.8; }
       }
-
-      /* Large TRIAGE text */
       .hero-title {
-        font-size: 5rem;
+        font-size: 4.5rem;
         font-weight: 900;
-        letter-spacing: -2px;
-        line-height: 1.1;
-        position: relative;
-        z-index: 10;
-        background: linear-gradient(135deg, #16D7C5 0%, #1affec 50%, #16D7C5 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      @media (max-width: 768px) {
-        .hero-title {
-          font-size: 2.5rem;
-        }
-        .pulse-ring {
-          width: 120px;
-          height: 120px;
-        }
-      }
-
-      .step-number {
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-        border-radius: 10px;
-        background: rgba(22,215,197,0.1);
-        border: 1px solid rgba(22,215,197,0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
+        letter-spacing: 0.12em;
         color: var(--accent);
-        font-size: 1rem;
+        text-shadow: 0 0 25px rgba(22, 215, 197, 0.5);
+      }
+      .hero-sub { font-size: 1.2rem; color: var(--muted); max-width: 600px; margin: 1rem auto 2rem; }
+      .acts-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+      .btn-p {
+        background: var(--accent); color: #04080e; font-weight: 800; padding: 0.8rem 1.75rem; border-radius: 10px; text-decoration: none; font-size: 0.95rem; box-shadow: 0 0 20px var(--accent-glow);
+      }
+      .btn-g {
+        background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-weight: 700; padding: 0.8rem 1.75rem; border-radius: 10px; text-decoration: none; font-size: 0.95rem;
       }
 
-      .security-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.85rem 0;
-        border-bottom: 1px solid var(--border-subtle);
-      }
+      /* SECTIONS */
+      .section-wrap { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem; }
+      .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+      .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; color: #fff; }
+      .section-desc { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 2.5rem; }
 
-      .security-row:last-child { border-bottom: none; }
+      /* DUAL EDITION CARDS */
+      .editions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+      @media(max-width: 768px) { .editions-grid { grid-template-columns: 1fr; } }
+      .ed-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(12px); display: flex; flex-direction: column; }
+      .ed-card.featured { border-color: var(--accent); box-shadow: inset 0 0 30px rgba(22, 215, 197, 0.05); }
+      .ed-card h3 { font-size: 1.5rem; font-weight: 800; margin: 0.5rem 0; color: #fff; }
+      .ed-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+      .ed-card ul { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+      .ed-card li { font-size: 0.88rem; color: rgba(240, 237, 230, 0.85); display: flex; align-items: center; gap: 0.6rem; }
+      .ed-card li::before { content: '✓'; color: var(--accent); font-weight: bold; }
 
-      .nav-link {
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: color 0.2s ease;
-        padding: 0.25rem 0;
-      }
-
-      .nav-link:hover, .nav-link.active {
-        color: var(--accent);
-      }
-
-      .trust-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        padding: 0.4rem 0.85rem;
-        background: rgba(22,215,197,0.05);
-        border: 1px solid rgba(22,215,197,0.12);
-        border-radius: 6px;
-      }
-
-      .stat-card {
-        text-align: center;
-        padding: 1.5rem 1rem;
-      }
-
-      .stat-value {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--accent);
-        line-height: 1.2;
-      }
-
-      .stat-label {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        margin-top: 0.35rem;
-      }
-
-      .logo-container {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .cta-banner {
-        background: linear-gradient(135deg, rgba(22,215,197,0.08) 0%, rgba(15,179,164,0.04) 100%);
-        border: 1px solid rgba(22,215,197,0.12);
-        border-radius: 20px;
-      }
-
-      .mode-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border-subtle);
-        border-radius: 16px;
-        padding: 2rem;
-        transition: all 0.35s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .mode-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      }
-
-      .mode-card.secure {
-        border-color: rgba(22,215,197,0.3);
-      }
-
-      .mode-card.secure:hover {
-        box-shadow: 0 0 40px rgba(22,215,197,0.06), 0 20px 60px rgba(0,0,0,0.3);
-      }
-
-      .login-step {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--border-subtle);
-        border-radius: 10px;
-        padding: 1rem 1.25rem;
-      }
-
-      .platform-row {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        font-size: 0.82rem;
-        color: var(--text-muted);
-        font-family: 'IBM Plex Mono', monospace;
-      }
-
-      .platform-dot {
-        width: 4px;
-        height: 4px;
-        background: var(--text-muted);
-        border-radius: 50%;
-        opacity: 0.5;
-      }
-
-      @media (max-width: 767px) {
-        .stat-value { font-size: 1.5rem; }
-        .pricing-card { padding: 1.75rem; }
-        .mode-card { padding: 1.5rem; }
-      }
+      /* FOOTER */
+      footer { border-top: 1px solid var(--card-border); padding: 2.5rem 1.5rem; text-align: center; font-size: 0.82rem; color: var(--muted); }
+      footer nav { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.75rem; }
+      footer nav a { color: var(--accent); text-decoration: none; }
     </style>
   </head>
-  <body data-id="0">
-    <!-- Circuitry background -->
-    <div class="circuitry-bg"></div>
-    <svg class="circuitry-svg" viewBox="0 0 1200 1200">
-      <defs>
-        <pattern id="circuitPattern" patternUnits="userSpaceOnUse" width="300" height="300">
-          <line x1="0" y1="75" x2="300" y2="75" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
-          <line x1="75" y1="0" x2="75" y2="300" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
-          <line x1="150" y1="0" x2="150" y2="300" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
-          <line x1="225" y1="0" x2="225" y2="300" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
-          <line x1="0" y1="150" x2="300" y2="150" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
-          <line x1="0" y1="225" x2="300" y2="225" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
-          <circle cx="75" cy="75" r="3" fill="#16D7C5" opacity="0.2"/>
-          <circle cx="225" cy="75" r="3" fill="#16D7C5" opacity="0.2"/>
-          <circle cx="75" cy="225" r="3" fill="#16D7C5" opacity="0.2"/>
-          <circle cx="225" cy="225" r="3" fill="#16D7C5" opacity="0.2"/>
-        </pattern>
-      </defs>
-      <rect width="1200" height="1200" fill="url(#circuitPattern)"/>
-    </svg>
+  <body>
 
-    <app-icon data-id="1" hidden data-icon="shield" data-palette="Dark"></app-icon>
+    <canvas id="circuit-bg"></canvas>
 
-    <!-- STICKY HEADER (No Logo) -->
-    <header data-id="2" id="site-header-hd01" class="glass-header fixed top-0 left-0 right-0 z-50">
-      <div data-id="3" class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between h-[68px]">
-        <!-- Logo Hidden -->
-        <div class="w-16"></div>
-
-        <!-- Desktop Nav -->
-        <nav data-id="41" class="hidden md:flex items-center gap-7" id="desktop-nav-dn01">
-          <a data-id="42" href="#features" class="nav-link" data-nav="features">Features</a>
-          <a data-id="43" href="#how-it-works" class="nav-link" data-nav="how-it-works">How it works</a>
-          <a data-id="44" href="#security" class="nav-link" data-nav="security">Security</a>
-          <a data-id="45" href="#pricing" class="nav-link" data-nav="pricing">Pricing</a>
-          <a data-id="46" href="#download" class="nav-link" data-nav="download">Download</a>
+    <header class="nav-header">
+      <div class="nav-wrap">
+        <a href="/" class="brand-pill">TRIAGE</a>
+        <nav class="nav-links">
+          <a href="/#editions">Editions</a>
+          <a href="/how-it-works/">How it works</a>
+          <a href="/security/">Security</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/download/">Download</a>
         </nav>
-
-        <!-- Desktop CTA -->
-        <a data-id="47" href="#download" class="btn-primary hidden md:inline-flex text-sm py-2 px-5" id="header-cta-hc01">Start Free Trial</a>
-
-        <!-- Mobile menu button -->
-        <button data-id="48" id="mobile-menu-btn-mb01" class="md:hidden p-2 text-text-primary" aria-label="Open menu">
-          <i data-id="49" data-lucide="menu" class="w-6 h-6"></i>
-        </button>
+        <a href="/download/" class="btn-trial">Start Free Trial</a>
       </div>
     </header>
 
-    <!-- Mobile menu overlay -->
-    <nav data-id="50" id="mobile-menu-mm01" class="hidden fixed inset-0 bg-bg z-[60] flex flex-col p-6">
-      <div data-id="51" class="flex items-center justify-between mb-10">
-        <div data-id="52" class="text-lg font-bold">Menu</div>
-        <button data-id="89" id="mobile-menu-close-mc01" class="p-2 text-text-primary" aria-label="Close menu">
-          <i data-id="90" data-lucide="x" class="w-6 h-6"></i>
-        </button>
-      </div>
-      <div data-id="91" class="flex flex-col gap-5">
-        <a data-id="92" href="#features" class="text-text-primary text-xl font-medium mobile-nav-link">Features</a>
-        <a data-id="93" href="#how-it-works" class="text-text-primary text-xl font-medium mobile-nav-link">How it works</a>
-        <a data-id="94" href="#security" class="text-text-primary text-xl font-medium mobile-nav-link">Security</a>
-        <a data-id="95" href="#pricing" class="text-text-primary text-xl font-medium mobile-nav-link">Pricing</a>
-        <a data-id="96" href="#download" class="text-text-primary text-xl font-medium mobile-nav-link">Download</a>
-      </div>
-      <div data-id="97" class="mt-auto pt-8">
-        <a data-id="98" href="#download" class="btn-primary w-full justify-center mobile-nav-link">Start Free Trial</a>
-      </div>
-    </nav>
-
-    <main data-id="99">
-      <!-- HERO SECTION - Large TRIAGE with pulsing circle -->
-      <section data-id="100" id="hero-section-hs01" class="relative pt-36 pb-20 md:pt-44 md:pb-28 px-4 md:px-6 text-center overflow-hidden">
-        <div data-id="101" class="hero-glow"></div>
-        <div data-id="102" class="relative z-10 max-w-4xl mx-auto">
-          <!-- Large pulsing circle with TRIAGE text -->
-          <div data-id="103" class="logo-container mx-auto mb-16 w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
-            <div data-id="104" class="pulse-ring"></div>
-            <div data-id="105" class="pulse-ring pulse-ring-2"></div>
-            <h1 class="hero-title absolute inset-0 flex items-center justify-center">TRIAGE</h1>
-          </div>
-
-          <p class="text-lg md:text-xl text-text-muted max-w-2xl mx-auto mt-12 mb-8">
-            Your AI. Your Rules. A zero-knowledge AI assistant that works for you, not the other way around.
-          </p>
-
-          <div class="flex gap-4 justify-center flex-wrap">
-            <a data-id="47" href="#download" class="btn-primary text-base">Start Free Trial</a>
-            <a data-id="48" href="#how-it-works" class="btn-ghost text-base">Learn More</a>
-          </div>
-
-          <!-- Trust badges -->
-          <div class="flex gap-3 justify-center flex-wrap mt-12">
-            <span class="trust-badge">🔒 Zero-Knowledge</span>
-            <span class="trust-badge">🖥️ Device-Only</span>
-            <span class="trust-badge">🔐 AES-256</span>
-          </div>
+    <main class="page-main">
+      <!-- HERO WITH PULSING CIRCLE & LARGE TYPOGRAPHY -->
+      <section class="hero-wrap">
+        <div class="logo-pulse-container">
+          <div class="pulse-ring"></div>
+          <div class="pulse-ring pulse-ring-outer"></div>
+          <h1 class="hero-title">TRIAGE</h1>
+        </div>
+        <h2 style="font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: #fff; line-height: 1.1;">
+          Your AI. <span style="color: var(--accent);">Your Rules.</span>
+        </h2>
+        <p class="hero-sub">
+          A zero-knowledge, on-device AI assistant for Windows, Android, Linux, and iOS. Zero data sent to cloud servers — ever.
+        </p>
+        <div class="acts-row">
+          <a href="/download/" class="btn-p">Download Triage Free</a>
+          <a href="/how-it-works/" class="btn-g">How It Works →</a>
         </div>
       </section>
 
-      <!-- Features, security, and other sections would continue here -->
-      <!-- Pricing section with fixed enterprise pricing -->
-      <section id="pricing" class="relative py-20 px-4 md:px-6">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
-            <p class="text-text-muted text-lg">Choose the plan that fits your needs</p>
+      <!-- DUAL EDITIONS SECTION -->
+      <section id="editions" class="section-wrap">
+        <span class="kicker">TWO TAILORED EDITIONS</span>
+        <h2 class="section-title">Pick the experience that fits you.</h2>
+        <p class="section-desc">
+          Choose between streamlined everyday triage or the full sovereign security suite.
+        </p>
+
+        <div class="editions-grid">
+          <!-- EVERYDAY EDITION -->
+          <div class="ed-card">
+            <span class="kicker">STREAMLINED &amp; ZERO CLUTTER</span>
+            <h3>Everyday Assistant</h3>
+            <p>Designed for fast daily email triage. Simple Email &amp; Password login with biometric Touch/Face ID quick unlock.</p>
+            <ul>
+              <li>Zero clutter interface</li>
+              <li>Email &amp; Password account link</li>
+              <li>Biometric Fingerprint / Touch ID / Face ID unlock</li>
+              <li>Local notification assistant</li>
+              <li>Windows · Android · Linux · iOS</li>
+            </ul>
+            <a href="/download/" class="btn-p" style="text-align: center; margin-top: auto;">Get Everyday Edition</a>
           </div>
 
-          <div class="grid md:grid-cols-3 gap-8">
-            <!-- Standard Plan -->
-            <div class="pricing-card">
-              <h3 class="text-xl font-bold mb-2">Standard</h3>
-              <div class="text-4xl font-bold text-accent mb-6">Free</div>
-              <p class="text-text-muted mb-8">Perfect for individual users</p>
-              <ul class="space-y-3 mb-8 flex-1">
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> On-device AI
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Encrypted vault
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Email triage
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Community support
-                </li>
-              </ul>
-              <button class="btn-ghost w-full">Get Started</button>
-            </div>
-
-            <!-- Professional Plan -->
-            <div class="pricing-card popular">
-              <div class="mb-4">
-                <span class="inline-block px-3 py-1 bg-accent text-bg text-xs font-bold rounded-full">POPULAR</span>
-              </div>
-              <h3 class="text-xl font-bold mb-2">Professional</h3>
-              <div class="text-4xl font-bold text-accent mb-2">$49</div>
-              <p class="text-text-muted text-sm mb-8">/month or $490/year</p>
-              <p class="text-text-muted mb-8">For power users and small teams</p>
-              <ul class="space-y-3 mb-8 flex-1">
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Everything in Standard
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Advanced autonomy controls
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Priority support
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Custom policy rules
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Audit trail export
-                </li>
-              </ul>
-              <button class="btn-primary w-full">Start Free Trial</button>
-            </div>
-
-            <!-- Enterprise Plan -->
-            <div class="pricing-card">
-              <h3 class="text-xl font-bold mb-2">Enterprise</h3>
-              <div class="text-3xl font-bold text-accent mb-6">Custom</div>
-              <p class="text-text-muted mb-8">For organizations with advanced needs</p>
-              <ul class="space-y-3 mb-8 flex-1">
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Everything in Professional
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Team management
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> SSO / SAML
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Compliance reporting
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Dedicated support
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-accent">✓</span> Custom integrations
-                </li>
-              </ul>
-              <a href="mailto:triageaiinbox@gmail.com" class="btn-ghost w-full">Contact Sales</a>
-            </div>
+          <!-- SECURE EDITION -->
+          <div class="ed-card featured">
+            <span class="kicker">SOVEREIGN &amp; ENCRYPTED</span>
+            <h3>Sovereign Secure Edition</h3>
+            <p>Maximum privacy &amp; local control. Direct local IMAP mail server sync, 2FA Authenticator TOTP protection, and master passphrase encrypted vault.</p>
+            <ul>
+              <li>Full sovereign security suite</li>
+              <li>Direct local IMAP mail server sync</li>
+              <li>2FA Authenticator TOTP protection</li>
+              <li>AES-256 master passphrase vault</li>
+              <li>Bylaws, trust audit, &amp; local verification</li>
+            </ul>
+            <a href="/download/" class="btn-p" style="text-align: center; margin-top: auto;">Get Secure Edition</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="relative z-10 py-12 px-4 md:px-6 border-t border-border-subtle">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-text-muted text-sm">© 2026 Triage AI LLC — Built in Pueblo, CO.</p>
-          <nav class="flex gap-6 mt-4 md:mt-0">
-            <a href="/privacy/" class="text-text-muted hover:text-accent text-sm">Privacy</a>
-            <a href="/terms/" class="text-text-muted hover:text-accent text-sm">Terms</a>
-            <a href="/security/" class="text-text-muted hover:text-accent text-sm">Security</a>
-          </nav>
-        </div>
-      </div>
+    <footer>
+      <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
+      <nav>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+      </nav>
     </footer>
 
+    <!-- ANIMATED FLOWING CIRCUITRY CANVAS -->
     <script>
-      // Mobile menu toggle
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn-mb01');
-      const mobileMenu = document.getElementById('mobile-menu-mm01');
-      const mobileMenuClose = document.getElementById('mobile-menu-close-mc01');
+    (function(){
+      const canvas = document.getElementById('circuit-bg');
+      const ctx = canvas.getContext('2d');
+      let W, H, nodes = [], segs = [], particles = [];
 
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-      });
+      function resize(){
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
 
-      mobileMenuClose.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
+      function init(){
+        resize();
+        nodes = []; segs = []; particles = [];
+        const gx = 65, gy = 65;
+        const cols = Math.ceil(W / gx) + 1;
+        const rows = Math.ceil(H / gy) + 1;
 
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-        });
-      });
-
-      // Scroll effects
-      const header = document.getElementById('site-header-hd01');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      });
-
-      // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          const href = this.getAttribute('href');
-          if (href !== '#' && document.querySelector(href)) {
-            e.preventDefault();
-            document.querySelector(href).scrollIntoView({
-              behavior: 'smooth'
-            });
+        for(let r = 0; r < rows; r++){
+          for(let c = 0; c < cols; c++){
+            if(Math.random() < 0.42){
+              nodes.push({ x: c * gx + (Math.random() - 0.5) * 16, y: r * gy + (Math.random() - 0.5) * 16 });
+            }
           }
+        }
+
+        for(let i = 0; i < nodes.length; i++){
+          for(let j = i + 1; j < nodes.length; j++){
+            const dx = nodes[j].x - nodes[i].x;
+            const dy = nodes[j].y - nodes[i].y;
+            const dist = Math.hypot(dx, dy);
+            if(dist < 130 && Math.random() < 0.35){
+              segs.push({ a: nodes[i], b: nodes[j], mx: nodes[j].x, my: nodes[i].y });
+            }
+          }
+        }
+
+        const particleCount = Math.min(segs.length, 75);
+        for(let k = 0; k < particleCount; k++){
+          const s = segs[Math.floor(Math.random() * segs.length)];
+          particles.push({
+            seg: s,
+            t: Math.random(),
+            speed: (0.001 + Math.random() * 0.0018) * (Math.random() < 0.5 ? 1 : -1)
+          });
+        }
+      }
+
+      function ptOnSeg(s, t){
+        const l1 = Math.hypot(s.mx - s.a.x, s.my - s.a.y);
+        const l2 = Math.hypot(s.b.x - s.mx, s.b.y - s.my);
+        const tot = l1 + l2 || 1;
+        const d = t * tot;
+        if(d <= l1){
+          const u = l1 ? d / l1 : 0;
+          return { x: s.a.x + (s.mx - s.a.x) * u, y: s.a.y + (s.my - s.a.y) * u };
+        }
+        const u = l2 ? (d - l1) / l2 : 0;
+        return { x: s.mx + (s.b.x - s.mx) * u, y: s.my + (s.b.y - s.my) * u };
+      }
+
+      function draw(){
+        ctx.clearRect(0, 0, W, H);
+        ctx.lineWidth = 1;
+
+        segs.forEach(s => {
+          ctx.strokeStyle = 'rgba(22, 215, 197, 0.08)';
+          ctx.beginPath();
+          ctx.moveTo(s.a.x, s.a.y);
+          ctx.lineTo(s.mx, s.my);
+          ctx.lineTo(s.b.x, s.b.y);
+          ctx.stroke();
         });
-      });
+
+        nodes.forEach(n => {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(22, 215, 197, 0.25)';
+          ctx.fill();
+        });
+
+        particles.forEach(p => {
+          p.t += p.speed;
+          if(p.t > 1) p.t = 0;
+          if(p.t < 0) p.t = 1;
+          const pt = ptOnSeg(p.seg, p.t);
+          const g = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, 8);
+          g.addColorStop(0, 'rgba(22, 215, 197, 0.95)');
+          g.addColorStop(0.4, 'rgba(22, 215, 197, 0.35)');
+          g.addColorStop(1, 'rgba(22, 215, 197, 0)');
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, 8, 0, Math.PI * 2);
+          ctx.fillStyle = g;
+          ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', init);
+      init();
+      draw();
+    })();
     </script>
   </body>
 </html>

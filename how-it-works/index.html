@@ -3,212 +3,255 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>How Triage Works — Zero-Knowledge AI Assistant</title>
-  <meta name="description" content="Learn how Triage builds trust, protects your data, and earns autonomous mode — entirely on your device, with zero cloud processing.">
+  <title>How Triage Works — Everyday &amp; Sovereign Modes</title>
+  <meta name="description" content="Learn how Triage operates on your device — from streamlined Everyday Assistant triage to full Sovereign Secure Edition with local vault encryption and IMAP sync.">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
-    .hiw-hero{padding:7rem 0 4rem}
-    .step-list{display:flex;flex-direction:column;gap:3rem;margin-top:3rem;max-width:700px}
-    .step{display:grid;grid-template-columns:3rem 1fr;gap:1.5rem;align-items:start}
-    .step-num{width:3rem;height:3rem;border-radius:50%;background:rgba(22,215,197,.1);border:1px solid rgba(22,215,197,.3);display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:.9rem;font-weight:700;color:#16D7C5;flex-shrink:0}
-    .step h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
-    .step p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.7}
-    .trust-band{padding:5rem 0;text-align:center;background:rgba(22,215,197,.03);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
-    .meter-wrap{max-width:480px;margin:2.5rem auto 0}
-    .meter-bar-bg{height:10px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-top:.75rem}
-    .meter-bar-fg{height:100%;width:97%;background:linear-gradient(90deg,#16D7C5,#0fa896);border-radius:999px}
-    .meter-labels{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.35);font-family:monospace;margin-top:.4rem}
-    .faq-list{max-width:680px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:1.5rem}
-    .faq-item{}
-    .faq-item h4{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
-    .faq-item p{font-size:.86rem;color:rgba(255,255,255,.52);line-height:1.7}
-    .acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(15, 17, 24, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #16D7C5;
+      --accent-glow: rgba(22, 215, 197, 0.25);
+      --text: #f0ede6;
+      --muted: #838a9c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    canvas#circuit-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    header.nav-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.85rem 2rem;
+    }
+    .nav-wrap { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .brand-pill { border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 999px; padding: 0.4rem 1.4rem; font-weight: 900; letter-spacing: 0.18em; font-size: 1rem; color: #fff; text-decoration: none; background: rgba(255, 255, 255, 0.03); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .btn-trial { background: var(--accent); color: #04080e; font-weight: 700; font-size: 0.88rem; border: none; border-radius: 999px; padding: 0.55rem 1.35rem; text-decoration: none; }
+
+    main.page-main { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+    .kicker { font-family: monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+    .lead { font-size: 1.1rem; color: var(--muted); max-width: 650px; margin-bottom: 3rem; }
+
+    .modes-explain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem; }
+    @media (max-width: 768px) { .modes-explain-grid { grid-template-columns: 1fr; } }
+
+    .mode-box { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 2rem; backdrop-filter: blur(12px); }
+    .mode-box h3 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+    .mode-box p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
+    .mode-box ol { padding-left: 1.25rem; color: rgba(240, 237, 230, 0.85); font-size: 0.88rem; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .guide-box { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 2rem; margin-top: 3rem; }
+    .guide-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-family: monospace; font-size: 0.85rem; }
+    .guide-table th { text-align: left; padding: 0.75rem; color: var(--muted); border-bottom: 1px solid var(--card-border); }
+    .guide-table td { padding: 0.75rem; color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.04); }
+
+    footer { border-top: 1px solid var(--card-border); padding: 2.5rem 1.5rem; text-align: center; font-size: 0.82rem; color: var(--muted); position: relative; z-index: 2; }
+    footer nav { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.75rem; }
+    footer nav a { color: var(--accent); text-decoration: none; }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="hdr wrap">
-      <a href="/" class="logo" style="display:flex;align-items:center;gap:10px;font-weight:900;text-transform:uppercase;letter-spacing:-0.5px">
-        <img src="/favicon.svg" width="28" height="28" alt="" style="filter: drop-shadow(0 0 5px rgba(22,215,197,0.3))">
-        Triage <span style="color:#B0B0B0">AI</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="/how-it-works/" aria-current="page">How it works</a>
-        <a href="/about/">About</a>
+
+  <canvas id="circuit-bg"></canvas>
+
+  <header class="nav-header">
+    <div class="nav-wrap">
+      <a href="/" class="brand-pill">TRIAGE</a>
+      <nav class="nav-links">
+        <a href="/#editions">Editions</a>
+        <a href="/how-it-works/" class="active">How it works</a>
         <a href="/security/">Security</a>
         <a href="/pricing/">Pricing</a>
-        <a href="mailto:triageaiinbox@gmail.com" class="btn-nav">Contact</a>
+        <a href="/download/">Download</a>
       </nav>
+      <a href="/download/" class="btn-trial">Start Free Trial</a>
     </div>
   </header>
-  <main id="main">
-    <section class="hiw-hero">
-      <div class="wrap">
-        <p class="eyebrow">How Triage works</p>
-        <h1 class="h1">Intelligence that <em style="font-style:normal;color:#16D7C5">earns its autonomy.</em></h1>
-        <p class="lead" style="max-width:580px">Triage doesn't ask for permission up front. It starts in suggestion-only mode, learns your priorities, and builds a trust score based on how well its suggestions match your decisions. Once it hits 97 % — you unlock autonomous mode.</p>
-      </div>
-    </section>
-    <hr class="divider">
-    <section class="wrap" style="padding:4rem 0">
-      <p class="eyebrow">Step by step</p>
-      <h2 class="h2">From install to autonomous.</h2>
-      <div class="step-list">
-        <div class="step">
-          <div class="step-num">01</div>
-          <div>
-            <h3>Install &amp; set up your vault</h3>
-            <p>Triage creates an AES-256 encrypted vault on your device during first launch. No account, no cloud setup — just a local key only you hold. Your data never leaves this vault.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div>
-            <h3>Connect your inbox</h3>
-            <p>Link your email account via a local OAuth flow. Triage reads and processes messages entirely on-device. No email content is ever sent to a server — not even ours.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div>
-            <h3>Triage suggests — you decide</h3>
-            <p>In the beginning, Triage surfaces prioritized suggestions: reply to this, archive that, flag this as urgent. You act on them (or don't), and Triage records your decisions locally to refine its model.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">04</div>
-          <div>
-            <h3>Trust score climbs</h3>
-            <p>Every accepted suggestion increases your trust score. Every override teaches Triage something new. The score is computed locally — no telemetry, no profile building on any server.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">05</div>
-          <div>
-            <h3>Autonomous mode unlocks at 97 %</h3>
-            <p>At 97 % trust, Triage starts acting on your behalf: scheduling, archiving, drafting replies. Every action is logged in a local audit trail you can inspect, replay, or revoke at any time.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="trust-band">
-      <div class="wrap">
-        <p class="eyebrow">Trust meter</p>
-        <h2 class="h2">97 % — the threshold for autonomy.</h2>
-        <p class="lead" style="max-width:520px;margin:0 auto">Triage computes its trust score locally from your decision history. It never shares that score with us or anyone else.</p>
-        <div class="meter-wrap">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem">
-            <span style="font-size:.8rem;color:rgba(255,255,255,.4);font-family:monospace">trust.score</span>
-            <span style="font-size:.9rem;font-weight:700;color:#16D7C5;font-family:monospace">97 %</span>
-          </div>
-          <div class="meter-bar-bg"><div class="meter-bar-fg"></div></div>
-          <div class="meter-labels"><span>0 %</span><span>Autonomous unlocked →</span><span>100 %</span></div>
-        </div>
-      </div>
-    </section>
 
-    <section class="wrap" style="padding:4rem 0">
-      <p class="eyebrow">Connection Guide</p>
-      <h2 class="h2">Linking your email locally.</h2>
-      <p class="lead" style="max-width:600px">Because Triage is zero-knowledge, it connects directly from your device to your email provider. It does not use "Login with Google" because that would involve our servers. Follow this guide to set up your private local connection.</p>
+  <main class="page-main">
+    <span class="kicker">HOW TRIAGE WORKS</span>
+    <h1 class="h1">Intelligence that <span style="color: var(--accent);">earns its trust.</span></h1>
+    <p class="lead">Triage operates 100% on your device. Choose between two distinct operating modes based on your workflow needs.</p>
 
-      <div class="guide-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:3rem">
-        <div>
-          <h3 style="color:#16D7C5;margin-bottom:1rem">1. What is an IMAP Server?</h3>
-          <p style="font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.6">This is the "address" of your email provider. Enter the following in the <strong>IMAP Server</strong> field in Triage:</p>
-          <table style="width:100%;margin-top:1rem;border-collapse:collapse;font-size:.85rem;font-family:monospace">
-            <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
-              <th style="text-align:left;padding:.75rem;color:rgba(255,255,255,.4)">Provider</th>
-              <th style="text-align:left;padding:.75rem;color:rgba(255,255,255,.4)">Server Address</th>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-              <td style="padding:.75rem">Gmail</td>
-              <td style="padding:.75rem;color:#16D7C5">imap.gmail.com</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-              <td style="padding:.75rem">Outlook/Hotmail</td>
-              <td style="padding:.75rem;color:#16D7C5">outlook.office365.com</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-              <td style="padding:.75rem">iCloud</td>
-              <td style="padding:.75rem;color:#16D7C5">imap.mail.me.com</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem">Yahoo</td>
-              <td style="padding:.75rem;color:#16D7C5">imap.mail.yahoo.com</td>
-            </tr>
-          </table>
-        </div>
-        <div>
-          <h3 style="color:#16D7C5;margin-bottom:1rem">2. Use an App Password</h3>
-          <p style="font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.6">For your security, providers like Google and Microsoft block your regular password for local apps. You must generate a one-time <strong>App Password</strong>.</p>
-          <ul style="list-style:none;padding:0;margin-top:1rem;display:flex;flex-direction:column;gap:.75rem">
-            <li>
-              <a href="https://myaccount.google.com/apppasswords" target="_blank" style="color:#16D7C5;text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:8px">
-                &#x1F517; Setup Gmail App Password
-              </a>
-            </li>
-            <li>
-              <a href="https://account.live.com/proofs/manage/additional" target="_blank" style="color:#16D7C5;text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:8px">
-                &#x1F517; Setup Outlook App Password
-              </a>
-            </li>
-            <li>
-              <a href="https://appleid.apple.com/account/manage" target="_blank" style="color:#16D7C5;text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:8px">
-                &#x1F517; Setup iCloud App Password
-              </a>
-            </li>
-          </ul>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);margin-top:1.5rem;line-height:1.5">
-            <strong>Security Note:</strong> App Passwords can be revoked at any time and never reveal your main password to the application.
-          </p>
-        </div>
+    <!-- DUAL MODES EXPLANATION -->
+    <div class="modes-explain-grid">
+      <!-- EVERYDAY MODE -->
+      <div class="mode-box">
+        <span class="kicker">STREAMLINED ASSISTANT</span>
+        <h3>Everyday Assistant Mode</h3>
+        <p>Built for zero clutter and effortless everyday inbox triage.</p>
+        <ol>
+          <li>Sign in with your email &amp; password.</li>
+          <li>Enable quick biometric unlock (Fingerprint, Touch ID, or Face ID).</li>
+          <li>Triage automatically organizes incoming notifications and emails locally.</li>
+          <li>Accept or dismiss suggestions in one tap — no clutter, no raw technical menus.</li>
+        </ol>
       </div>
 
-      <style>
-        @media(max-width:768px){.guide-grid{grid-template-columns:1fr !important;gap:3rem !important}}
-      </style>
-    </section>
-
-    <hr class="divider">
-    <section class="wrap" style="padding:4rem 0">
-      <p class="eyebrow">FAQ</p>
-      <h2 class="h2">Common questions.</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <h4>Does Triage ever send my emails to a server?</h4>
-          <p>Never. All email processing happens on-device inside your encrypted vault. The only network call Triage makes is the initial OAuth handshake with your email provider — and that goes directly to your provider, not to us.</p>
-        </div>
-        <div class="faq-item">
-          <h4>What happens if I uninstall Triage?</h4>
-          <p>Your vault is deleted along with the app. There is nothing stored server-side to retrieve or delete — because nothing was ever sent there.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Can I reset my trust score?</h4>
-          <p>Yes. You can reset the trust score from settings at any time, which returns Triage to suggestion-only mode. Your vault data is preserved.</p>
-        </div>
-        <div class="faq-item">
-          <h4>What does autonomous mode actually do?</h4>
-          <p>It allows Triage to take pre-approved actions — archiving low-priority mail, sending pre-approved reply templates, scheduling events — without waiting for your tap. Every action is logged locally.</p>
-        </div>
+      <!-- SECURE MODE -->
+      <div class="mode-box" style="border-color: var(--accent);">
+        <span class="kicker" style="color: var(--accent);">SOVEREIGN VAULT</span>
+        <h3>Sovereign Secure Edition</h3>
+        <p>Built for maximum privacy, custom rules, and local master vault protection.</p>
+        <ol>
+          <li>Connect directly to your IMAP mail server (Gmail, Outlook, iCloud, Yahoo).</li>
+          <li>Authenticate with a 6-digit 2FA Authenticator TOTP code.</li>
+          <li>Set a Master Vault Passphrase to encrypt local data with AES-256-GCM.</li>
+          <li>Access complete bylaws, trust audit history, and offline Ed25519 verification.</li>
+        </ol>
       </div>
-      <div class="acts">
-        <a href="/download/" class="btn btn-p">Download Triage</a>
-        <a href="/security/" class="btn btn-g">Read the security model</a>
-      </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div class="ftr wrap">
-      <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
-      <nav aria-label="Footer">
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="/security/">Security</a>
-      </nav>
     </div>
+
+    <!-- IMAP CONNECTION GUIDE -->
+    <div class="guide-box">
+      <span class="kicker">LOCAL IMAP SETUP GUIDE</span>
+      <h2 style="color: #fff; font-size: 1.5rem; margin-top: 0.25rem;">Connecting Your Mail Server</h2>
+      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem;">For Secure Mode, Triage connects directly from your device to your mail server. Use the server addresses below with an App Password:</p>
+
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>IMAP Server Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="color: #fff;">Gmail</td><td>imap.gmail.com</td></tr>
+          <tr><td style="color: #fff;">Outlook / Hotmail</td><td>outlook.office365.com</td></tr>
+          <tr><td style="color: #fff;">iCloud Mail</td><td>imap.mail.me.com</td></tr>
+          <tr><td style="color: #fff;">Yahoo Mail</td><td>imap.mail.yahoo.com</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
+    <nav>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
   </footer>
+
+  <script>
+  (function(){
+    const canvas = document.getElementById('circuit-bg');
+    const ctx = canvas.getContext('2d');
+    let W, H, nodes = [], segs = [], particles = [];
+
+    function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+
+    function init(){
+      resize(); nodes = []; segs = []; particles = [];
+      const gx = 65, gy = 65;
+      const cols = Math.ceil(W / gx) + 1;
+      const rows = Math.ceil(H / gy) + 1;
+
+      for(let r = 0; r < rows; r++){
+        for(let c = 0; c < cols; c++){
+          if(Math.random() < 0.42){
+            nodes.push({ x: c * gx + (Math.random() - 0.5) * 16, y: r * gy + (Math.random() - 0.5) * 16 });
+          }
+        }
+      }
+
+      for(let i = 0; i < nodes.length; i++){
+        for(let j = i + 1; j < nodes.length; j++){
+          const dx = nodes[j].x - nodes[i].x;
+          const dy = nodes[j].y - nodes[i].y;
+          const dist = Math.hypot(dx, dy);
+          if(dist < 130 && Math.random() < 0.35){
+            segs.push({ a: nodes[i], b: nodes[j], mx: nodes[j].x, my: nodes[i].y });
+          }
+        }
+      }
+
+      const particleCount = Math.min(segs.length, 75);
+      for(let k = 0; k < particleCount; k++){
+        const s = segs[Math.floor(Math.random() * segs.length)];
+        particles.push({ seg: s, t: Math.random(), speed: (0.001 + Math.random() * 0.0018) * (Math.random() < 0.5 ? 1 : -1) });
+      }
+    }
+
+    function ptOnSeg(s, t){
+      const l1 = Math.hypot(s.mx - s.a.x, s.my - s.a.y);
+      const l2 = Math.hypot(s.b.x - s.mx, s.b.y - s.my);
+      const tot = l1 + l2 || 1;
+      const d = t * tot;
+      if(d <= l1){ const u = l1 ? d / l1 : 0; return { x: s.a.x + (s.mx - s.a.x) * u, y: s.a.y + (s.my - s.a.y) * u }; }
+      const u = l2 ? (d - l1) / l2 : 0;
+      return { x: s.mx + (s.b.x - s.mx) * u, y: s.my + (s.b.y - s.my) * u };
+    }
+
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineWidth = 1;
+
+      segs.forEach(s => {
+        ctx.strokeStyle = 'rgba(22, 215, 197, 0.08)';
+        ctx.beginPath();
+        ctx.moveTo(s.a.x, s.a.y);
+        ctx.lineTo(s.mx, s.my);
+        ctx.lineTo(s.b.x, s.b.y);
+        ctx.stroke();
+      });
+
+      nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(22, 215, 197, 0.25)';
+        ctx.fill();
+      });
+
+      particles.forEach(p => {
+        p.t += p.speed;
+        if(p.t > 1) p.t = 0;
+        if(p.t < 0) p.t = 1;
+        const pt = ptOnSeg(p.seg, p.t);
+        const g = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, 8);
+        g.addColorStop(0, 'rgba(22, 215, 197, 0.95)');
+        g.addColorStop(0.4, 'rgba(22, 215, 197, 0.35)');
+        g.addColorStop(1, 'rgba(22, 215, 197, 0)');
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 8, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    draw();
+  })();
+  </script>
 </body>
 </html>

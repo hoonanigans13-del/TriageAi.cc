@@ -8,7 +8,34 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
-    .dl-hero{padding:6rem 0 4rem;text-align:center}
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(15, 17, 24, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #16D7C5;
+      --text: #f0ede6;
+      --muted: #838a9c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    canvas#circuit-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .dl-hero{padding:5rem 0 3rem;text-align:center;position:relative;z-index:2;}
     .hero-icon{margin-bottom:1.5rem}
     .hero-icon img{width:110px;height:110px;border-radius:24px;box-shadow:0 0 60px rgba(22,215,197,.25),0 20px 60px rgba(0,0,0,.5)}
     .dl-hero .eyebrow{margin-bottom:1rem}
@@ -17,33 +44,36 @@
     .edition-selection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0; text-align: left; }
     @media (max-width: 768px) { .edition-selection-grid { grid-template-columns: 1fr; } }
 
-    .edition-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; position: relative; }
+    .edition-card { background: rgba(15, 17, 24, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; position: relative; backdrop-filter: blur(12px); }
     .edition-card.featured { border-color: #16D7C5; background: rgba(22, 215, 197, 0.05); }
     .edition-card .kicker { font-family: monospace; font-size: 0.72rem; letter-spacing: 0.15em; color: #16D7C5; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .edition-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .edition-card .desc { font-size: 0.88rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 1.5rem; line-height: 1.5; }
+    .edition-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; color: #fff; }
+    .edition-card .desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.5; }
     .edition-card ul { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
-    .edition-card li { font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); display: flex; align-items: center; gap: 0.5rem; }
+    .edition-card li { font-size: 0.85rem; color: rgba(240, 237, 230, 0.85); display: flex; align-items: center; gap: 0.5rem; }
     .edition-card li::before { content: '✓'; color: #16D7C5; font-weight: bold; }
 
     .platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
-    .platform-card{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:2rem;background:rgba(255,255,255,.02);text-align:left;display:flex;flex-direction:column}
+    .platform-card{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:2rem;background:rgba(15, 17, 24, 0.85);backdrop-filter:blur(12px);text-align:left;display:flex;flex-direction:column}
     .platform-card.active{border-color:rgba(22,215,197,.4);background:rgba(22,215,197,.04)}
     .platform-icon{font-size:2rem;margin-bottom:1.25rem}
-    .platform-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+    .platform-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem;color:#fff;}
     .platform-card .sub{font-size:.78rem;font-family:monospace;color:#16D7C5;margin-bottom:.75rem}
-    .platform-card p{font-size:.86rem;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:1.25rem;flex:1}
+    .platform-card p{font-size:.86rem;color:var(--muted);line-height:1.6;margin-bottom:1.25rem;flex:1}
     .badge{display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.3em .75em;border-radius:999px;font-weight:600;margin-bottom:1.25rem}
     .badge-soon{background:rgba(255,255,255,.07);color:rgba(255,255,255,.4)}
     .badge-avail{background:rgba(22,215,197,.15);color:#16D7C5}
     .acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:auto}
-    .hash-line{font-size:.68rem;font-family:monospace;color:rgba(255,255,255,.25);margin-top:.75rem;word-break:break-all;line-height:1.5}
-    .hash-line span{color:rgba(255,255,255,.35)}
+
+    footer { position: relative; z-index: 2; }
   </style>
 </head>
 <body>
+
+  <canvas id="circuit-bg"></canvas>
+
   <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
+  <header class="site-header" style="position:relative;z-index:100;">
     <div class="hdr wrap">
       <a href="/" class="logo" style="display:flex;align-items:center;gap:10px;font-weight:900;text-transform:uppercase;letter-spacing:-0.5px">
         <img src="/favicon.svg" width="28" height="28" alt="" style="filter: drop-shadow(0 0 5px rgba(22,215,197,0.3))">
@@ -59,7 +89,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" style="position:relative;z-index:2;">
     <section class="dl-hero">
       <div class="wrap">
         <div class="hero-icon">
@@ -157,5 +187,99 @@
       </nav>
     </div>
   </footer>
+
+  <script>
+  (function(){
+    const canvas = document.getElementById('circuit-bg');
+    const ctx = canvas.getContext('2d');
+    let W, H, nodes = [], segs = [], particles = [];
+
+    function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+
+    function init(){
+      resize(); nodes = []; segs = []; particles = [];
+      const gx = 65, gy = 65;
+      const cols = Math.ceil(W / gx) + 1;
+      const rows = Math.ceil(H / gy) + 1;
+
+      for(let r = 0; r < rows; r++){
+        for(let c = 0; c < cols; c++){
+          if(Math.random() < 0.42){
+            nodes.push({ x: c * gx + (Math.random() - 0.5) * 16, y: r * gy + (Math.random() - 0.5) * 16 });
+          }
+        }
+      }
+
+      for(let i = 0; i < nodes.length; i++){
+        for(let j = i + 1; j < nodes.length; j++){
+          const dx = nodes[j].x - nodes[i].x;
+          const dy = nodes[j].y - nodes[i].y;
+          const dist = Math.hypot(dx, dy);
+          if(dist < 130 && Math.random() < 0.35){
+            segs.push({ a: nodes[i], b: nodes[j], mx: nodes[j].x, my: nodes[i].y });
+          }
+        }
+      }
+
+      const particleCount = Math.min(segs.length, 75);
+      for(let k = 0; k < particleCount; k++){
+        const s = segs[Math.floor(Math.random() * segs.length)];
+        particles.push({ seg: s, t: Math.random(), speed: (0.001 + Math.random() * 0.0018) * (Math.random() < 0.5 ? 1 : -1) });
+      }
+    }
+
+    function ptOnSeg(s, t){
+      const l1 = Math.hypot(s.mx - s.a.x, s.my - s.a.y);
+      const l2 = Math.hypot(s.b.x - s.mx, s.b.y - s.my);
+      const tot = l1 + l2 || 1;
+      const d = t * tot;
+      if(d <= l1){ const u = l1 ? d / l1 : 0; return { x: s.a.x + (s.mx - s.a.x) * u, y: s.a.y + (s.my - s.a.y) * u }; }
+      const u = l2 ? (d - l1) / l2 : 0;
+      return { x: s.mx + (s.b.x - s.mx) * u, y: s.my + (s.b.y - s.my) * u };
+    }
+
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineWidth = 1;
+
+      segs.forEach(s => {
+        ctx.strokeStyle = 'rgba(22, 215, 197, 0.08)';
+        ctx.beginPath();
+        ctx.moveTo(s.a.x, s.a.y);
+        ctx.lineTo(s.mx, s.my);
+        ctx.lineTo(s.b.x, s.b.y);
+        ctx.stroke();
+      });
+
+      nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(22, 215, 197, 0.25)';
+        ctx.fill();
+      });
+
+      particles.forEach(p => {
+        p.t += p.speed;
+        if(p.t > 1) p.t = 0;
+        if(p.t < 0) p.t = 1;
+        const pt = ptOnSeg(p.seg, p.t);
+        const g = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, 8);
+        g.addColorStop(0, 'rgba(22, 215, 197, 0.95)');
+        g.addColorStop(0.4, 'rgba(22, 215, 197, 0.35)');
+        g.addColorStop(1, 'rgba(22, 215, 197, 0)');
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 8, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    draw();
+  })();
+  </script>
 </body>
 </html>

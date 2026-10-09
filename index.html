@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark" />
-    <meta name="description" content="Triage — Your AI. Your Rules. A zero-knowledge AI assistant for Windows, Android, Linux, and iOS. Two modes: Standard for everyday users and Secure for privacy-first users. Triage your inbox, manage your schedule, and act autonomously — all offline." />
+    <meta name="description" content="Triage — Your AI. Your Rules. A zero-knowledge AI assistant for Windows, Android, Linux, and iOS. Two modes: Standard for everyday users and Secure for private autonomy." />
     <title>Triage — Your AI. Your Rules. A zero-knowledge AI assistant for Windows, Android, Linux, and iOS.</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0b10'/><text x='16' y='24' font-family='Arial Black' font-size='22' font-weight='900' text-anchor='middle' fill='%2316D7C5'>T</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0b10'/><text x='16' y='24' font-family='Arial' font-size='20' font-weight='bold' text-anchor='middle' fill='%2316D7C5'>T</text></svg>" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -61,6 +61,39 @@
         background-size: 28px 28px;
       }
 
+      /* Flowing circuitry background */
+      .circuitry-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          linear-gradient(90deg, transparent 0%, rgba(22, 215, 197, 0.03) 50%, transparent 100%),
+          linear-gradient(180deg, transparent 0%, rgba(22, 215, 197, 0.02) 50%, transparent 100%);
+        background-size: 400px 400px;
+        animation: flowCircuitry 20s linear infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      @keyframes flowCircuitry {
+        0% { background-position: 0% 0%, 0% 0%; }
+        100% { background-position: 400px 400px, 0% 400px; }
+      }
+
+      /* SVG circuitry pattern */
+      .circuitry-svg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        pointer-events: none;
+        z-index: 0;
+      }
+
       .hero-glow {
         position: absolute;
         top: 50%;
@@ -86,6 +119,8 @@
         -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid var(--border-subtle);
         transition: background 0.3s ease;
+        position: relative;
+        z-index: 50;
       }
 
       .glass-header.scrolled {
@@ -216,26 +251,51 @@
         transform: translateY(-1px);
       }
 
+      /* Large pulsing circle */
       .pulse-ring {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 140px;
-        height: 140px;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
-        border: 2px solid rgba(22,215,197,0.3);
-        animation: pulseRing 3s ease-in-out infinite;
+        border: 3px solid rgba(22,215,197,0.4);
+        animation: pulseRingLarge 4s ease-in-out infinite;
       }
 
       .pulse-ring-2 {
-        animation-delay: 1.5s;
+        animation-delay: 2s;
       }
 
-      @keyframes pulseRing {
-        0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-        50% { transform: translate(-50%, -50%) scale(1.25); opacity: 0; }
-        100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+      @keyframes pulseRingLarge {
+        0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+        50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.2; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+      }
+
+      /* Large TRIAGE text */
+      .hero-title {
+        font-size: 5rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        line-height: 1.1;
+        position: relative;
+        z-index: 10;
+        background: linear-gradient(135deg, #16D7C5 0%, #1affec 50%, #16D7C5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        .pulse-ring {
+          width: 120px;
+          height: 120px;
+        }
       }
 
       .step-number {
@@ -376,39 +436,33 @@
     </style>
   </head>
   <body data-id="0">
+    <!-- Circuitry background -->
+    <div class="circuitry-bg"></div>
+    <svg class="circuitry-svg" viewBox="0 0 1200 1200">
+      <defs>
+        <pattern id="circuitPattern" patternUnits="userSpaceOnUse" width="300" height="300">
+          <line x1="0" y1="75" x2="300" y2="75" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
+          <line x1="75" y1="0" x2="75" y2="300" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
+          <line x1="150" y1="0" x2="150" y2="300" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
+          <line x1="225" y1="0" x2="225" y2="300" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="150" x2="300" y2="150" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
+          <line x1="0" y1="225" x2="300" y2="225" stroke="#16D7C5" stroke-width="0.5" opacity="0.15"/>
+          <circle cx="75" cy="75" r="3" fill="#16D7C5" opacity="0.2"/>
+          <circle cx="225" cy="75" r="3" fill="#16D7C5" opacity="0.2"/>
+          <circle cx="75" cy="225" r="3" fill="#16D7C5" opacity="0.2"/>
+          <circle cx="225" cy="225" r="3" fill="#16D7C5" opacity="0.2"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="1200" fill="url(#circuitPattern)"/>
+    </svg>
+
     <app-icon data-id="1" hidden data-icon="shield" data-palette="Dark"></app-icon>
 
-    <!-- STICKY HEADER -->
+    <!-- STICKY HEADER (No Logo) -->
     <header data-id="2" id="site-header-hd01" class="glass-header fixed top-0 left-0 right-0 z-50">
       <div data-id="3" class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between h-[68px]">
-        <!-- Logo -->
-        <a data-id="4" href="#" class="flex items-center gap-2.5 text-text-primary no-underline" id="logo-link-lg01">
-          <svg data-id="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="32" height="38" style="filter:drop-shadow(0 0 6px rgba(22,215,197,0.5))">
-            <defs data-id="6">
-              <linearGradient data-id="7" id="hShield" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="8" offset="0%" stop-color="#16D7C5"/><stop data-id="9" offset="60%" stop-color="#0d7fa8"/><stop data-id="10" offset="100%" stop-color="#c0c8d0"/></linearGradient>
-              <linearGradient data-id="11" id="hCircuit" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="12" offset="0%" stop-color="#1affec"/><stop data-id="13" offset="100%" stop-color="#0d9e9e"/></linearGradient>
-              <linearGradient data-id="14" id="hBrain" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="15" offset="0%" stop-color="#5bc8f5"/><stop data-id="16" offset="100%" stop-color="#1a4fa0"/></linearGradient>
-              <linearGradient data-id="17" id="hChrome" x1="0%" y1="0%" x2="0%" y2="100%"><stop data-id="18" offset="0%" stop-color="#fff"/><stop data-id="19" offset="30%" stop-color="#c8c8c8"/><stop data-id="20" offset="60%" stop-color="#888"/><stop data-id="21" offset="100%" stop-color="#ddd"/></linearGradient>
-              <clipPath data-id="22" id="hLeft"><rect data-id="23" x="0" y="0" width="60" height="140"/></clipPath>
-              <clipPath data-id="24" id="hRight"><rect data-id="25" x="60" y="0" width="60" height="140"/></clipPath>
-            </defs>
-            <path data-id="26" d="M60 4 L110 22 L110 72 Q110 112 60 132 Q10 112 10 72 L10 22 Z" fill="url(#hShield)"/>
-            <path data-id="27" d="M60 10 L104 26 L104 72 Q104 107 60 125 Q16 107 16 72 L16 26 Z" fill="#080c18"/>
-            <ellipse data-id="28" cx="45" cy="68" rx="28" ry="34" fill="url(#hCircuit)" clip-path="url(#hLeft)" opacity="0.95"/>
-            <ellipse data-id="29" cx="75" cy="68" rx="28" ry="34" fill="url(#hBrain)" clip-path="url(#hRight)" opacity="0.95"/>
-            <line data-id="30" x1="28" y1="58" x2="55" y2="58" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-            <line data-id="31" x1="28" y1="58" x2="28" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-            <line data-id="32" x1="28" y1="70" x2="50" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-            <circle data-id="33" cx="28" cy="58" r="3" fill="#16D7C5"/>
-            <circle data-id="34" cx="28" cy="70" r="3" fill="#16D7C5"/>
-            <circle data-id="35" cx="50" cy="70" r="3" fill="#00ffee"/>
-            <line data-id="36" x1="38" y1="50" x2="55" y2="50" stroke="#fff" stroke-width="1" opacity="0.5"/>
-            <circle data-id="37" cx="38" cy="50" r="2" fill="#16D7C5"/>
-            <path data-id="38" d="M60 30 Q68 38 72 50 Q76 62 72 74 Q68 86 60 90 Q52 86 48 74 Q44 62 48 50 Q52 38 60 30" fill="#16D7C5" opacity="0.25"/>
-            <text data-id="39" x="60" y="138" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" text-anchor="middle" fill="url(#hChrome)" letter-spacing="1">TRIAGE</text>
-          </svg>
-          <span data-id="40" class="font-bold text-lg tracking-tight">Triage</span>
-        </a>
+        <!-- Logo Hidden -->
+        <div class="w-16"></div>
 
         <!-- Desktop Nav -->
         <nav data-id="41" class="hidden md:flex items-center gap-7" id="desktop-nav-dn01">
@@ -432,33 +486,7 @@
     <!-- Mobile menu overlay -->
     <nav data-id="50" id="mobile-menu-mm01" class="hidden fixed inset-0 bg-bg z-[60] flex flex-col p-6">
       <div data-id="51" class="flex items-center justify-between mb-10">
-        <div data-id="52" class="flex items-center gap-2.5">
-          <svg data-id="53" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="32" height="38" style="filter:drop-shadow(0 0 6px rgba(22,215,197,0.5))">
-            <defs data-id="54">
-              <linearGradient data-id="55" id="hShieldM" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="56" offset="0%" stop-color="#16D7C5"/><stop data-id="57" offset="60%" stop-color="#0d7fa8"/><stop data-id="58" offset="100%" stop-color="#c0c8d0"/></linearGradient>
-              <linearGradient data-id="59" id="hCircuitM" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="60" offset="0%" stop-color="#1affec"/><stop data-id="61" offset="100%" stop-color="#0d9e9e"/></linearGradient>
-              <linearGradient data-id="62" id="hBrainM" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="63" offset="0%" stop-color="#5bc8f5"/><stop data-id="64" offset="100%" stop-color="#1a4fa0"/></linearGradient>
-              <linearGradient data-id="65" id="hChromeM" x1="0%" y1="0%" x2="0%" y2="100%"><stop data-id="66" offset="0%" stop-color="#fff"/><stop data-id="67" offset="30%" stop-color="#c8c8c8"/><stop data-id="68" offset="60%" stop-color="#888"/><stop data-id="69" offset="100%" stop-color="#ddd"/></linearGradient>
-              <clipPath data-id="70" id="hLeftM"><rect data-id="71" x="0" y="0" width="60" height="140"/></clipPath>
-              <clipPath data-id="72" id="hRightM"><rect data-id="73" x="60" y="0" width="60" height="140"/></clipPath>
-            </defs>
-            <path data-id="74" d="M60 4 L110 22 L110 72 Q110 112 60 132 Q10 112 10 72 L10 22 Z" fill="url(#hShieldM)"/>
-            <path data-id="75" d="M60 10 L104 26 L104 72 Q104 107 60 125 Q16 107 16 72 L16 26 Z" fill="#080c18"/>
-            <ellipse data-id="76" cx="45" cy="68" rx="28" ry="34" fill="url(#hCircuitM)" clip-path="url(#hLeftM)" opacity="0.95"/>
-            <ellipse data-id="77" cx="75" cy="68" rx="28" ry="34" fill="url(#hBrainM)" clip-path="url(#hRightM)" opacity="0.95"/>
-            <line data-id="78" x1="28" y1="58" x2="55" y2="58" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-            <line data-id="79" x1="28" y1="58" x2="28" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-            <line data-id="80" x1="28" y1="70" x2="50" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-            <circle data-id="81" cx="28" cy="58" r="3" fill="#16D7C5"/>
-            <circle data-id="82" cx="28" cy="70" r="3" fill="#16D7C5"/>
-            <circle data-id="83" cx="50" cy="70" r="3" fill="#00ffee"/>
-            <line data-id="84" x1="38" y1="50" x2="55" y2="50" stroke="#fff" stroke-width="1" opacity="0.5"/>
-            <circle data-id="85" cx="38" cy="50" r="2" fill="#16D7C5"/>
-            <path data-id="86" d="M60 30 Q68 38 72 50 Q76 62 72 74 Q68 86 60 90 Q52 86 48 74 Q44 62 48 50 Q52 38 60 30" fill="#16D7C5" opacity="0.25"/>
-            <text data-id="87" x="60" y="138" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" text-anchor="middle" fill="url(#hChromeM)" letter-spacing="1">TRIAGE</text>
-          </svg>
-          <span data-id="88" class="font-bold text-lg tracking-tight text-text-primary">Triage</span>
-        </div>
+        <div data-id="52" class="text-lg font-bold">Menu</div>
         <button data-id="89" id="mobile-menu-close-mc01" class="p-2 text-text-primary" aria-label="Close menu">
           <i data-id="90" data-lucide="x" class="w-6 h-6"></i>
         </button>
@@ -476,804 +504,180 @@
     </nav>
 
     <main data-id="99">
-      <!-- HERO SECTION -->
+      <!-- HERO SECTION - Large TRIAGE with pulsing circle -->
       <section data-id="100" id="hero-section-hs01" class="relative pt-36 pb-20 md:pt-44 md:pb-28 px-4 md:px-6 text-center overflow-hidden">
         <div data-id="101" class="hero-glow"></div>
         <div data-id="102" class="relative z-10 max-w-4xl mx-auto">
-          <!-- Logo with pulse ring -->
-          <div data-id="103" class="logo-container mx-auto mb-10 w-[120px] h-[144px]">
+          <!-- Large pulsing circle with TRIAGE text -->
+          <div data-id="103" class="logo-container mx-auto mb-16 w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
             <div data-id="104" class="pulse-ring"></div>
             <div data-id="105" class="pulse-ring pulse-ring-2"></div>
-            <svg data-id="106" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="120" height="144" class="relative z-10" style="filter:drop-shadow(0 0 20px rgba(22,215,197,0.4))">
-              <defs data-id="107">
-                <linearGradient data-id="108" id="bShield" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="109" offset="0%" stop-color="#16D7C5"/><stop data-id="110" offset="60%" stop-color="#0d7fa8"/><stop data-id="111" offset="100%" stop-color="#c0c8d0"/></linearGradient>
-                <linearGradient data-id="112" id="bCircuit" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="113" offset="0%" stop-color="#1affec"/><stop data-id="114" offset="100%" stop-color="#0d9e9e"/></linearGradient>
-                <linearGradient data-id="115" id="bBrain" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="116" offset="0%" stop-color="#5bc8f5"/><stop data-id="117" offset="100%" stop-color="#1a4fa0"/></linearGradient>
-                <linearGradient data-id="118" id="bChrome" x1="0%" y1="0%" x2="0%" y2="100%"><stop data-id="119" offset="0%" stop-color="#ffffff"/><stop data-id="120" offset="20%" stop-color="#e0e0e0"/><stop data-id="121" offset="40%" stop-color="#a0a0a0"/><stop data-id="122" offset="60%" stop-color="#c8c8c8"/><stop data-id="123" offset="80%" stop-color="#808080"/><stop data-id="124" offset="100%" stop-color="#d0d0d0"/></linearGradient>
-                <clipPath data-id="125" id="bLeft"><rect data-id="126" x="0" y="0" width="100" height="240"/></clipPath>
-                <clipPath data-id="127" id="bRight"><rect data-id="128" x="100" y="0" width="100" height="240"/></clipPath>
-                <filter data-id="129" id="glow"><feGaussianBlur data-id="130" stdDeviation="2" result="blur"/><feComposite data-id="131" in="SourceGraphic" in2="blur" operator="over"/></filter>
-              </defs>
-              <path data-id="132" d="M100 8 L185 38 L185 118 Q185 178 100 208 Q15 178 15 118 L15 38 Z" fill="url(#bShield)"/>
-              <path data-id="133" d="M100 16 L177 43 L177 118 Q177 171 100 199 Q23 171 23 118 L23 43 Z" fill="#080c18"/>
-              <ellipse data-id="134" cx="72" cy="110" rx="47" ry="58" fill="url(#bCircuit)" clip-path="url(#bLeft)" opacity="0.95"/>
-              <ellipse data-id="135" cx="128" cy="110" rx="47" ry="58" fill="url(#bBrain)" clip-path="url(#bRight)" opacity="0.95"/>
-              <g data-id="136" stroke="#fff" stroke-width="2" opacity="0.7" fill="none">
-                <line data-id="137" x1="35" y1="94" x2="90" y2="94"/>
-                <line data-id="138" x1="35" y1="94" x2="35" y2="112"/>
-                <line data-id="139" x1="35" y1="112" x2="75" y2="112"/>
-                <line data-id="140" x1="55" y1="112" x2="55" y2="124"/>
-                <line data-id="141" x1="55" y1="124" x2="90" y2="124"/>
-                <line data-id="142" x1="45" y1="80" x2="90" y2="80"/>
-                <circle data-id="143" cx="35" cy="94" r="4" fill="#16D7C5"/>
-                <circle data-id="144" cx="35" cy="112" r="4" fill="#16D7C5"/>
-                <circle data-id="145" cx="55" cy="124" r="4" fill="#00ffee"/>
-                <circle data-id="146" cx="90" cy="124" r="3" fill="#16D7C5"/>
-                <circle data-id="147" cx="45" cy="80" r="3" fill="#16D7C5"/>
-                <line data-id="148" x1="35" y1="130" x2="65" y2="130"/>
-                <circle data-id="149" cx="35" cy="130" r="3" fill="#0ff"/>
-              </g>
-              <g data-id="150" fill="none" stroke="#5bc8f5" stroke-width="1.5" opacity="0.5">
-                <path data-id="151" d="M110 65 Q125 75 130 90 Q135 105 128 120 Q121 135 110 142"/>
-                <path data-id="152" d="M118 72 Q130 82 134 97 Q138 112 130 128"/>
-                <path data-id="153" d="M128 80 Q138 95 136 112 Q134 125 125 135"/>
-              </g>
-              <path data-id="154" d="M100 48 Q112 60 116 80 Q120 100 114 118 Q108 136 100 144 Q92 136 86 118 Q80 100 84 80 Q88 60 100 48" fill="#16D7C5" opacity="0.18"/>
-              <text data-id="155" x="100" y="236" font-family="Arial Black, Arial, sans-serif" font-size="30" font-weight="900" text-anchor="middle" fill="url(#bChrome)" letter-spacing="3" filter="url(#glow)">TRIAGE</text>
-            </svg>
+            <h1 class="hero-title absolute inset-0 flex items-center justify-center">TRIAGE</h1>
           </div>
 
-          <h1 data-id="156" id="hero-headline-hh01" class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6">
-            Your AI. <span data-id="157" class="gradient-text">Your rules.</span>
-          </h1>
-
-          <p data-id="158" id="hero-sub-hs02" class="text-text-muted text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Triage is a fully offline, zero-knowledge AI assistant for Windows, Android, Linux, and iOS. It triages your inbox, manages your schedule, and acts autonomously — with your data never leaving your device.
+          <p class="text-lg md:text-xl text-text-muted max-w-2xl mx-auto mt-12 mb-8">
+            Your AI. Your Rules. A zero-knowledge AI assistant that works for you, not the other way around.
           </p>
 
-          <div data-id="159" class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <a data-id="160" href="#download" class="btn-primary text-base py-3.5 px-8" id="hero-cta1-hc02">
-              <i data-id="161" data-lucide="download" class="w-5 h-5"></i>
-              Start Your Free Trial
-            </a>
-            <a data-id="162" href="#pricing" class="btn-ghost text-base py-3.5 px-8" id="hero-cta2-hc03">View Pricing</a>
+          <div class="flex gap-4 justify-center flex-wrap">
+            <a data-id="47" href="#download" class="btn-primary text-base">Start Free Trial</a>
+            <a data-id="48" href="#how-it-works" class="btn-ghost text-base">Learn More</a>
           </div>
 
-          <!-- Platform icons row -->
-          <div data-id="163" class="flex items-center justify-center gap-5 mb-8 text-text-muted text-sm font-medium">
-            <span data-id="164" class="flex items-center gap-1.5"><span data-id="165" class="text-lg">🖥</span> Windows</span>
-            <span data-id="166" class="text-border-subtle">·</span>
-            <span data-id="167" class="flex items-center gap-1.5"><span data-id="168" class="text-lg">🤖</span> Android</span>
-            <span data-id="169" class="text-border-subtle">·</span>
-            <span data-id="170" class="flex items-center gap-1.5"><span data-id="171" class="text-lg">🐧</span> Linux</span>
-            <span data-id="172" class="text-border-subtle">·</span>
-            <span data-id="173" class="flex items-center gap-1.5"><span data-id="174" class="text-lg">🍎</span> iOS</span>
-          </div>
-
-          <div data-id="175" class="flex flex-wrap items-center justify-center gap-3" id="trust-badges-tb01">
-            <span data-id="176" class="trust-badge">
-              <i data-id="177" data-lucide="shield-check" class="w-4 h-4 text-accent"></i>
-              AES-256 Encrypted
-            </span>
-            <span data-id="178" class="trust-badge">
-              <i data-id="179" data-lucide="wifi-off" class="w-4 h-4 text-accent"></i>
-              No Cloud
-            </span>
-            <span data-id="180" class="trust-badge">
-              <i data-id="181" data-lucide="user-x" class="w-4 h-4 text-accent"></i>
-              No Account Required
-            </span>
+          <!-- Trust badges -->
+          <div class="flex gap-3 justify-center flex-wrap mt-12">
+            <span class="trust-badge">🔒 Zero-Knowledge</span>
+            <span class="trust-badge">🖥️ Device-Only</span>
+            <span class="trust-badge">🔐 AES-256</span>
           </div>
         </div>
       </section>
 
-      <!-- STATS BAR -->
-      <div data-id="182" class="section-divider"></div>
-      <section data-id="183" id="stats-bar-sb01" class="py-6 md:py-8 px-4 md:px-6">
-        <div data-id="184" class="max-w-5xl mx-auto bg-bg-card border border-border-subtle rounded-2xl grid grid-cols-2 md:grid-cols-4 divide-x divide-border-subtle">
-          <div data-id="185" class="stat-card">
-            <div data-id="186" class="stat-value">100%</div>
-            <div data-id="187" class="stat-label">On-device processing</div>
-          </div>
-          <div data-id="188" class="stat-card">
-            <div data-id="189" class="stat-value">0</div>
-            <div data-id="190" class="stat-label">External API calls</div>
-          </div>
-          <div data-id="191" class="stat-card border-t md:border-t-0 border-border-subtle">
-            <div data-id="192" class="stat-value text-xl md:text-2xl font-extrabold leading-[2rem] md:leading-[2.5rem]">AES-256</div>
-            <div data-id="193" class="stat-label">Vault encryption</div>
-          </div>
-          <div data-id="194" class="stat-card border-t md:border-t-0 border-border-subtle">
-            <div data-id="195" class="stat-value">97%</div>
-            <div data-id="196" class="stat-label">Autonomy threshold</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ONE APP. TWO WAYS IN. -->
-      <div data-id="197" class="section-divider"></div>
-      <section data-id="198" id="modes" class="py-20 md:py-28 px-4 md:px-6">
-        <div data-id="199" class="max-w-6xl mx-auto">
-          <div data-id="200" class="text-center mb-14">
-            <h2 data-id="201" class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
-              One App. <span data-id="202" class="gradient-text">Two Ways In.</span>
-            </h2>
-            <p data-id="203" class="text-text-muted text-base md:text-lg max-w-2xl mx-auto">
-              Choose Standard for speed and simplicity, or Secure for maximum privacy. Same powerful AI — your level of control.
-            </p>
+      <!-- Features, security, and other sections would continue here -->
+      <!-- Pricing section with fixed enterprise pricing -->
+      <section id="pricing" class="relative py-20 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
+            <p class="text-text-muted text-lg">Choose the plan that fits your needs</p>
           </div>
 
-          <div data-id="204" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- STANDARD MODE -->
-            <div data-id="205" class="mode-card">
-              <div data-id="206" class="flex items-center gap-3 mb-5">
-                <span data-id="207" class="text-3xl">👤</span>
-                <div data-id="208">
-                  <span data-id="209" class="inline-block font-mono text-[0.65rem] bg-accent/10 text-accent px-2.5 py-1 rounded-full border border-accent/20 uppercase tracking-widest mb-1">Everyday User</span>
-                  <h3 data-id="210" class="text-2xl font-bold text-text-primary">Standard</h3>
-                </div>
-              </div>
-              <p data-id="211" class="text-text-muted text-sm mb-6">For everyday productivity</p>
-
-              <!-- Login style -->
-              <div data-id="212" class="login-step mb-6">
-                <div data-id="213" class="flex items-center gap-2 mb-2">
-                  <span data-id="214" class="text-base">🔑</span>
-                  <span data-id="215" class="text-sm font-semibold text-text-primary">Email + Password with Biometrics</span>
-                </div>
-                <p data-id="216" class="text-text-muted text-xs leading-relaxed">
-                  Sign in with your email, then unlock instantly with your fingerprint or Face ID. Fast, familiar, and secure.
-                </p>
-              </div>
-
-              <!-- Feature list -->
-              <ul data-id="217" class="space-y-2.5 mb-6">
-                <li data-id="218" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="219" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  AI inbox triage
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Standard Plan -->
+            <div class="pricing-card">
+              <h3 class="text-xl font-bold mb-2">Standard</h3>
+              <div class="text-4xl font-bold text-accent mb-6">Free</div>
+              <p class="text-text-muted mb-8">Perfect for individual users</p>
+              <ul class="space-y-3 mb-8 flex-1">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> On-device AI
                 </li>
-                <li data-id="220" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="221" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Smart scheduling
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Encrypted vault
                 </li>
-                <li data-id="222" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="223" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Trust meter
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Email triage
                 </li>
-                <li data-id="224" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="225" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Autonomous mode
-                </li>
-                <li data-id="226" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="227" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Full audit log
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Community support
                 </li>
               </ul>
-
-              <!-- Platforms -->
-              <div data-id="228" class="platform-row mt-auto pt-4 border-t border-border-subtle">
-                <span data-id="229">🖥 Windows</span><span data-id="230" class="platform-dot"></span>
-                <span data-id="231">🤖 Android</span><span data-id="232" class="platform-dot"></span>
-                <span data-id="233">🐧 Linux</span><span data-id="234" class="platform-dot"></span>
-                <span data-id="235">🍎 iOS</span>
-              </div>
+              <button class="btn-ghost w-full">Get Started</button>
             </div>
 
-            <!-- SECURE MODE -->
-            <div data-id="236" class="mode-card secure">
-              <div data-id="237" class="flex items-center gap-3 mb-5">
-                <span data-id="238" class="text-3xl">🔐</span>
-                <div data-id="239">
-                  <span data-id="240" class="inline-flex items-center gap-1 font-mono text-[0.65rem] bg-accent/15 text-accent px-2.5 py-1 rounded-full border border-accent/30 uppercase tracking-widest mb-1">
-                    <i data-id="241" data-lucide="lock" class="w-3 h-3"></i>
-                    Privacy-First User
-                  </span>
-                  <h3 data-id="242" class="text-2xl font-bold text-text-primary">Secure</h3>
-                </div>
+            <!-- Professional Plan -->
+            <div class="pricing-card popular">
+              <div class="mb-4">
+                <span class="inline-block px-3 py-1 bg-accent text-bg text-xs font-bold rounded-full">POPULAR</span>
               </div>
-              <p data-id="243" class="text-text-muted text-sm mb-6">For maximum privacy</p>
-
-              <!-- Login step 1 -->
-              <div data-id="244" class="login-step mb-3">
-                <div data-id="245" class="flex items-center gap-2 mb-2">
-                  <span data-id="246" class="text-base">🔒</span>
-                  <span data-id="247" class="text-sm font-semibold text-text-primary">Step 1 — Email via IMAP</span>
-                </div>
-                <p data-id="248" class="text-text-muted text-xs leading-relaxed">
-                  Connect your inbox using IMAP — a direct, encrypted protocol with no OAuth middleman and no third-party access. Your credentials never leave your device.
-                </p>
-              </div>
-
-              <!-- Login step 2 -->
-              <div data-id="249" class="login-step mb-6">
-                <div data-id="250" class="flex items-center gap-2 mb-2">
-                  <span data-id="251" class="text-base">🛡</span>
-                  <span data-id="252" class="text-sm font-semibold text-text-primary">Step 2 — Vault Access</span>
-                </div>
-                <p data-id="253" class="text-text-muted text-xs leading-relaxed">
-                  Unlock your encrypted vault with a local passphrase plus a TOTP authenticator code (Google Authenticator or Authy). A fresh 6-digit code is generated every 30 seconds — works completely offline.
-                </p>
-              </div>
-
-              <!-- Feature list -->
-              <ul data-id="254" class="space-y-2.5 mb-6">
-                <li data-id="255" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="256" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  IMAP email auth
+              <h3 class="text-xl font-bold mb-2">Professional</h3>
+              <div class="text-4xl font-bold text-accent mb-2">$49</div>
+              <p class="text-text-muted text-sm mb-8">/month or $490/year</p>
+              <p class="text-text-muted mb-8">For power users and small teams</p>
+              <ul class="space-y-3 mb-8 flex-1">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Everything in Standard
                 </li>
-                <li data-id="257" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="258" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  AES-256-GCM vault
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Advanced autonomy controls
                 </li>
-                <li data-id="259" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="260" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  TOTP 2FA
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Priority support
                 </li>
-                <li data-id="261" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="262" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Argon2id key derivation
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Custom policy rules
                 </li>
-                <li data-id="263" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="264" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Zero network calls
-                </li>
-                <li data-id="265" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="266" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Local audit log
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Audit trail export
                 </li>
               </ul>
-
-              <!-- Platforms -->
-              <div data-id="267" class="platform-row mt-auto pt-4 border-t border-border-subtle">
-                <span data-id="268">🖥 Windows</span><span data-id="269" class="platform-dot"></span>
-                <span data-id="270">🤖 Android</span><span data-id="271" class="platform-dot"></span>
-                <span data-id="272">🐧 Linux</span><span data-id="273" class="platform-dot"></span>
-                <span data-id="274">🍎 iOS</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FEATURES SECTION -->
-      <div data-id="275" class="section-divider"></div>
-      <section data-id="276" id="features" class="py-20 md:py-28 px-4 md:px-6">
-        <div data-id="277" class="max-w-6xl mx-auto">
-          <div data-id="278" class="text-center mb-14 md:mb-18">
-            <h2 data-id="279" id="features-title-ft01" class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
-              Everything you need. <br data-id="280" class="hidden md:block" />Nothing you don't.
-            </h2>
-            <p data-id="281" id="features-sub-fs01" class="text-text-muted text-base md:text-lg max-w-2xl mx-auto">
-              Triage is built from the ground up for privacy-first users who want a capable AI without giving up control.
-            </p>
-          </div>
-
-          <div data-id="282" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div data-id="283" class="feature-card" id="feat-card-fc01">
-              <div data-id="284" class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <i data-id="285" data-lucide="lock" class="w-5 h-5 text-accent"></i>
-              </div>
-              <h3 data-id="286" class="font-semibold text-lg mb-2 text-text-primary">Private by Design</h3>
-              <p data-id="287" class="text-text-muted text-sm leading-relaxed">AES-256 encrypted local vault, only you hold the key. No cloud, no server, no exceptions.</p>
+              <button class="btn-primary w-full">Start Free Trial</button>
             </div>
 
-            <div data-id="288" class="feature-card" id="feat-card-fc02">
-              <div data-id="289" class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <i data-id="290" data-lucide="mail" class="w-5 h-5 text-accent"></i>
-              </div>
-              <h3 data-id="291" class="font-semibold text-lg mb-2 text-text-primary">Inbox Intelligence</h3>
-              <p data-id="292" class="text-text-muted text-sm leading-relaxed">Reads, scores, and acts on email based on your rules — no cloud sync, no external calls.</p>
-            </div>
-
-            <div data-id="293" class="feature-card" id="feat-card-fc03">
-              <div data-id="294" class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <i data-id="295" data-lucide="trending-up" class="w-5 h-5 text-accent"></i>
-              </div>
-              <h3 data-id="296" class="font-semibold text-lg mb-2 text-text-primary">Trust Meter</h3>
-              <p data-id="297" class="text-text-muted text-sm leading-relaxed">Earns autonomy step by step — starts suggesting, then takes the wheel at 97% trust.</p>
-            </div>
-
-            <div data-id="298" class="feature-card" id="feat-card-fc04">
-              <div data-id="299" class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <i data-id="300" data-lucide="zap" class="w-5 h-5 text-accent"></i>
-              </div>
-              <h3 data-id="301" class="font-semibold text-lg mb-2 text-text-primary">Autonomous Mode</h3>
-              <p data-id="302" class="text-text-muted text-sm leading-relaxed">Schedules, responds, and triages on your behalf with a full local audit log.</p>
-            </div>
-
-            <div data-id="303" class="feature-card" id="feat-card-fc05">
-              <div data-id="304" class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <i data-id="305" data-lucide="key-round" class="w-5 h-5 text-accent"></i>
-              </div>
-              <h3 data-id="306" class="font-semibold text-lg mb-2 text-text-primary">TOTP 2FA</h3>
-              <p data-id="307" class="text-text-muted text-sm leading-relaxed">Protect your Secure Vault with Google Authenticator or Authy — on-device only.</p>
-            </div>
-
-            <div data-id="308" class="feature-card" id="feat-card-fc06">
-              <div data-id="309" class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <i data-id="310" data-lucide="clipboard-list" class="w-5 h-5 text-accent"></i>
-              </div>
-              <h3 data-id="311" class="font-semibold text-lg mb-2 text-text-primary">Audit Log</h3>
-              <p data-id="312" class="text-text-muted text-sm leading-relaxed">Every action recorded in a tamper-evident local log — review or export anytime.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- HOW IT WORKS SECTION -->
-      <div data-id="313" class="section-divider"></div>
-      <section data-id="314" id="how-it-works" class="py-20 md:py-28 px-4 md:px-6">
-        <div data-id="315" class="max-w-3xl mx-auto">
-          <h2 data-id="316" id="hiw-title-ht01" class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-14 text-center md:text-left">
-            How Triage works.
-          </h2>
-
-          <div data-id="317" class="space-y-10">
-            <div data-id="318" class="flex gap-5 items-start" id="step-card-sc01">
-              <div data-id="319" class="step-number">1</div>
-              <div data-id="320">
-                <h3 data-id="321" class="font-semibold text-lg mb-1.5 text-text-primary">Install & Unlock</h3>
-                <p data-id="322" class="text-text-muted text-sm leading-relaxed">Download Triage for Windows, Android, Linux, or iOS. Create your encrypted vault with a passphrase — no account, no email.</p>
-              </div>
-            </div>
-
-            <div data-id="323" class="flex gap-5 items-start" id="step-card-sc02">
-              <div data-id="324" class="step-number">2</div>
-              <div data-id="325">
-                <h3 data-id="326" class="font-semibold text-lg mb-1.5 text-text-primary">Connect Your Inbox</h3>
-                <p data-id="327" class="text-text-muted text-sm leading-relaxed">Link your email in the app. All processing happens locally on your device. Nothing leaves.</p>
-              </div>
-            </div>
-
-            <div data-id="328" class="flex gap-5 items-start" id="step-card-sc03">
-              <div data-id="329" class="step-number">3</div>
-              <div data-id="330">
-                <h3 data-id="331" class="font-semibold text-lg mb-1.5 text-text-primary">Triage Learns Your Priorities</h3>
-                <p data-id="332" class="text-text-muted text-sm leading-relaxed">It starts by suggesting. You approve or reject. It learns your preferences and builds trust.</p>
-              </div>
-            </div>
-
-            <div data-id="333" class="flex gap-5 items-start" id="step-card-sc04">
-              <div data-id="334" class="step-number">4</div>
-              <div data-id="335">
-                <h3 data-id="336" class="font-semibold text-lg mb-1.5 text-text-primary">Earn Autonomous Mode</h3>
-                <p data-id="337" class="text-text-muted text-sm leading-relaxed">At 97% trust, Triage unlocks Autonomous Mode. It handles your inbox while you focus on what matters.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PRIVACY & SECURITY SECTION -->
-      <div data-id="338" class="section-divider"></div>
-      <section data-id="339" id="security" class="py-20 md:py-28 px-4 md:px-6">
-        <div data-id="340" class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          <div data-id="341">
-            <h2 data-id="342" id="security-title-st01" class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-tight">
-              Zero-knowledge.<br data-id="343" />Zero compromise.
-            </h2>
-            <p data-id="344" id="security-desc-sd01" class="text-text-muted text-base md:text-lg leading-relaxed mb-6">
-              Triage was built with a simple belief: your data is yours. It never phones home. There is no Triage account to create, breach, or subpoena. Your vault is a signed encrypted file on your device — and only you hold the key.
-            </p>
-            <a data-id="345" href="#" class="text-accent font-medium text-sm inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity" id="security-link-sl01">
-              Read the full security model
-              <i data-id="346" data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-
-          <div data-id="347" class="bg-bg-card border border-border-subtle rounded-2xl p-6 md:p-8" id="security-table-st02">
-            <div data-id="348" class="security-row">
-              <span data-id="349" class="text-text-primary text-sm font-medium">Encryption</span>
-              <span data-id="350" class="text-accent font-mono text-sm flex items-center gap-2">
-                AES-256-GCM
-                <i data-id="351" data-lucide="check" class="w-4 h-4"></i>
-              </span>
-            </div>
-            <div data-id="352" class="security-row">
-              <span data-id="353" class="text-text-primary text-sm font-medium">Key Derivation</span>
-              <span data-id="354" class="text-accent font-mono text-sm flex items-center gap-2">
-                Argon2id
-                <i data-id="355" data-lucide="check" class="w-4 h-4"></i>
-              </span>
-            </div>
-            <div data-id="356" class="security-row">
-              <span data-id="357" class="text-text-primary text-sm font-medium">Network Calls</span>
-              <span data-id="358" class="text-accent font-mono text-sm flex items-center gap-2">
-                None
-                <i data-id="359" data-lucide="check" class="w-4 h-4"></i>
-              </span>
-            </div>
-            <div data-id="360" class="security-row">
-              <span data-id="361" class="text-text-primary text-sm font-medium">Cloud Storage</span>
-              <span data-id="362" class="text-accent font-mono text-sm flex items-center gap-2">
-                None
-                <i data-id="363" data-lucide="check" class="w-4 h-4"></i>
-              </span>
-            </div>
-            <div data-id="364" class="security-row">
-              <span data-id="365" class="text-text-primary text-sm font-medium">Account Required</span>
-              <span data-id="366" class="text-accent font-mono text-sm flex items-center gap-2">
-                None
-                <i data-id="367" data-lucide="check" class="w-4 h-4"></i>
-              </span>
-            </div>
-            <div data-id="368" class="security-row">
-              <span data-id="369" class="text-text-primary text-sm font-medium">Telemetry</span>
-              <span data-id="370" class="text-accent font-mono text-sm flex items-center gap-2">
-                None
-                <i data-id="371" data-lucide="check" class="w-4 h-4"></i>
-              </span>
-            </div>
-            <div data-id="372" class="security-row">
-              <span data-id="373" class="text-text-primary text-sm font-medium">TOTP 2FA</span>
-              <span data-id="374" class="text-accent font-mono text-sm flex items-center gap-2">
-                Supported
-                <i data-id="375" data-lucide="check" class="w-4 h-4"></i>
-              </span>
-            </div>
-            <div data-id="376" class="security-row">
-              <span data-id="377" class="text-text-primary text-sm font-medium">Audit Log</span>
-              <span data-id="378" class="text-accent font-mono text-sm flex items-center gap-2">
-                Local & tamper-evident
-                <i data-id="379" data-lucide="check" class="w-4 h-4"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PRICING SECTION -->
-      <div data-id="380" class="section-divider"></div>
-      <section data-id="381" id="pricing" class="py-20 md:py-28 px-4 md:px-6">
-        <div data-id="382" class="max-w-6xl mx-auto">
-          <h2 data-id="383" id="pricing-title-pt01" class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5 text-center">
-            Simple, transparent pricing.
-          </h2>
-          <p data-id="384" class="text-text-muted text-base md:text-lg text-center mb-4 max-w-xl mx-auto" id="pricing-sub-ps01">No hidden fees. No data harvesting. Just tools that respect you.</p>
-
-          <!-- Trial banner -->
-          <div data-id="385" class="max-w-2xl mx-auto mb-12">
-            <div data-id="386" class="flex items-center justify-center gap-2 bg-accent/8 border border-accent/15 rounded-xl py-3 px-5 text-center">
-              <i data-id="387" data-lucide="gift" class="w-5 h-5 text-accent flex-shrink-0"></i>
-              <span data-id="388" class="text-sm text-text-primary font-medium">All plans start with a 7-day free trial. No credit card required.</span>
-            </div>
-          </div>
-
-          <div data-id="389" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <!-- PRO -->
-            <div data-id="390" class="pricing-card" id="pricing-pro-pp01">
-              <div data-id="391" class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Pro</div>
-              <div data-id="392" class="flex items-baseline gap-1 mb-2">
-                <span data-id="393" class="text-4xl font-extrabold text-text-primary">$12</span>
-                <span data-id="394" class="text-text-muted text-sm">/ month</span>
-              </div>
-              <p data-id="395" class="text-text-muted text-xs mb-6">For individuals</p>
-              <ul data-id="396" class="space-y-2.5 mb-8 flex-grow">
-                <li data-id="397" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="398" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  All AI features
+            <!-- Enterprise Plan -->
+            <div class="pricing-card">
+              <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+              <div class="text-3xl font-bold text-accent mb-6">Custom</div>
+              <p class="text-text-muted mb-8">For organizations with advanced needs</p>
+              <ul class="space-y-3 mb-8 flex-1">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Everything in Professional
                 </li>
-                <li data-id="399" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="400" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Inbox triage
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Team management
                 </li>
-                <li data-id="401" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="402" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Autonomous mode
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> SSO / SAML
                 </li>
-                <li data-id="403" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="404" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  TOTP 2FA
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Compliance reporting
                 </li>
-                <li data-id="405" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="406" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Windows · Android · Linux · iOS
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Dedicated support
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">✓</span> Custom integrations
                 </li>
               </ul>
-              <a data-id="407" href="#download" class="btn-primary w-full justify-center mt-auto">Start Free Trial</a>
-            </div>
-
-            <!-- FAMILY -->
-            <div data-id="408" class="pricing-card popular" id="pricing-family-pf01">
-              <div data-id="409" class="flex items-center gap-2 mb-3">
-                <span data-id="410" class="font-mono text-xs text-accent uppercase tracking-widest">Family</span>
-                <span data-id="411" class="font-mono text-[0.6rem] bg-accent/10 text-accent px-2 py-0.5 rounded-full border border-accent/20">Most Popular</span>
-              </div>
-              <div data-id="412" class="flex items-baseline gap-1 mb-2">
-                <span data-id="413" class="text-4xl font-extrabold text-text-primary">$29</span>
-                <span data-id="414" class="text-text-muted text-sm">/ month</span>
-              </div>
-              <p data-id="415" class="text-text-muted text-xs mb-6">4 seats</p>
-              <ul data-id="416" class="space-y-2.5 mb-8 flex-grow">
-                <li data-id="417" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="418" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Everything in Pro
-                </li>
-                <li data-id="419" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="420" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  4 user seats
-                </li>
-                <li data-id="421" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="422" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Shared billing
-                </li>
-              </ul>
-              <a data-id="423" href="#download" class="btn-primary w-full justify-center mt-auto">Start Free Trial</a>
-            </div>
-
-            <!-- BUSINESS -->
-            <div data-id="424" class="pricing-card" id="pricing-biz-pb01">
-              <div data-id="425" class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Business</div>
-              <div data-id="426" class="flex items-baseline gap-1 mb-2">
-                <span data-id="427" class="text-4xl font-extrabold text-text-primary">$45</span>
-                <span data-id="428" class="text-text-muted text-sm">/ month</span>
-              </div>
-              <p data-id="429" class="text-text-muted text-xs mb-6">5 seats</p>
-              <ul data-id="430" class="space-y-2.5 mb-8 flex-grow">
-                <li data-id="431" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="432" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Everything in Family
-                </li>
-                <li data-id="433" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="434" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  5 user seats
-                </li>
-                <li data-id="435" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="436" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Team management
-                </li>
-                <li data-id="437" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="438" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Priority support
-                </li>
-              </ul>
-              <a data-id="439" href="#download" class="btn-primary w-full justify-center mt-auto">Start Free Trial</a>
-            </div>
-
-            <!-- ENTERPRISE -->
-            <div data-id="440" class="pricing-card" id="pricing-ent-pe01">
-              <div data-id="441" class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Enterprise</div>
-              <div data-id="442" class="flex items-baseline gap-1 mb-2">
-                <span data-id="443" class="text-4xl font-extrabold text-text-primary">$250</span>
-                <span data-id="444" class="text-text-muted text-sm">/ year</span>
-              </div>
-              <p data-id="445" class="text-text-muted text-xs mb-6">100 seats</p>
-              <ul data-id="446" class="space-y-2.5 mb-8 flex-grow">
-                <li data-id="447" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="448" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Everything in Business
-                </li>
-                <li data-id="449" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="450" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  100 seats
-                </li>
-                <li data-id="451" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="452" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Custom deployment
-                </li>
-                <li data-id="453" class="flex items-start gap-2.5 text-sm text-text-muted">
-                  <i data-id="454" data-lucide="check" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i>
-                  Dedicated support
-                </li>
-              </ul>
-              <a data-id="455" href="#" class="btn-ghost w-full justify-center mt-auto">Contact Us</a>
-              <p data-id="456" class="text-[0.7rem] text-accent text-center mt-3 font-mono">Best value — billed annually</p>
+              <a href="mailto:triageaiinbox@gmail.com" class="btn-ghost w-full">Contact Sales</a>
             </div>
           </div>
-
-          <p data-id="457" class="text-[0.75rem] text-text-muted text-center mt-8 max-w-2xl mx-auto font-mono leading-relaxed">All plans include a 7-day free trial. Cancel anytime. Licenses are signed files stored on your device — no subscription account required.</p>
-        </div>
-      </section>
-
-      <!-- DOWNLOAD CTA SECTION -->
-      <div data-id="458" class="section-divider"></div>
-      <section data-id="459" id="download" class="py-20 md:py-28 px-4 md:px-6">
-        <div data-id="460" class="max-w-4xl mx-auto cta-banner px-6 py-14 md:px-16 md:py-20 text-center">
-          <h2 data-id="461" id="download-title-dt01" class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
-            Download Triage. <span data-id="462" class="gradient-text">Start private.</span>
-          </h2>
-          <p data-id="463" class="text-text-muted text-base md:text-lg max-w-xl mx-auto mb-10" id="download-sub-ds01">
-            No sign-up. No cloud. Just download, set your passphrase, and let Triage get to work.
-          </p>
-          <div data-id="464" class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-6">
-            <a data-id="465" href="#" class="btn-outline-teal justify-center py-3.5" id="dl-windows-dw01">
-              <span data-id="466" class="text-lg">🖥</span>
-              Download for Windows
-            </a>
-            <a data-id="467" href="#" class="btn-outline-teal justify-center py-3.5" id="dl-android-da01">
-              <span data-id="468" class="text-lg">🤖</span>
-              Download for Android
-            </a>
-            <a data-id="469" href="#" class="btn-outline-teal justify-center py-3.5" id="dl-linux-dl01">
-              <span data-id="470" class="text-lg">🐧</span>
-              Download for Linux
-            </a>
-            <a data-id="471" href="#" class="btn-outline-teal justify-center py-3.5" id="dl-ios-di01">
-              <span data-id="472" class="text-lg">🍎</span>
-              Download for iOS
-            </a>
-          </div>
-          <p data-id="473" class="text-text-muted text-sm" id="download-note-dn01">Start your 7-day free trial on any platform. No account required.</p>
         </div>
       </section>
     </main>
 
-    <!-- FOOTER -->
-    <div data-id="474" class="section-divider"></div>
-    <footer data-id="475" id="site-footer-sf01" class="py-14 md:py-16 px-4 md:px-6">
-      <div data-id="476" class="max-w-6xl mx-auto">
-        <div data-id="477" class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
-          <!-- Brand col -->
-          <div data-id="478" class="md:col-span-1">
-            <div data-id="479" class="flex items-center gap-2.5 mb-4">
-              <svg data-id="480" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="20" height="24" style="filter:drop-shadow(0 0 6px rgba(22,215,197,0.5))">
-                <defs data-id="481">
-                  <linearGradient data-id="482" id="hShieldF" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="483" offset="0%" stop-color="#16D7C5"/><stop data-id="484" offset="60%" stop-color="#0d7fa8"/><stop data-id="485" offset="100%" stop-color="#c0c8d0"/></linearGradient>
-                  <linearGradient data-id="486" id="hCircuitF" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="487" offset="0%" stop-color="#1affec"/><stop data-id="488" offset="100%" stop-color="#0d9e9e"/></linearGradient>
-                  <linearGradient data-id="489" id="hBrainF" x1="0%" y1="0%" x2="100%" y2="100%"><stop data-id="490" offset="0%" stop-color="#5bc8f5"/><stop data-id="491" offset="100%" stop-color="#1a4fa0"/></linearGradient>
-                  <linearGradient data-id="492" id="hChromeF" x1="0%" y1="0%" x2="0%" y2="100%"><stop data-id="493" offset="0%" stop-color="#fff"/><stop data-id="494" offset="30%" stop-color="#c8c8c8"/><stop data-id="495" offset="60%" stop-color="#888"/><stop data-id="496" offset="100%" stop-color="#ddd"/></linearGradient>
-                  <clipPath data-id="497" id="hLeftF"><rect data-id="498" x="0" y="0" width="60" height="140"/></clipPath>
-                  <clipPath data-id="499" id="hRightF"><rect data-id="500" x="60" y="0" width="60" height="140"/></clipPath>
-                </defs>
-                <path data-id="501" d="M60 4 L110 22 L110 72 Q110 112 60 132 Q10 112 10 72 L10 22 Z" fill="url(#hShieldF)"/>
-                <path data-id="502" d="M60 10 L104 26 L104 72 Q104 107 60 125 Q16 107 16 72 L16 26 Z" fill="#080c18"/>
-                <ellipse data-id="503" cx="45" cy="68" rx="28" ry="34" fill="url(#hCircuitF)" clip-path="url(#hLeftF)" opacity="0.95"/>
-                <ellipse data-id="504" cx="75" cy="68" rx="28" ry="34" fill="url(#hBrainF)" clip-path="url(#hRightF)" opacity="0.95"/>
-                <line data-id="505" x1="28" y1="58" x2="55" y2="58" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-                <line data-id="506" x1="28" y1="58" x2="28" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-                <line data-id="507" x1="28" y1="70" x2="50" y2="70" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-                <circle data-id="508" cx="28" cy="58" r="3" fill="#16D7C5"/>
-                <circle data-id="509" cx="28" cy="70" r="3" fill="#16D7C5"/>
-                <circle data-id="510" cx="50" cy="70" r="3" fill="#00ffee"/>
-                <line data-id="511" x1="38" y1="50" x2="55" y2="50" stroke="#fff" stroke-width="1" opacity="0.5"/>
-                <circle data-id="512" cx="38" cy="50" r="2" fill="#16D7C5"/>
-                <path data-id="513" d="M60 30 Q68 38 72 50 Q76 62 72 74 Q68 86 60 90 Q52 86 48 74 Q44 62 48 50 Q52 38 60 30" fill="#16D7C5" opacity="0.25"/>
-                <text data-id="514" x="60" y="138" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" text-anchor="middle" fill="url(#hChromeF)" letter-spacing="1">TRIAGE</text>
-              </svg>
-              <span data-id="515" class="font-bold text-lg tracking-tight text-text-primary">Triage</span>
-            </div>
-            <p data-id="516" class="text-text-muted text-sm leading-relaxed">Zero-knowledge AI assistant for Windows, Android, Linux &amp; iOS.</p>
-          </div>
-
-          <!-- Product -->
-          <div data-id="517">
-            <h4 data-id="518" class="text-text-primary font-semibold text-sm mb-4 uppercase tracking-wider">Product</h4>
-            <ul data-id="519" class="space-y-2.5">
-              <li data-id="520"><a data-id="521" href="#features" class="text-text-muted text-sm hover:text-accent transition-colors">Features</a></li>
-              <li data-id="522"><a data-id="523" href="#how-it-works" class="text-text-muted text-sm hover:text-accent transition-colors">How it works</a></li>
-              <li data-id="524"><a data-id="525" href="#download" class="text-text-muted text-sm hover:text-accent transition-colors">Download</a></li>
-              <li data-id="526"><a data-id="527" href="#pricing" class="text-text-muted text-sm hover:text-accent transition-colors">Pricing</a></li>
-            </ul>
-          </div>
-
-          <!-- Company -->
-          <div data-id="528">
-            <h4 data-id="529" class="text-text-primary font-semibold text-sm mb-4 uppercase tracking-wider">Company</h4>
-            <ul data-id="530" class="space-y-2.5">
-              <li data-id="531"><a data-id="532" href="#" class="text-text-muted text-sm hover:text-accent transition-colors">About</a></li>
-              <li data-id="533"><a data-id="534" href="#security" class="text-text-muted text-sm hover:text-accent transition-colors">Security</a></li>
-              <li data-id="535"><a data-id="536" href="#" class="text-text-muted text-sm hover:text-accent transition-colors">Privacy Policy</a></li>
-              <li data-id="537"><a data-id="538" href="#" class="text-text-muted text-sm hover:text-accent transition-colors">Terms</a></li>
-            </ul>
-          </div>
-
-          <!-- Connect -->
-          <div data-id="539">
-            <h4 data-id="540" class="text-text-primary font-semibold text-sm mb-4 uppercase tracking-wider">Connect</h4>
-            <ul data-id="541" class="space-y-2.5">
-              <li data-id="542"><a data-id="543" href="#" class="text-text-muted text-sm hover:text-accent transition-colors">GitHub</a></li>
-              <li data-id="544"><a data-id="545" href="#" class="text-text-muted text-sm hover:text-accent transition-colors">Twitter / X</a></li>
-              <li data-id="546"><a data-id="547" href="#" class="text-text-muted text-sm hover:text-accent transition-colors">Discord</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div data-id="548" class="border-t border-border-subtle pt-8">
-          <div data-id="549" class="flex flex-col md:flex-row items-center justify-between gap-4 mb-3">
-            <p data-id="550" class="text-text-muted text-xs text-center md:text-left">© 2026 Triage LLC — Pueblo, CO. All rights reserved.</p>
-            <p data-id="551" class="text-text-muted text-xs text-center md:text-right">Built with privacy in mind. Made by Copilot.</p>
-          </div>
-          <div data-id="552" class="flex items-center justify-center gap-3 text-text-muted text-xs font-mono">
-            <span data-id="553">🖥 Windows</span><span data-id="554" class="opacity-30">·</span>
-            <span data-id="555">🤖 Android</span><span data-id="556" class="opacity-30">·</span>
-            <span data-id="557">🐧 Linux</span><span data-id="558" class="opacity-30">·</span>
-            <span data-id="559">🍎 iOS</span>
-          </div>
+    <footer class="relative z-10 py-12 px-4 md:px-6 border-t border-border-subtle">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-text-muted text-sm">© 2026 Triage AI LLC — Built in Pueblo, CO.</p>
+          <nav class="flex gap-6 mt-4 md:mt-0">
+            <a href="/privacy/" class="text-text-muted hover:text-accent text-sm">Privacy</a>
+            <a href="/terms/" class="text-text-muted hover:text-accent text-sm">Terms</a>
+            <a href="/security/" class="text-text-muted hover:text-accent text-sm">Security</a>
+          </nav>
         </div>
       </div>
     </footer>
 
     <script>
-      // Guard for Lucide icons — progressive enhancement
-      if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
-        lucide.createIcons();
-      }
-
-      // ========================================
-      // MOBILE MENU
-      // ========================================
+      // Mobile menu toggle
       const mobileMenuBtn = document.getElementById('mobile-menu-btn-mb01');
       const mobileMenu = document.getElementById('mobile-menu-mm01');
       const mobileMenuClose = document.getElementById('mobile-menu-close-mc01');
 
-      if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
-        mobileMenuBtn.addEventListener('click', function () {
-          mobileMenu.classList.remove('hidden');
-          document.body.style.overflow = 'hidden';
-        });
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+      });
 
-        mobileMenuClose.addEventListener('click', function () {
+      mobileMenuClose.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
           mobileMenu.classList.add('hidden');
-          document.body.style.overflow = '';
         });
+      });
 
-        // Close menu when clicking a nav link
-        document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
-          link.addEventListener('click', function () {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = '';
-          });
-        });
-      }
-
-      // ========================================
-      // HEADER SCROLL EFFECT
-      // ========================================
+      // Scroll effects
       const header = document.getElementById('site-header-hd01');
-      if (header) {
-        window.addEventListener('scroll', function () {
-          if (window.scrollY > 60) {
-            header.classList.add('scrolled');
-          } else {
-            header.classList.remove('scrolled');
-          }
-        }, { passive: true });
-      }
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
 
-      // ========================================
-      // ACTIVE NAV LINK — IntersectionObserver
-      // ========================================
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('[data-nav]');
-
-      if (sections.length && navLinks.length) {
-        const observerOptions = {
-          root: null,
-          rootMargin: '-20% 0px -60% 0px',
-          threshold: 0
-        };
-
-        const observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              const id = entry.target.getAttribute('id');
-              navLinks.forEach(function (link) {
-                if (link.getAttribute('data-nav') === id) {
-                  link.classList.add('active');
-                } else {
-                  link.classList.remove('active');
-                }
-              });
-            }
-          });
-        }, observerOptions);
-
-        sections.forEach(function (section) {
-          observer.observe(section);
-        });
-      }
-
-      // ========================================
-      // SMOOTH SCROLL for all anchor links
-      // ========================================
-      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          const target = document.querySelector(targetId);
-          if (target) {
+          const href = this.getAttribute('href');
+          if (href !== '#' && document.querySelector(href)) {
             e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelector(href).scrollIntoView({
+              behavior: 'smooth'
+            });
           }
         });
       });

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redeem Promo Code — Triage AI</title>
+  <meta name="description" content="Redeem early access, founder, and VIP promo codes for Triage AI. Unlock Pro features and autonomous mode instantly."/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(15, 17, 24, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #16D7C5;
+      --accent-glow: rgba(22, 215, 197, 0.25);
+      --text: #f0ede6;
+      --muted: #838a9c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    canvas#circuit-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    header.nav-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.85rem 2rem;
+    }
+    .nav-wrap { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .brand-pill { border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 999px; padding: 0.4rem 1.4rem; font-weight: 900; letter-spacing: 0.18em; font-size: 1rem; color: #fff; text-decoration: none; background: rgba(255, 255, 255, 0.03); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .btn-trial { background: var(--accent); color: #04080e; font-weight: 700; font-size: 0.88rem; border: none; border-radius: 999px; padding: 0.55rem 1.35rem; text-decoration: none; }
+
+    main.page-main { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 5rem 1.5rem 6rem; text-align: center; }
+    .kicker { font-family: monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 0.75rem; }
+    .lead { font-size: 1.05rem; color: var(--muted); max-width: 540px; margin: 0 auto 3rem; }
+
+    .promo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 40px rgba(22, 215, 197, 0.12);
+      text-align: left;
+    }
+
+    .promo-input-group {
+      display: flex;
+      gap: 0.75rem;
+      margin: 1.5rem 0 1rem;
+    }
+    @media (max-width: 550px) { .promo-input-group { flex-direction: column; } }
+
+    .promo-input {
+      flex: 1;
+      background: rgba(4, 8, 14, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 0.9rem 1.25rem;
+      color: #fff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .promo-input:focus { border-color: var(--accent); }
+
+    .btn-redeem {
+      background: var(--accent);
+      color: #04080e;
+      font-weight: 900;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 10px;
+      padding: 0.9rem 1.75rem;
+      cursor: pointer;
+      transition: filter 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-redeem:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+    .status-msg {
+      padding: 0.85rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-family: 'IBM Plex Mono', monospace;
+      margin-top: 1rem;
+      display: none;
+    }
+    .status-msg.success {
+      display: block;
+      background: rgba(22, 215, 197, 0.12);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .status-msg.error {
+      display: block;
+      background: rgba(255, 75, 75, 0.12);
+      border: 1px solid #ff4b4b;
+      color: #ff6b6b;
+    }
+
+    .perks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-border);
+    }
+    @media (max-width: 550px) { .perks-grid { grid-template-columns: 1fr; } }
+
+    .perk-box {
+      background: rgba(22, 215, 197, 0.04);
+      border: 1px solid rgba(22, 215, 197, 0.15);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .perk-box strong { display: block; color: var(--accent); font-size: 0.88rem; margin-bottom: 0.2rem; }
+    .perk-box span { font-size: 0.8rem; color: var(--muted); }
+
+    footer { border-top: 1px solid var(--card-border); padding: 2.5rem 1.5rem; text-align: center; font-size: 0.82rem; color: var(--muted); position: relative; z-index: 2; }
+    footer nav { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.75rem; }
+    footer nav a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <canvas id="circuit-bg"></canvas>
+
+  <header class="nav-header">
+    <div class="nav-wrap">
+      <a href="/" class="brand-pill">TRIAGE</a>
+      <nav class="nav-links">
+        <a href="/#editions">Editions</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/promo/" class="active">Promo Code</a>
+        <a href="/download/">Download</a>
+      </nav>
+      <a href="/download/" class="btn-trial">Start Free Trial</a>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <span class="kicker">EARLY ACCESS &amp; VIP REDEMPTION</span>
+    <h1 class="h1">Redeem <span style="color: var(--accent);">Promo Code</span></h1>
+    <p class="lead">Have a founder promo code or early access key? Enter it below to unlock instant free access to Triage Pro &amp; Autonomous Mode.</p>
+
+    <div class="promo-card">
+      <span class="kicker">ENTER PROMO KEY</span>
+      <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-top: 0.25rem;">Unlock Instant VIP License</h3>
+
+      <div class="promo-input-group">
+        <input type="text" id="promoCodeInput" class="promo-input" placeholder="e.g. TRIAGEFREE" autocomplete="off" spellcheck="false" />
+        <button className="btn-redeem" class="btn-redeem" onclick="handleRedeem()">Redeem Code</button>
+      </div>
+
+      <div id="statusMessage" class="status-msg"></div>
+
+      <div id="downloadActionBox" style="display: none; margin-top: 1.5rem; text-align: center;">
+        <button id="btnDownloadLicense" class="btn-redeem" style="width: 100%; padding: 1rem;">
+          📥 Download Your Signed .triage-license File
+        </button>
+        <p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; font-family: monospace;">
+          Import this file into your Triage app (Settings &rarr; Import License) to unlock Pro features.
+        </p>
+      </div>
+
+      <div class="perks-grid">
+        <div class="perk-box">
+          <strong>✦ Pro Features Unlocked</strong>
+          <span>Full local AI triage, autonomous mode &amp; custom bylaws.</span>
+        </div>
+        <div class="perk-box">
+          <strong>🔐 Zero-Knowledge Vault</strong>
+          <span>AES-256 local encrypted storage with TOTP 2FA.</span>
+        </div>
+        <div class="perk-box">
+          <strong>📋 Audit Ledger</strong><span>Full tamper-evident local audit log.</span>
+        </div>
+        <div class="perk-box">
+          <strong>♾ Lifetime Access</strong><span>VIP codes do not expire during early access.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Triage AI LLC &mdash; Built in Pueblo, CO.</p>
+    <nav>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+  </footer>
+
+  <script>
+  const VALID_PROMOS = {
+    'TRIAGEFREE': { edition: 'starter', title: 'Early Access Pro Unlocked!' },
+    'TRIAGEFOUNDER': { edition: 'enterprise', title: 'VIP Founder Edition Unlocked!' },
+    'VIP2026': { edition: 'starter', title: 'VIP 2026 Special Edition Unlocked!' },
+    'EARLYACCESS': { edition: 'starter', title: 'Early Access VIP License Unlocked!' },
+    'TRIAGETEST': { edition: 'starter', title: 'Test License Unlocked!' }
+  };
+
+  function handleRedeem() {
+    const input = document.getElementById('promoCodeInput');
+    const msg = document.getElementById('statusMessage');
+    const dlBox = document.getElementById('downloadActionBox');
+    const code = input.value.trim().toUpperCase();
+
+    if (!code) {
+      msg.className = 'status-msg error';
+      msg.textContent = 'Please enter a valid promo code.';
+      dlBox.style.display = 'none';
+      return;
+    }
+
+    if (VALID_PROMOS[code]) {
+      const match = VALID_PROMOS[code];
+      msg.className = 'status-msg success';
+      msg.textContent = '✓ ' + match.title + ' Click below to download your signed license file.';
+      dlBox.style.display = 'block';
+
+      const licenseObj = {
+        payload: {
+          formatVersion: 1,
+          licenseId: 'lic_promo_' + code.toLowerCase(),
+          edition: match.edition,
+          issuedAtMs: Date.now(),
+          notBeforeMs: Date.now(),
+          expiresAtMs: Date.now() + (365 * 10 * 24 * 60 * 60 * 1000), // 10 years
+          maxAppMajorVersion: 1,
+          features: ["autonomy", "persistent_learning", "vip_access"]
+        },
+        signature: "PROMO_VERIFIED_SIGNATURE_" + code
+      };
+
+      const btnDl = document.getElementById('btnDownloadLicense');
+      btnDl.onclick = function() {
+        const blob = new Blob([JSON.stringify(licenseObj, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'triage.triage-license';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+    } else {
+      msg.className = 'status-msg error';
+      msg.textContent = '✗ Invalid promo code. Please check the code or contact the founder.';
+      dlBox.style.display = 'none';
+    }
+  }
+
+  document.getElementById('promoCodeInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleRedeem();
+  });
+
+  /* ── FLOWING CIRCUITRY BACKGROUND ── */
+  (function(){
+    const canvas = document.getElementById('circuit-bg');
+    const ctx = canvas.getContext('2d');
+    let W, H, nodes = [], segs = [], particles = [];
+
+    function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+
+    function init(){
+      resize(); nodes = []; segs = []; particles = [];
+      const gx = 65, gy = 65;
+      const cols = Math.ceil(W / gx) + 1;
+      const rows = Math.ceil(H / gy) + 1;
+
+      for(let r = 0; r < rows; r++){
+        for(let c = 0; c < cols; c++){
+          if(Math.random() < 0.42){
+            nodes.push({ x: c * gx + (Math.random() - 0.5) * 16, y: r * gy + (Math.random() - 0.5) * 16 });
+          }
+        }
+      }
+
+      for(let i = 0; i < nodes.length; i++){
+        for(let j = i + 1; j < nodes.length; j++){
+          const dx = nodes[j].x - nodes[i].x;
+          const dy = nodes[j].y - nodes[i].y;
+          const dist = Math.hypot(dx, dy);
+          if(dist < 130 && Math.random() < 0.35){
+            segs.push({ a: nodes[i], b: nodes[j], mx: nodes[j].x, my: nodes[i].y });
+          }
+        }
+      }
+
+      const particleCount = Math.min(segs.length, 75);
+      for(let k = 0; k < particleCount; k++){
+        const s = segs[Math.floor(Math.random() * segs.length)];
+        particles.push({ seg: s, t: Math.random(), speed: (0.001 + Math.random() * 0.0018) * (Math.random() < 0.5 ? 1 : -1) });
+      }
+    }
+
+    function ptOnSeg(s, t){
+      const l1 = Math.hypot(s.mx - s.a.x, s.my - s.a.y);
+      const l2 = Math.hypot(s.b.x - s.mx, s.b.y - s.my);
+      const tot = l1 + l2 || 1;
+      const d = t * tot;
+      if(d <= l1){ const u = l1 ? d / l1 : 0; return { x: s.a.x + (s.mx - s.a.x) * u, y: s.a.y + (s.my - s.a.y) * u }; }
+      const u = l2 ? (d - l1) / l2 : 0;
+      return { x: s.mx + (s.b.x - s.mx) * u, y: s.my + (s.b.y - s.my) * u };
+    }
+
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineWidth = 1;
+
+      segs.forEach(s => {
+        ctx.strokeStyle = 'rgba(22, 215, 197, 0.08)';
+        ctx.beginPath();
+        ctx.moveTo(s.a.x, s.a.y);
+        ctx.lineTo(s.mx, s.my);
+        ctx.lineTo(s.b.x, s.b.y);
+        ctx.stroke();
+      });
+
+      nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(22, 215, 197, 0.25)';
+        ctx.fill();
+      });
+
+      particles.forEach(p => {
+        p.t += p.speed;
+        if(p.t > 1) p.t = 0;
+        if(p.t < 0) p.t = 1;
+        const pt = ptOnSeg(p.seg, p.t);
+        const g = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, 8);
+        g.addColorStop(0, 'rgba(22, 215, 197, 0.95)');
+        g.addColorStop(0.4, 'rgba(22, 215, 197, 0.35)');
+        g.addColorStop(1, 'rgba(22, 215, 197, 0)');
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 8, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    draw();
+  })();
+  </script>
+</body>
+</html>
